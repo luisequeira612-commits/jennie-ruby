@@ -57,7 +57,7 @@ def main() -> None:
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     # Keep byte-for-byte output stable so CI can detect real catalog drift.
     body = ET.tostring(root, encoding="unicode")
-    OUTPUT.write_text('<?xml version="1.0" encoding="utf-8"?>\\n' + body + "\\n", encoding="utf-8")
+    OUTPUT.write_text('<?xml version="1.0" encoding="utf-8"?>\n' + body + "\n", encoding="utf-8")
     print(f"Generated {OUTPUT.relative_to(ROOT)} with {len(rows)} app mappings.")
 
 
