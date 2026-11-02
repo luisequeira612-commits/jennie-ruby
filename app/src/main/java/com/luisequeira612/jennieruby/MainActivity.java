@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
         panel.addView(heading);
 
         TextView description = text(
-                "A dark, elegant icon experience in black, crimson and dusty rose.",
+                "A dark, elegant icon collection in black, crimson and dusty rose, made for Nova Launcher.",
                 14, MUTED, false);
         description.setLineSpacing(dp(4), 1f);
         LinearLayout.LayoutParams descriptionParams = new LinearLayout.LayoutParams(
@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
         descriptionParams.topMargin = dp(12);
         panel.addView(description, descriptionParams);
 
-        TextView status = text("IN DEVELOPMENT", 11, RUBY, true);
+        TextView status = text("146 CUSTOM ICONS  •  NOVA FILTER READY", 11, RUBY, true);
         status.setLetterSpacing(0.12f);
         LinearLayout.LayoutParams statusParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -83,8 +83,10 @@ public class MainActivity extends Activity {
         panel.addView(status, statusParams);
 
         TextView note = text(
-                "The verified app list and custom icon artwork are still being prepared. "
-                        + "This preview does not apply icons to Nova Launcher yet.",
+                "Your icon collection and Nova app mappings are prepared. "
+                        + "To apply them, open Nova Settings → Look & feel → Icon style → Icon theme "
+                        + "and choose JENNIE RUBY. Device compatibility is still awaiting a test "
+                        + "on the TECNO POVA 4.",
                 12, ROSE, false);
         note.setLineSpacing(dp(3), 1f);
         LinearLayout.LayoutParams noteParams = new LinearLayout.LayoutParams(
