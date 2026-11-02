@@ -6,11 +6,15 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <!-- Keep the normal app launch entry separate from launcher theme discovery. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Nova discovers icon packs through this dedicated action. -->
+            <intent-filter>
                 <action android:name="com.novalauncher.THEME" />
-                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
     </application>
