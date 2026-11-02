@@ -18,6 +18,10 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Validate generated Nova app filter
+        run: |
+          python3 tools/generate_appfilter.py
+          git diff --exit-code -- app/src/main/res/xml/appfilter.xml
       - name: Assemble debug APK
         run: gradle assembleDebug
       - name: Upload debug APK
