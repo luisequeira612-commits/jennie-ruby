@@ -1,7 +1,7 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**']
+    branches: [main, 'feat/**', 'qa/**']
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate vector icon quality
+        run: python3 tools/validate_icon_vectors.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
