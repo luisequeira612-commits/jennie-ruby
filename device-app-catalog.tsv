@@ -81,7 +81,7 @@ Mobile Cloner	com.transsion.letswitch/com.transsion.letswitch.MainActivity	ruby_
 Moon+ Reader	com.flyersoft.moonreader/com.flyersoft.moonreader.ActivityMain	ruby_moon_reader
 Moovit	com.tranzmate/com.moovit.app.home.HomeActivity	ruby_moovit
 MT Manager	bin.mt.plus/bin.mt.plus.MainLightIcon	ruby_mt_manager
-MT Manager+	com.meitrack.mm.all/com.meitrack.mm.all.MainActivity	ruby_mt_manager
+MT Manager+	com.meitrack.mm.all/com.meitrack.mm.all.MainActivity	ruby_mt_manager_plus
 MU Fan	com.choicely.nextmiss/com.choicely.sdk.activity.splash.SplashActivity	ruby_mu_fan
 MXL TV	tv.mxliptv.app/tv.mxliptv.app.activities.InitActivity	ruby_mxl_tv
 My Health	com.transsion.healthlife/com.transsion.healthlife.view.WelcomeActivity	ruby_my_health
