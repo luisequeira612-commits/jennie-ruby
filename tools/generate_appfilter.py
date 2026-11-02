@@ -55,7 +55,9 @@ def main() -> None:
 
     ET.indent(root, space="    ")
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    ET.ElementTree(root).write(OUTPUT, encoding="utf-8", xml_declaration=True)
+    # Keep byte-for-byte output stable so CI can detect real catalog drift.
+    body = ET.tostring(root, encoding="unicode")
+    OUTPUT.write_text('<?xml version="1.0" encoding="utf-8"?>\n' + body + "\n", encoding="utf-8")
     print(f"Generated {OUTPUT.relative_to(ROOT)} with {len(rows)} app mappings.")
 
 
