@@ -122,6 +122,7 @@ def main():
     with Image.open(SOURCE) as im: raw=np.asarray(im.convert("RGB"))
     report={"source":str(SOURCE.relative_to(ROOT)),"original_dimensions":[int(raw.shape[1]),int(raw.shape[0])],"original_aspect_ratio":round(raw.shape[1]/raw.shape[0],6),"edges_before_trim":edge_report(raw)}
     photo,trim=trim_uniform(raw)
+    photo=photo.copy()  # trim view is read-only; cleanup edits a private buffer.
     # The source JPEG contains a narrow near-white edge artifact on the upper-right
     # border (about the first 260 source rows). Extend the adjacent dark pixels
     # across only that artifact; do not rotate, scale non-uniformly, or crop Jennie.
