@@ -65,7 +65,7 @@ def main():
         (OUT/(name+".xml")).unlink(missing_ok=True)
     selector=['<?xml version="1.0" encoding="utf-8"?>','<icons>']
     for a in apps: selector.append(f'    <icon name="{a["label"]}" drawable="{a["drawable"]}" glyph-type="{a["glyph_type"]}" />')
-    selector.append('</icons>'); xml_text="\\n".join(selector)+"\\n"
+    selector.append('</icons>'); xml_text="\n".join(selector)+"\n"
     for p in (ROOT/"app/src/main/res/xml/drawable.xml",ROOT/"app/src/main/assets/drawable.xml"):
         p.parent.mkdir(parents=True,exist_ok=True); p.write_text(xml_text,encoding="utf-8")
     REPORT.mkdir(parents=True,exist_ok=True)
@@ -76,9 +76,9 @@ def main():
         if status not in {"verified","estimated"}: raise RuntimeError(f"Invalid activity_status: {a['label']}")
         lines.append(f'| {a["label"]} | {a["package"]} | {a["activity"]} | {status} |')
         if status=="estimated": pending.append(f'{a["label"]}: {a["package"]}/{a["activity"]} — estimada')
-    (ROOT/"docs/ACTIVITIES.md").write_text("\\n".join(lines)+"\\n",encoding="utf-8")\n    (REPORT/"stage5-activities.md").write_text("\\n".join(lines)+"\\n",encoding="utf-8")
-    (ROOT/"appfilter_pendientes.txt").write_text("\\n".join(pending)+"\\n",encoding="utf-8")
-    (ROOT/"docs/LOTES.md").write_text("# Lotes de iconos — Etapa 5\\n\\nEl catálogo maestro es `icons.json`. Cada activity debe declararse `verified` solo tras contrastar el manifiesto instalado; de lo contrario queda `estimated`.\\n\\nLa hoja de contacto se genera desde los PNG presentes y el catálogo, no desde una lista fija.\\n",encoding="utf-8")
+    (ROOT/"docs/ACTIVITIES.md").write_text("\n".join(lines)+"\n",encoding="utf-8")\n    (REPORT/"stage5-activities.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
+    (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
+    (ROOT/"docs/LOTES.md").write_text("# Lotes de iconos — Etapa 5\n\nEl catálogo maestro es `icons.json`. Cada activity debe declararse `verified` solo tras contrastar el manifiesto instalado; de lo contrario queda `estimated`.\n\nLa hoja de contacto se genera desde los PNG presentes y el catálogo, no desde una lista fija.\n",encoding="utf-8")
     stage1=["ruby_youtube","ruby_spotify","ruby_tiktok","ruby_instagram","ruby_whatsapp","ruby_google","ruby_google_play_store","ruby_configuracion","ruby_galeria","ruby_camara"]
     dock=["ruby_dock_telefono_art","ruby_dock_contactos_art","ruby_dock_mensajes_art","ruby_dock_chrome_art","ruby_dock_cajon_apps_art"]
     labels=["YouTube","Spotify","TikTok","Instagram","WhatsApp","Google","Play Store","Ajustes","Galería","Cámara","Teléfono","Contactos","Mensajes","Chrome","Cajón apps"]+[a["label"] for a in apps]
