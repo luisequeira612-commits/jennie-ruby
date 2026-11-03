@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render Stage 5 catalog assets and an unbounded, labeled contact sheet."""
 from __future__ import annotations
-import importlib.util, json, subprocess
+import importlib.util, json, subprocess, xml.etree.ElementTree as ET
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
@@ -9,6 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 CATALOG=ROOT/"icons.json"; STAGE1=ROOT/"tools/render_ruby_stage1_icons.py"
 SOURCE_DIR=ROOT/"tools/ruby_icon_sources"; OUT=ROOT/"app/src/main/res/drawable-nodpi"
 REPORT=ROOT/"app/build/reports"
+MASK_DIR=REPORT/"stage5-glyph-masks"
 
 def load_renderer():
     spec=importlib.util.spec_from_file_location("ruby_stage1_renderer",STAGE1)
@@ -38,11 +39,16 @@ def main():
     if len(names)!=len(set(names)): raise RuntimeError("Duplicate drawable names in icons.json")
     subprocess.run(["node",str(ROOT/"tools/extract_stage5_simple_icons.mjs"),str(CATALOG),str(SOURCE_DIR)],check=True,cwd=ROOT)
     renderer=load_renderer(); OUT.mkdir(parents=True,exist_ok=True)
+    MASK_DIR.mkdir(parents=True,exist_ok=True)
+    for stale in MASK_DIR.glob("*.png"): stale.unlink()
     for app in apps:
         key=app["drawable"].removeprefix("ruby_"); source=SOURCE_DIR/f"ruby_{key}.xml"
         backup=source.read_bytes() if source.exists() else None
         try:
             renderer.render(key)
+            root=ET.parse(source).getroot()
+            view_w=float(root.get("{http://schemas.android.com/apk/res/android}viewportWidth","108"))
+            view_h=float(root.get("{http://schemas.android.com/apk/res/android}viewportHeight","108"))
             if app["glyph_type"]=="monogram":
                 text=app.get("glyph") or app.get("monogram")
                 if not isinstance(text,str) or not text.strip(): raise RuntimeError(f"Missing glyph/monogram text in icons.json: {app['label']}")
