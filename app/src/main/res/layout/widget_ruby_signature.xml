@@ -45,7 +45,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <View
+        <TextView
             android:layout_width="34dp"
             android:layout_height="1dp"
             android:background="#E8A0A8" />
@@ -63,7 +63,7 @@
             android:includeFontPadding="false"
             android:singleLine="true" />
 
-        <View
+        <TextView
             android:layout_width="34dp"
             android:layout_height="1dp"
             android:background="#E8A0A8" />
