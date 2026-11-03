@@ -57,6 +57,7 @@ public class RubyMusicWidgetProvider extends AppWidgetProvider {
     case "tv.twitch.android.app": name="ruby_twitch"; break;
     case "com.openai.chatgpt": name="ruby_chatgpt"; break;
     case "com.anthropic.claude": name="ruby_claude"; break;
+    case "org.videolan.vlc": name="ruby_vlc"; break;
    }
   }
   int id=c.getResources().getIdentifier(name,"drawable",c.getPackageName());
