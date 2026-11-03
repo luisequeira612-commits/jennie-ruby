@@ -4,6 +4,7 @@
         android:icon="@drawable/jennie_ruby_launcher"
         android:label="JENNIE RUBY"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
+        <activity android:name=".WallpaperActivity" android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
