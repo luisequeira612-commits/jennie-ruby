@@ -41,7 +41,7 @@ def main():
     for a in apps:
         selector.append(f'    <icon name="{a["label"]}" drawable="{a["drawable"]}" glyph-type="{a["glyph_type"]}" />')
     selector.append('</icons>')
-    selector_text="\\n".join(selector)+"\\n"
+    selector_text="\n".join(selector)+"\n"
     xml_path=ROOT/"app/src/main/res/xml/drawable.xml"
     xml_path.parent.mkdir(parents=True,exist_ok=True); xml_path.write_text(selector_text,encoding="utf-8")
     assets=ROOT/"app/src/main/assets"; assets.mkdir(parents=True,exist_ok=True)
@@ -51,12 +51,12 @@ def main():
     for a in apps:
         if a.get("activity_status")!="verified":
             pending.append(f'{a["label"]}: {a["package"]}/{a["activity"]} — estimada')
-    (ROOT/"appfilter_pendientes.txt").write_text("\\n".join(pending)+"\\n",encoding="utf-8")
+    (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
     # Glyph-type table for review.
     lines=["# Tipos de glifo — Etapa 5, lote 1","","| Aplicación | Tipo | Fuente | Estado de actividad |","|---|---|---|---|"]
     for a in apps: lines.append(f'| {a["label"]} | {a["glyph_type"]} | Simple Icons: {a["glyph"]} | {a["activity_status"]} |')
     (REPORT/"stage5-batch1-glyph-types.md").parent.mkdir(parents=True,exist_ok=True)
-    (REPORT/"stage5-batch1-glyph-types.md").write_text("\\n".join(lines)+"\\n",encoding="utf-8")
+    (REPORT/"stage5-batch1-glyph-types.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     # Actual PNG contact sheet: ten Stage 1 + five dock + twenty new resources.
     stage1=["ruby_youtube","ruby_spotify","ruby_tiktok","ruby_instagram","ruby_whatsapp","ruby_google","ruby_google_play_store","ruby_configuracion","ruby_galeria","ruby_camara"]
     dock=["ruby_dock_telefono_art","ruby_dock_contactos_art","ruby_dock_mensajes_art","ruby_dock_chrome_art","ruby_dock_cajon_apps_art"]
