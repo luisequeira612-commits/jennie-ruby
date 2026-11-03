@@ -21,6 +21,11 @@ for a in apps:
         assert im.size==(192,192) and im.mode=="RGBA", f"Invalid PNG: {p}"
         assert im.getpixel((0,0))[3]==0, f"Nontransparent corner: {p}"
 filter_root=ET.parse(ROOT/"app/src/main/res/xml/appfilter.xml").getroot()
+for layer in ("iconback","iconmask","iconupon"):
+    node=filter_root.find(layer)
+    assert node is not None and node.find("item") is not None, f"Missing Nova fallback layer: {layer}"
+    drawable=node.find("item").get("drawable")
+    assert (ROOT/"app/src/main/res/drawable"/(drawable+".xml")).is_file(), f"Missing fallback drawable: {drawable}"
 mapping={}
 for item in filter_root.findall("item"):
     comp=item.get("component","")
