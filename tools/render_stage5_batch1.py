@@ -56,6 +56,11 @@ def main():
         finally:
             if backup is None: source.unlink(missing_ok=True)
             else: source.write_bytes(backup)
+    # Replace the old generic vector resources with the newly generated PNGs.
+    # Keeping both formats under the same Android drawable name causes a resource-merger collision.
+    for name in names:
+        obsolete=OUT/(name+".xml")
+        if obsolete.exists(): obsolete.unlink()
     # Single-source Nova drawable list and identical assets copy.
     selector=['<?xml version="1.0" encoding="utf-8"?>','<icons>']
     for a in apps:
