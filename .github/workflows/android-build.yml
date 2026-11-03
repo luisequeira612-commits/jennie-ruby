@@ -1,7 +1,7 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**', 'qa/**']
+    branches: [main, 'feat/**', 'qa/**', 'stage-1/**']
   pull_request:
     branches: [main]
   workflow_dispatch:
@@ -14,14 +14,30 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate vector icon quality
-        run: python3 tools/validate_icon_vectors.py
-      - name: Generate visual icon contact sheet
-        run: python3 tools/generate_icon_contact_sheet.py
-      - name: Test visual pattern audit
-        run: python3 -m unittest discover -s tools/tests -p 'test_*.py'
-      - name: Audit repeated visual patterns
-        run: python3 tools/audit_icon_visual_patterns.py
+      - name: Install build-only rasterizer dependencies
+        run: python -m pip install --disable-pip-version-check Pillow CairoSVG
+      - name: Generate all Stage 1 PNG resources (fail-fast)
+        run: python3 tools/render_ruby_stage1_icons.py
+      - name: Require all ten valid 192px PNGs in drawable-nodpi
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          names = ["youtube","spotify","tiktok","instagram","whatsapp","google","google_play_store","configuracion","galeria","camara"]
+          root = Path("app/src/main/res/drawable-nodpi")
+          for name in names:
+              path = root / f"ruby_{name}.png"
+              if not path.is_file():
+                  raise SystemExit(f"Missing generated icon: {path}")
+              with Image.open(path) as im:
+                  if im.size != (192, 192) or im.mode != "RGBA":
+                      raise SystemExit(f"Invalid PNG: {path}: {im.size} {im.mode}")
+                  if im.getpixel((0, 0))[3] != 0:
+                      raise SystemExit(f"PNG corner must be transparent: {path}")
+          print("PASS: all ten Stage 1 PNGs verified.")
+          PY
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -40,15 +56,16 @@ jobs:
         with:
           name: jennie-ruby-debug
           path: app/build/outputs/apk/debug/app-debug.apk
-      - name: Upload visual icon contact sheet
-        uses: actions/upload-artifact@v4
-        with:
-          name: jennie-ruby-icon-contact-sheet
-          path: build/reports/icon-contact-sheet.html
           if-no-files-found: error
-      - name: Upload icon pattern audit
+      - name: Upload generated Stage 1 PNGs for visual review
         uses: actions/upload-artifact@v4
         with:
-          name: jennie-ruby-icon-pattern-audit
-          path: build/reports/icon-pattern-audit.md
+          name: jennie-ruby-stage1-pngs
+          path: app/src/main/res/drawable-nodpi/ruby_*.png
+          if-no-files-found: error
+      - name: Upload real high-resolution contact sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage1-contact-sheet
+          path: app/build/reports/jennie-ruby-stage1-contact-sheet.png
           if-no-files-found: error
