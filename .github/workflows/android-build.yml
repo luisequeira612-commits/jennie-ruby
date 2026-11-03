@@ -38,6 +38,13 @@ jobs:
         run: python3 tools/verify_stage1_pngs.py
       - name: Generate five Stage 3 dock PNGs and real 15-icon contact sheet
         run: python3 tools/render_ruby_dock_icons.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned Simple Icons glyph tooling
+        run: npm install --no-save --no-package-lock simple-icons@16.36.0 svgpath@2.6.0
+      - name: Generate Stage 5 batch 1 Ruby glyphs and 35-icon contact sheet
+        run: python3 tools/render_stage5_batch1.py
       - name: Render Jennie wallpaper with integrated ruby glass dock
         run: python3 tools/render_ruby_dock_wallpaper.py
       - name: Require all ten valid 192px PNGs in drawable-nodpi
@@ -87,6 +94,17 @@ jobs:
         run: |
           python3 tools/generate_appfilter.py
           git diff --exit-code -- app/src/main/res/xml/appfilter.xml
+      - name: Validate Stage 5 batch 1 assets and appfilter mappings
+        run: python3 tools/validate_stage5_batch1.py
+      - name: Upload Stage 5 batch 1 contact sheet and glyph report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage5-batch1-contact-sheet
+          path: |
+            app/build/reports/jennie-ruby-stage5-batch1-35-icons.png
+            app/build/reports/stage5-batch1-glyph-types.md
+            appfilter_pendientes.txt
+          if-no-files-found: error
       - name: Assemble debug APK
         run: gradle assembleDebug
       - name: Verify APK uses the stable debug certificate
