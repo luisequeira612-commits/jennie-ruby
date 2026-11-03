@@ -84,6 +84,9 @@ def main() -> None:
             fail(f"Alias references unknown drawable: {row['drawable']}")
 
     root = ET.Element("resources")
+    for layer, drawable in (("iconback", "ruby_iconback"), ("iconmask", "ruby_iconmask"), ("iconupon", "ruby_iconupon")):
+        parent = ET.SubElement(root, layer)
+        ET.SubElement(parent, "item", {"drawable": drawable})
     for row in rows + alias_rows:
         ET.SubElement(root, "item", {
             "component": f"ComponentInfo{{{row['component']}}}",
