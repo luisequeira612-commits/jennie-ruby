@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "source": "Simple Icons (CC0-1.0), pinned in CI",
+  "source": "Simple Icons (CC0-1.0), pinned in CI; generic fallback declared per entry",
   "apps": [
     {
       "package": "com.google.android.apps.maps",
