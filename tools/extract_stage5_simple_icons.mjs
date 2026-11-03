@@ -8,8 +8,9 @@ const catalog=JSON.parse(fs.readFileSync(catalogPath,"utf8"));
 fs.mkdirSync(outDir,{recursive:true});
 for(const app of catalog.apps){
   const icon=Object.values(simpleIcons).find(x=>x && x.slug===app.glyph);
-  if(!icon || !icon.path) throw new Error("Simple Icons slug not found: "+app.glyph);
-  const scaled=svgpath(icon.path).scale(0.55).translate(5.4,5.4).round(3).toString();
+  const sourcePath=icon?.path || app.fallback_path;
+  if(!sourcePath) throw new Error("No Simple Icons or declared generic fallback for: "+app.label+" ("+app.glyph+")");
+  const scaled=svgpath(sourcePath).scale(0.55).translate(5.4,5.4).round(3).toString();
   const xml='<?xml version="1.0" encoding="utf-8"?>\n'
     +'<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">\n'
     +'<path /><path /><path /><path /><path /><path />\n'
