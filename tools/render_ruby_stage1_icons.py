@@ -9,6 +9,7 @@ from PIL import Image, ImageDraw, ImageFilter
 ROOT = Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "tools" / "ruby_icon_sources"
 OUT = ROOT / "app" / "src" / "main" / "res" / "drawable-nodpi"
+ASSET_OUT = ROOT / "app" / "src" / "main" / "assets" / "ruby-icons-512"
 NAMES = ("youtube", "spotify", "tiktok", "instagram", "whatsapp",
          "google", "google_play_store", "configuracion", "galeria", "camara")
 NS = "{http://schemas.android.com/apk/res/android}"
@@ -120,11 +121,12 @@ def render(name, size):
 
     if size != SIZE:
         canvas = canvas.resize((size, size), Image.Resampling.LANCZOS)
-    OUT.mkdir(parents=True, exist_ok=True)
-    canvas.save(OUT / f"ruby_{name}.png", optimize=True)
+    target = OUT if size == 192 else ASSET_OUT
+    target.mkdir(parents=True, exist_ok=True)
+    canvas.save(target / f"ruby_{name}.png", optimize=True)
 
 from PIL import ImageChops
 for icon in NAMES:
     render(icon, 192)
     render(icon, 512)
-print(f"Generated {len(NAMES)*2} transparent PNGs (192px and 512px).")
+print(f"Generated {len(NAMES)} 192px Android PNGs and {len(NAMES)} 512px archival PNG assets.")
