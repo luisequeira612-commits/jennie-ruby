@@ -60,12 +60,15 @@ bitmap_source = (ROOT / "app/src/main/java/com/luisequeira612/jennieruby/RubyWid
 for resource in ("R.font.playfair_display", "R.font.cormorant_garamond", "R.font.allura"):
     require(resource in bitmap_source, f"Custom widget renderer must use {resource}")
 provider_source = (ROOT / "app/src/main/java/com/luisequeira612/jennieruby/RubyClockWidgetProvider.java").read_text(encoding="utf-8")
-require("setInexactRepeating" in provider_source and "60000" in provider_source, "Clock provider must schedule minute refreshes")
+require("setExactAndAllowWhileIdle" in provider_source and "60000L" in provider_source, "Clock provider must schedule exact minute-boundary refreshes")
 require("setImageViewBitmap" in provider_source, "Clock provider must publish its custom-drawn bitmap")
 
 manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
 require(".RubyClockWidgetProvider" in manifest, "Clock AppWidgetProvider is not registered")
 require(".RubySignatureWidgetProvider" in manifest, "Signature AppWidgetProvider is not registered")
+require(".RubyNameWidgetProvider" in manifest, "JENNIE Ruby widget is not registered")
+require(".RubyMusicWidgetProvider" in manifest and ".RubyMediaSessionService" in manifest, "Music widget and notification listener are not registered")
+require("SCHEDULE_EXACT_ALARM" in manifest and "BIND_NOTIFICATION_LISTENER_SERVICE" in manifest, "Required exact alarm and media listener declarations are missing")
 require("ruby_clock_widget_label" in manifest and "ruby_signature_widget_label" in manifest, "Widget picker labels are missing")
 
 check_preview("app/src/main/res/drawable-nodpi/widget_ruby_clock_preview.png", (600, 300))
