@@ -1,23 +1,52 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**']
+    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**']
   pull_request:
-    branches: [main, 'stage-1/**']
+    branches: [main, 'stage-1/**', 'stage-2/**']
   workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   debug-apk:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install build-only rasterizer dependencies
-        run: python -m pip install --disable-pip-version-check Pillow CairoSVG
+        run: python -m pip install --disable-pip-version-check Pillow==13.0.0 CairoSVG==2.9.1 cairocffi==1.7.1 cffi==2.1.1 cssselect2==0.10.1 defusedxml==0.7.1 pycparser==3.12 tinycss2==1.5.1 webencodings==0.6.1
+      - name: Verify protected Stage 1 renderer identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD:tools/render_ruby_stage1_icons.py)"
+          expected="7eae0f7904744e190d520d9e9fe4ad131414d815"
+          echo "Stage 1 renderer blob: $actual"
+          test "$actual" = "$expected"
+      - name: Download immutable historical Stage 1 PNG artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/13219099020/zip"
+          curl --fail --location --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "$url" -o "$RUNNER_TEMP/stage1-historical.zip"
+          mkdir -p "$RUNNER_TEMP/stage1-historical"
+          unzip -q "$RUNNER_TEMP/stage1-historical.zip" -d "$RUNNER_TEMP/stage1-historical"
       - name: Generate all Stage 1 PNG resources (fail-fast)
         run: python3 tools/render_ruby_stage1_icons.py
+      - name: Verify Stage 1 SHA-256 or pixel-identical fallback
+        run: python3 tools/verify_stage1_pngs.py "$RUNNER_TEMP/stage1-historical"
+      - name: Generate five Stage 3 dock PNGs and real 15-icon contact sheet
+        run: python3 tools/render_ruby_dock_icons.py
       - name: Require all ten valid 192px PNGs in drawable-nodpi
         shell: bash
         run: |
@@ -87,6 +116,23 @@ jobs:
         with:
           name: jennie-ruby-stage1-pngs
           path: app/src/main/res/drawable-nodpi/ruby_*.png
+          if-no-files-found: error
+      - name: Upload five generated Stage 3 dock PNGs
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage3-dock-pngs
+          path: |
+            app/src/main/res/drawable-nodpi/ruby_dock_telefono_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_contactos_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_mensajes_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_chrome_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_cajon_apps_art.png
+          if-no-files-found: error
+      - name: Upload real 15-icon Stage 3 contact sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage3-contact-sheet
+          path: app/build/reports/jennie-ruby-stage3-contact-sheet.png
           if-no-files-found: error
       - name: Upload real high-resolution Stage 1 contact sheet
         uses: actions/upload-artifact@v4
