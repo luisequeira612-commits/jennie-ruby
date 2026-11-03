@@ -20,7 +20,7 @@ def edge_report(a):
     h,w,_=a.shape
     report={}
     # Uniform near-black/near-white strips on each margin; tolerance is deliberately strict.
-    for side, lines in (("top",a),("bottom",a[::-1]),("left",np.transpose(a,(1,0,2))),("right",np.transpose(a[::-1,:,:],(1,0,2)))):
+    for side, lines in (("top",a),("bottom",a[::-1]),("left",np.transpose(a,(1,0,2))),("right",np.transpose(a[:,::-1,:],(1,0,2)))):
         count=0
         for line in lines:
             p=line.astype(np.int16)
