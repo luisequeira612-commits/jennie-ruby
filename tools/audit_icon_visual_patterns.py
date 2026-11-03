@@ -63,7 +63,7 @@ def main() -> None:
         f"- Vector files found: **{len(files)}**",
         f"- Successfully parsed vectors: **{parsed}**",
         f"- Repeated first-layer geometry groups: **{len(repeated_first)}**",
-        f"- Repeated later-layer (usually glyph/detail) geometry groups: **{len(repeated_later)}**",
+        f"- Repeated non-first-layer geometry groups: **{len(repeated_later)}**",
         f"- Repeated geometry groups across any layer: **{len(repeated_all)}**",
         "", "## Resource dimensions", "",
         "| Count | Width | Height | Viewport |", "|---:|---:|---:|---:|",
@@ -88,7 +88,7 @@ def main() -> None:
     )
     add_groups(
         "Repeated later-layer geometry", repeated_later,
-        "These paths occur after the first layer and are stronger candidates for repeated glyphs or decorative details. They still require visual review.",
+        "These paths occur after the first path. They may be inner backgrounds, frames, borders, glyphs, or decorative details. Repetition alone does not identify their role; review the rendered icons before treating a group as a duplicate symbol.",
     )
     add_groups(
         "Repeated geometry across all layers", repeated_all,
