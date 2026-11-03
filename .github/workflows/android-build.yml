@@ -18,6 +18,8 @@ jobs:
         run: python3 tools/validate_icon_vectors.py
       - name: Generate visual icon contact sheet
         run: python3 tools/generate_icon_contact_sheet.py
+      - name: Audit repeated visual patterns
+        run: python3 tools/audit_icon_visual_patterns.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -41,4 +43,10 @@ jobs:
         with:
           name: jennie-ruby-icon-contact-sheet
           path: build/reports/icon-contact-sheet.html
+          if-no-files-found: error
+      - name: Upload icon pattern audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-icon-pattern-audit
+          path: build/reports/icon-pattern-audit.md
           if-no-files-found: error
