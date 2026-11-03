@@ -19,7 +19,9 @@ jobs:
       - name: Generate visual icon contact sheet
         run: python3 tools/generate_icon_contact_sheet.py
       - name: Test visual pattern audit
-        run: python3 -m unittest discover -s tools/tests -p 'test_*.py'\n      - name: Audit repeated visual patterns\n        run: python3 tools/audit_icon_visual_patterns.py
+        run: python3 -m unittest discover -s tools/tests -p 'test_*.py'
+      - name: Audit repeated visual patterns
+        run: python3 tools/audit_icon_visual_patterns.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
