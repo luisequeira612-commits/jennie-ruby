@@ -1,14 +1,13 @@
 package com.luisequeira612.jennieruby;
-
-import android.appwidget.AppWidgetManager;
-import android.appwidget.AppWidgetProvider;
-import android.content.Context;
-import android.widget.RemoteViews;
-
+import android.appwidget.*; import android.content.*; import android.widget.RemoteViews;
 public class RubySignatureWidgetProvider extends AppWidgetProvider {
-    @Override public void onUpdate(Context context,AppWidgetManager manager,int[] ids) {
-        RemoteViews views=new RemoteViews(context.getPackageName(),R.layout.widget_ruby_signature);
-        views.setImageViewBitmap(R.id.ruby_signature_bitmap,RubyWidgetBitmap.signature(context));
-        for(int id:ids) manager.updateAppWidget(id,views);
-    }
+ @Override public void onUpdate(Context c,AppWidgetManager m,int[] ids){for(int id:ids)update(c,m,id);}
+ @Override public void onAppWidgetOptionsChanged(Context c,AppWidgetManager m,int id,android.os.Bundle o){update(c,m,id);}
+ private static void update(Context c,AppWidgetManager m,int id){
+  android.os.Bundle o=m.getAppWidgetOptions(id); float d=c.getResources().getDisplayMetrics().density;
+  int w=Math.max(1,Math.round(o.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_WIDTH,180)*d));
+  int h=Math.max(1,Math.round(o.getInt(AppWidgetManager.OPTION_APPWIDGET_MIN_HEIGHT,55)*d));
+  RemoteViews v=new RemoteViews(c.getPackageName(),R.layout.widget_ruby_signature);
+  v.setImageViewBitmap(R.id.ruby_signature_bitmap,RubyWidgetBitmap.signature(c,w,h)); m.updateAppWidget(id,v);
+ }
 }
