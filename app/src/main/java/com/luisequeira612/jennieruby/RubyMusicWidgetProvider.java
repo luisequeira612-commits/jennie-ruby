@@ -34,14 +34,30 @@ public class RubyMusicWidgetProvider extends AppWidgetProvider {
  }
  private static int appLogoResource(Context c,String packageName){
   String name="ruby_music_note";
-  if("com.spotify.music".equals(packageName)) name="ruby_spotify";
-  else if("com.google.android.apps.youtube.music".equals(packageName)) name="ruby_youtube_music";
-  else if(packageName!=null){
-   String[] parts=packageName.split("\\.");
-   String candidate="ruby_"+parts[parts.length-1].toLowerCase(java.util.Locale.ROOT);
-   if("ruby.katana".equals(candidate)) candidate="ruby_facebook";
-   int found=c.getResources().getIdentifier(candidate,"drawable",c.getPackageName());
-   if(found!=0)return found;
+  if(packageName!=null){
+   switch(packageName){
+    case "com.spotify.music": name="ruby_spotify"; break;
+    case "com.google.android.apps.youtube.music": name="ruby_youtube_music"; break;
+    case "com.google.android.apps.maps": name="ruby_maps"; break;
+    case "com.google.android.gm": name="ruby_gmail"; break;
+    case "com.google.android.apps.docs": name="ruby_drive"; break;
+    case "com.google.android.apps.photos": name="ruby_fotos"; break;
+    case "com.google.android.calendar": name="ruby_calendario"; break;
+    case "com.facebook.katana": name="ruby_facebook"; break;
+    case "com.facebook.orca": name="ruby_messenger"; break;
+    case "org.telegram.messenger": name="ruby_telegram"; break;
+    case "com.snapchat.android": name="ruby_snapchat"; break;
+    case "com.twitter.android": name="ruby_x"; break;
+    case "com.pinterest": name="ruby_pinterest"; break;
+    case "com.reddit.frontpage": name="ruby_reddit"; break;
+    case "com.netflix.mediaclient": name="ruby_netflix"; break;
+    case "com.disney.disneyplus": name="ruby_disney"; break;
+    case "com.wbd.stream": name="ruby_hbo_max"; break;
+    case "com.crunchyroll.crunchyroid": name="ruby_crunchyroll"; break;
+    case "tv.twitch.android.app": name="ruby_twitch"; break;
+    case "com.openai.chatgpt": name="ruby_chatgpt"; break;
+    case "com.anthropic.claude": name="ruby_claude"; break;
+   }
   }
   int id=c.getResources().getIdentifier(name,"drawable",c.getPackageName());
   return id==0?R.drawable.ruby_music_note:id;
