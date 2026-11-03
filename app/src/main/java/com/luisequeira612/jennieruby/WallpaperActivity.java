@@ -38,6 +38,7 @@ public class WallpaperActivity extends Activity {
 
         String[] names = {"01  •  JENNIE RUBY", "02  •  CRIMSON BLOOM", "03  •  RUBY ORBIT", "04  •  VELVET NIGHT"};
         String[] notes = {
+            "Jennie en rojo: tu imagen como fondo principal",
             "Flores abstractas y tonos carmesí",
             "Órbita luminosa sobre negro profundo",
             "Capas suaves en borgoña y rosa"
@@ -141,15 +142,31 @@ public class WallpaperActivity extends Activity {
         c.save();
         c.scale(w / 1080f, h / 2400f);
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
-        int[] colors = design == 0
+        int[] colors = design == 1
                 ? new int[]{Color.rgb(12,5,10), Color.rgb(85,8,34), Color.rgb(19,7,15)}
-                : design == 1
+                : design == 2
                 ? new int[]{Color.rgb(7,7,12), Color.rgb(49,9,31), Color.rgb(10,7,12)}
                 : new int[]{Color.rgb(16,7,14), Color.rgb(65,13,35), Color.rgb(8,6,10)};
         p.setShader(new LinearGradient(0, 0, 900, 2400, colors, null, Shader.TileMode.CLAMP));
         c.drawRect(0, 0, 1080, 2400, p);
         p.setShader(null);
         if (design == 0) {
+            Bitmap portrait = BitmapFactory.decodeResource(context.getResources(), R.drawable.jennie_ruby_wallpaper);
+            if (portrait != null) {
+                float scale = Math.max(1080f / portrait.getWidth(), 2400f / portrait.getHeight());
+                float dw = portrait.getWidth() * scale;
+                float dh = portrait.getHeight() * scale;
+                Rect srcRect = new Rect(0, 0, portrait.getWidth(), portrait.getHeight());
+                RectF dst = new RectF((1080f - dw) / 2f, (2400f - dh) / 2f, (1080f + dw) / 2f, (2400f + dh) / 2f);
+                Paint photo = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+                c.drawBitmap(portrait, srcRect, dst, photo);
+                p.setShader(new LinearGradient(0, 0, 0, 2400,
+                        new int[]{0x10000000, 0x18000000, 0x99070016}, null, Shader.TileMode.CLAMP));
+                c.drawRect(0, 0, 1080, 2400, p);
+                p.setShader(null);
+                portrait.recycle();
+            }
+        } else if (design == 1) {
             for (int i = 0; i < 7; i++) {
                 c.save(); c.rotate(i * 51f, 540, 1000);
                 p.setColor(i % 2 == 0 ? Color.argb(70, 235, 130, 160) : Color.argb(55, 167, 25, 67));
@@ -158,7 +175,7 @@ public class WallpaperActivity extends Activity {
             p.setColor(Color.argb(180, 246, 220, 229)); c.drawCircle(540, 1000, 38, p);
             p.setColor(Color.argb(45, 255, 210, 225)); c.drawCircle(540, 1000, 250, p);
             p.setStyle(Paint.Style.STROKE); p.setStrokeWidth(3); c.drawCircle(540, 1000, 250, p); p.setStyle(Paint.Style.FILL);
-        } else if (design == 1) {
+        } else if (design == 2) {
             p.setStyle(Paint.Style.STROKE); p.setStrokeWidth(7);
             p.setColor(Color.argb(150, 232, 160, 181)); c.drawCircle(540, 1020, 320, p);
             p.setStrokeWidth(3); p.setColor(Color.argb(90, 246, 220, 229)); c.drawCircle(540, 1020, 410, p);
