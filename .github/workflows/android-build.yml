@@ -20,6 +20,10 @@ jobs:
           python-version: '3.12'
       - name: Install build-only rasterizer dependencies
         run: python -m pip install --disable-pip-version-check Pillow==13.0.0 numpy==2.2.6 CairoSVG==2.9.1 cairocffi==1.7.1 cffi==2.1.1 cssselect2==0.10.1 defusedxml==0.7.1 pycparser==3.12 tinycss2==1.5.1 webencodings==0.6.1
+      - name: Test and audit remaining vector icon geometry
+        run: |
+          python3 -m unittest discover -s tools/tests -p 'test_*.py'
+          python3 tools/audit_icon_visual_patterns.py
       - name: Verify protected Stage 1 renderer identity
         shell: bash
         run: |
@@ -107,6 +111,12 @@ jobs:
           echo "APK certificate: $actual"
           echo "Expected certificate: $expected"
           test -n "$actual" && test "$actual" = "$expected"
+      - name: Upload vector icon geometry audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-vector-icon-audit
+          path: build/reports/icon-pattern-audit.md
+          if-no-files-found: error
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
