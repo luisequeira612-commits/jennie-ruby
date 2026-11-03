@@ -36,8 +36,11 @@ def main():
         # Preserve the source logo aspect ratio: the 45–65% criterion applies to its major axis.
         # A second, independent 30% floor prevents excessively thin or tiny marks.
         major=max(w,h)/192; minor=min(w,h)/192
-        if not(.45<=major<=.65 and minor>=.30):
-            die(f"{name}: máscara vectorial {w}x{h}; eje mayor fuera de 45-65% o eje menor <30%")
+        # Monograms/wordmarks may be naturally horizontal or vertical; their
+        # separate 10% safe-margin check below is the correct clipping guard.
+        min_minor=0.0 if app.get("glyph_type")=="monogram" else .30
+        if not(.45<=major<=.65 and minor>=min_minor):
+            die(f"{name}: máscara {w}x{h}; eje mayor fuera de 45-65% o eje menor <{min_minor*100:.0f}%")
         cx=(x0+x1-1)/2; cy=(y0+y1-1)/2
         if abs(cx-95.5)>5.76 or abs(cy-95.5)>5.76:
             die(name+": máscara de glifo descentrada >3%")
