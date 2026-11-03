@@ -47,6 +47,8 @@ jobs:
         run: python3 tools/verify_stage1_pngs.py "$RUNNER_TEMP/stage1-historical"
       - name: Generate five Stage 3 dock PNGs and real 15-icon contact sheet
         run: python3 tools/render_ruby_dock_icons.py
+      - name: Render Jennie wallpaper with integrated ruby glass dock
+        run: python3 tools/render_ruby_dock_wallpaper.py
       - name: Require all ten valid 192px PNGs in drawable-nodpi
         shell: bash
         run: |
@@ -127,6 +129,14 @@ jobs:
             app/src/main/res/drawable-nodpi/ruby_dock_mensajes_art.png
             app/src/main/res/drawable-nodpi/ruby_dock_chrome_art.png
             app/src/main/res/drawable-nodpi/ruby_dock_cajon_apps_art.png
+          if-no-files-found: error
+      - name: Upload wallpaper calibration variants (720x1640)
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage3-wallpaper
+          path: |
+            app/build/reports/jennie-ruby-wallpaper-no-dock.png
+            app/build/reports/jennie-ruby-wallpaper-ruby-glass-dock.png
           if-no-files-found: error
       - name: Upload real 15-icon Stage 3 contact sheet
         uses: actions/upload-artifact@v4
