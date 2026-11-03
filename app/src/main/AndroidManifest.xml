@@ -1,18 +1,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:allowBackup="false"
+        android:icon="@drawable/ruby_app_icon"
         android:label="JENNIE RUBY"
         android:theme="@android:style/Theme.Material.Light.NoActionBar">
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <!-- Keep the normal app launch entry separate from launcher theme discovery. -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <!-- Nova discovers icon packs through this dedicated action. -->
             <intent-filter>
                 <action android:name="com.novalauncher.THEME" />
             </intent-filter>
