@@ -16,6 +16,8 @@ jobs:
           python-version: '3.12'
       - name: Validate vector icon quality
         run: python3 tools/validate_icon_vectors.py
+      - name: Generate visual icon contact sheet
+        run: python3 tools/generate_icon_contact_sheet.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -34,3 +36,9 @@ jobs:
         with:
           name: jennie-ruby-debug
           path: app/build/outputs/apk/debug/app-debug.apk
+      - name: Upload visual icon contact sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-icon-contact-sheet
+          path: build/reports/icon-contact-sheet.html
+          if-no-files-found: error
