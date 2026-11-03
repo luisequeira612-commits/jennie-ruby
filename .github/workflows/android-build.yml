@@ -1,9 +1,9 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**', 'qa/**', 'stage-1/**']
+    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**']
   pull_request:
-    branches: [main]
+    branches: [main, 'stage-1/**']
   workflow_dispatch:
 
 jobs:
@@ -38,6 +38,12 @@ jobs:
                       raise SystemExit(f"PNG corner must be transparent: {path}")
           print("PASS: all ten Stage 1 PNGs verified.")
           PY
+      - name: Download pinned Google Fonts OFL families
+        run: bash tools/download_widget_fonts.sh
+      - name: Generate transparent widget picker previews
+        run: python3 tools/generate_widget_previews.py
+      - name: Validate widgets, fonts, licenses and previews
+        run: python3 tools/validate_widget_assets.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -63,9 +69,17 @@ jobs:
           name: jennie-ruby-stage1-pngs
           path: app/src/main/res/drawable-nodpi/ruby_*.png
           if-no-files-found: error
-      - name: Upload real high-resolution contact sheet
+      - name: Upload real high-resolution Stage 1 contact sheet
         uses: actions/upload-artifact@v4
         with:
           name: jennie-ruby-stage1-contact-sheet
           path: app/build/reports/jennie-ruby-stage1-contact-sheet.png
+          if-no-files-found: error
+      - name: Upload transparent widget picker previews (static simulations)
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-widget-picker-previews
+          path: |
+            app/src/main/res/drawable-nodpi/widget_ruby_clock_preview.png
+            app/src/main/res/drawable-nodpi/widget_ruby_signature_preview.png
           if-no-files-found: error
