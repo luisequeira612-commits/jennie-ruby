@@ -46,10 +46,14 @@ final class RubyWidgetBitmap {
         Canvas cv=new Canvas(b); float s=Math.min(w/941f,h/150f);
         Paint p=paint(); p.clearShadowLayer(); p.setColor(0xFFF3E6E6);
         p.setTypeface(font(c,R.font.cormorant_garamond,Typeface.SERIF));
-        p.setTextSize(47*s); p.setLetterSpacingCompat(0.16f);
-        String j="JENNIE"; float jw=p.measureText(j);
-        cv.drawText(j,Math.max(0,(w-jw)/2f),58*s,p);
-        p.setLetterSpacingCompat(0);
+        p.setTextSize(47*s);
+        String j="JENNIE"; float tracking=7*s;
+        float jw=p.measureText(j)+tracking*(j.length()-1);
+        float start=Math.max(0,(w-jw)/2f), baseline=58*s;
+        for(int k=0;k<j.length();k++){
+            String letter=j.substring(k,k+1); cv.drawText(letter,start,baseline,p);
+            start+=p.measureText(letter)+tracking;
+        }
         p.setTypeface(font(c,R.font.allura,Typeface.DEFAULT));
         p.setTextSize(75*s); p.setColor(0xFFC41E3A);
         p.setShadowLayer(7*s,0,1*s,0x99C41E3A);
