@@ -102,8 +102,8 @@ def render(name, size):
     # 2.5px ruby perimeter and a brighter, restrained upper-edge highlight.
     border = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     bd = ImageDraw.Draw(border)
-    bd.rounded_rectangle((25, 25, 487, 487), radius=112, outline="#7A1624", width=round(2.5*512/108))
-    bd.arc((25, 25, 487, 487), 180, 270, fill=(194, 58, 75, 92), width=round(1.8*512/108))
+    bd.rounded_rectangle((25, 25, 487, 487), radius=112, outline="#7A1624", width=round(2.5*512/192))
+    bd.arc((25, 25, 487, 487), 180, 270, fill=(194, 58, 75, 92), width=round(1.8*512/192))
     canvas.alpha_composite(border)
 
     # Soft glass reflection, 9% at the top, fading out within ~35% of icon height.
