@@ -32,6 +32,21 @@
     <item component="ComponentInfo{com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity}" drawable="ruby_drive" />
     <item component="ComponentInfo{com.languagedrops.drops.international/com.languagedrops.drops.international.MainActivity}" drawable="ruby_drops" />
     <item component="ComponentInfo{com.duolingo/com.duolingo.app.LoginActivity}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.BackgroundedLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.BackgroundedLauncherBrokenHeart}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.ExtendedLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.FixedRetentionChallengeLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBlackAndWhiteLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBlackAndWhiteLauncherEyes}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBlobFishLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBoneLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBoneLauncherBone}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBufferingLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveChickenLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveChickenLauncherChicken}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.StreakSocietyLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.PreStreakSaver4Launcher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.SeasonalLauncher1}" drawable="ruby_duolingo" />
     <item component="ComponentInfo{com.everbytestudio.interactive.text.chat.story.rpg.cyoa.duskwood/com.unity3d.player.UnityPlayerActivity}" drawable="ruby_duskwood" />
     <item component="ComponentInfo{com.transsion.scanningrecharger/com.transsion.scanningrecharger.view.activity.textrecognized.TextRecognizedActivity}" drawable="ruby_escaner_inteligente" />
     <item component="ComponentInfo{com.ace.ex.file.manager/com.ace.fileexplorer.feature.activity.AceFirstActivity}" drawable="ruby_ex_explorador_de_archivos" />
