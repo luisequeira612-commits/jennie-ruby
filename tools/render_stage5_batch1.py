@@ -32,6 +32,36 @@ def fit_text(draw,text,font_path,box,max_width,max_height):
     if best is None: raise RuntimeError(f"Monogram {text!r} cannot fit safe area at readable size")
     f,b=best; return f,b
 
+def normalize_small_glyph(target, mask, renderer):
+    """Uniformly enlarge undersized vector marks without distorting their aspect ratio."""
+    bbox=mask.getbbox()
+    if not bbox: raise RuntimeError("Empty glyph mask")
+    x0,y0,x1,y1=bbox; w=x1-x0; h=y1-y0
+    major=max(w,h)/192; minor=min(w,h)/192
+    if .45<=major<=.65 and minor>=.30:
+        return mask
+    crop=mask.crop(bbox)
+    scale=124/max(w,h)
+    nw=max(1,round(w*scale)); nh=max(1,round(h*scale))
+    resized=crop.resize((nw,nh),Image.Resampling.LANCZOS)
+    normalized=Image.new("L",(192,192),0)
+    nx=(192-nw)//2; ny=(192-nh)//2
+    normalized.paste(resized,(nx,ny))
+    # The source mark was too small: replace only its central glyph field,
+    # keeping the original ruby tile, border, shadow and glass treatment intact.
+    with Image.open(target) as src:
+        base=src.convert("RGBA")
+    ImageDraw.Draw(base).rectangle((42,42,150,150),fill="#080304")
+    glow=normalized.filter(ImageFilter.GaussianBlur(2.0))
+    gl=Image.new("RGBA",(192,192),(224,51,75,0))
+    gl.putalpha(glow.point(lambda value:round(value*.14)))
+    base.alpha_composite(gl)
+    glyph=renderer.vertical_gradient("#E0334B","#8E0B20")
+    glyph.putalpha(normalized)
+    base.alpha_composite(glyph)
+    base.save(target,optimize=True)
+    return normalized
+
 def main():
     data=json.loads(CATALOG.read_text(encoding="utf-8")); apps=data["apps"]
     if not apps: raise RuntimeError("icons.json has no apps")
@@ -66,6 +96,7 @@ def main():
                 glyph=renderer.vertical_gradient("#E0334B","#8E0B20"); glyph.putalpha(mask); base.alpha_composite(glyph); base.save(target,optimize=True)
             else:
                 mask=renderer.make_glyph_mask(root.findall("path"),view_w,view_h,key)
+                mask=normalize_small_glyph(OUT/(app["drawable"]+".png"),mask,renderer)
             mask.save(MASK_DIR/(app["drawable"]+".png"))
         finally:
             if backup is None: source.unlink(missing_ok=True)
