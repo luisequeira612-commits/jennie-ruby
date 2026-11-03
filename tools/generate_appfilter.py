@@ -17,6 +17,7 @@ CATALOG = ROOT / "device-app-catalog.tsv"
 DRAWABLE_DIR = ROOT / "app/src/main/res/drawable-nodpi"
 OUTPUT = ROOT / "app/src/main/res/xml/appfilter.xml"
 EXPECTED_APPS = 146
+ALIASES = ROOT / "device-app-aliases.tsv"
 
 
 def fail(message: str) -> None:
@@ -46,8 +47,21 @@ def main() -> None:
         if not any(path.is_file() for path in candidates):
             fail(f"Missing artwork for {row['name']}: expected {drawable}.png, .webp or .xml")
 
+    alias_rows = []
+    if ALIASES.exists():
+        with ALIASES.open(encoding="utf-8", newline="") as stream:
+            alias_rows = list(csv.DictReader(stream, delimiter="\\t"))
+    alias_components = [row["component"] for row in alias_rows]
+    if len(set(alias_components)) != len(alias_components) or set(alias_components) & set(components):
+        fail("Duplicate launcher components detected in aliases.")
+    for row in alias_rows:
+        if not re.fullmatch(r"[A-Za-z0-9_.]+/[A-Za-z0-9_.$]+", row["component"]):
+            fail(f"Invalid alias component syntax: {row['component']}")
+        if row["drawable"] not in {item["drawable"] for item in rows}:
+            fail(f"Alias references unknown drawable: {row['drawable']}")
+
     root = ET.Element("resources")
-    for row in rows:
+    for row in rows + alias_rows:
         ET.SubElement(root, "item", {
             "component": f"ComponentInfo{{{row['component']}}}",
             "drawable": row["drawable"],
