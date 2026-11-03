@@ -1,4 +1,5 @@
-# Referencia histórica: artefacto jennie-ruby-stage1-pngs
+# Huellas SHA-256 permanentes de los diez PNG aprobados de la etapa 1.
+# El artefacto histórico indicado debajo documenta el origen de estas huellas; CI ya no depende de él.
 # Workflow run: 41612145350
 # Artifact ID: 13219099020
 # Commit base: 8a0e841132191f4af36ffa718069f7a9dd010bfc
