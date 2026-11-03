@@ -21,7 +21,8 @@ final class RubyWidgetBitmap {
         cv.drawText(time,x,baseline,p);
         p.setTypeface(font(c,R.font.cormorant_garamond,Typeface.SERIF)); p.setTextSize(17*s);
         Locale locale=Locale.getDefault();
-        String date=new SimpleDateFormat("EEE, d 'de' MMMM",locale).format(new Date());
+        String datePattern="es".equals(locale.getLanguage())?"EEE, d 'de' MMMM":"EEE, d MMMM";
+        String date=new SimpleDateFormat(datePattern,locale).format(new Date());
         date=capitalizeInitials(date,locale);
         cv.drawText(date,3*s,77*s,p);
         p.setStrokeWidth(Math.max(1,s)); cv.drawLine(4*s,94*s,58*s,94*s,p);
