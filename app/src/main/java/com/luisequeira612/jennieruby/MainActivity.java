@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Button;
+import android.content.Intent;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -98,6 +100,19 @@ public class MainActivity extends Activity {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         root.addView(panel, panelParams);
+
+        Button wallpapers = new Button(this);
+        wallpapers.setText("EXPLORE RUBY WALLPAPERS");
+        wallpapers.setTextColor(ROSE);
+        wallpapers.setAllCaps(false);
+        wallpapers.setTextSize(13);
+        wallpapers.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.rgb(112, 18, 43)));
+        LinearLayout.LayoutParams wallpaperParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, dp(52));
+        wallpaperParams.topMargin = dp(18);
+        root.addView(wallpapers, wallpaperParams);
+        wallpapers.setOnClickListener(v ->
+                startActivity(new Intent(this, WallpaperActivity.class)));
 
         TextView footer = text("MADE FOR YOUR TECNO POVA 4  •  NOVA LAUNCHER", 9, MUTED, true);
         footer.setLetterSpacing(0.06f);
