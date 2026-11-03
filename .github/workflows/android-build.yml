@@ -135,8 +135,14 @@ jobs:
         with:
           name: jennie-ruby-stage3-wallpaper
           path: |
-            app/build/reports/jennie-ruby-wallpaper-no-dock.png
-            app/build/reports/jennie-ruby-wallpaper-ruby-glass-dock.png
+            app/build/reports/fondo_A_con_barra.png
+            app/build/reports/fondo_A_sin_barra.png
+            app/build/reports/fondo_B_con_barra.png
+            app/build/reports/fondo_B_sin_barra.png
+            app/build/reports/fondo_C_con_barra.png
+            app/build/reports/fondo_C_sin_barra.png
+            app/build/reports/fondo_A_con_barra_alta.png
+            app/build/reports/diagnostico_wallpaper.json
           if-no-files-found: error
       - name: Upload real 15-icon Stage 3 contact sheet
         uses: actions/upload-artifact@v4
