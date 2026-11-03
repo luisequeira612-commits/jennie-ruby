@@ -18,7 +18,7 @@ def main():
    for y in range(192):
     for x in range(192):
      r,g,b,al=im.getpixel((x,y))
-     if al>40 and r>g*1.25 and r>b*1.15 and r>70: pts.append((x,y))
+     if al>40 and r>130 and r>g*1.25 and r>b*1.15: pts.append((x,y))
    if not pts: die(p.name+": no se detecta glifo carmesí")
    x0=min(x for x,y in pts); x1=max(x for x,y in pts); y0=min(y for x,y in pts); y1=max(y for x,y in pts)
    w=x1-x0+1; h=y1-y0+1
