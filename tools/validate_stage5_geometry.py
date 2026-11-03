@@ -33,8 +33,11 @@ def main():
         if not bbox: die(name+": máscara de glifo vacía")
         x0,y0,x1,y1=bbox
         w=x1-x0; h=y1-y0
-        if not(.45<=w/192<=.65 and .45<=h/192<=.65):
-            die(f"{name}: máscara vectorial {w}x{h} fuera de 45-65%")
+        # Preserve the source logo aspect ratio: the 45–65% criterion applies to its major axis.
+        # A second, independent 30% floor prevents excessively thin or tiny marks.
+        major=max(w,h)/192; minor=min(w,h)/192
+        if not(.45<=major<=.65 and minor>=.30):
+            die(f"{name}: máscara vectorial {w}x{h}; eje mayor fuera de 45-65% o eje menor <30%")
         cx=(x0+x1-1)/2; cy=(y0+y1-1)/2
         if abs(cx-95.5)>5.76 or abs(cy-95.5)>5.76:
             die(name+": máscara de glifo descentrada >3%")
