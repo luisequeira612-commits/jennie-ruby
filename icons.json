@@ -170,9 +170,10 @@
       "activity": "com.openai.chatgpt.MainActivity",
       "label": "ChatGPT",
       "drawable": "ruby_chatgpt",
-      "glyph": "openai",
-      "glyph_type": "brand",
-      "activity_status": "estimated"
+      "glyph": "ai-monogram",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M3 20 L8 4 H10 L15 20 H12 L11 16 H7 L6 20 Z M7.8 13 H10.2 L9 8.5 Z M16 6 H22 V8 H20.5 V18 H22 V20 H16 V18 H17.5 V8 H16 Z"
     },
     {
       "package": "com.anthropic.claude",
