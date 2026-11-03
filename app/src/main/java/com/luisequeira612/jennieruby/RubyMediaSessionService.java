@@ -1,7 +1,7 @@
 package com.luisequeira612.jennieruby;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
-import android.content.*; import android.media.session.*; import android.os.*; import android.graphics.Bitmap;
+import android.content.*; import android.media.MediaMetadata; import android.media.session.*; import android.os.*; import android.graphics.Bitmap;
 import java.util.List;
 public class RubyMediaSessionService extends NotificationListenerService {
  private MediaSessionManager manager; private MediaSessionManager.OnActiveSessionsChangedListener listener;
