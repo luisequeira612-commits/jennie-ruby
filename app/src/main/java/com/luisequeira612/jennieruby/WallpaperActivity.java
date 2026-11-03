@@ -1,6 +1,7 @@
 package com.luisequeira612.jennieruby;
 
 import android.app.Activity;
+import android.app.WallpaperManager;
 import android.content.Intent;
 import android.graphics.*;
 import android.graphics.drawable.GradientDrawable;
@@ -64,6 +65,13 @@ public class WallpaperActivity extends Activity {
             save.setTextColor(ROSE);
             save.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.rgb(112, 18, 43)));
             card.addView(save);
+            Button apply = new Button(this);
+            apply.setText("APLICAR EN INICIO");
+            apply.setAllCaps(false);
+            apply.setTextColor(ROSE);
+            apply.setBackgroundTintList(android.content.res.ColorStateList.valueOf(Color.rgb(70, 24, 42)));
+            card.addView(apply);
+            apply.setOnClickListener(v -> applyWallpaper(design));
             save.setOnClickListener(v -> {
                 pendingDesign = design;
                 Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
@@ -78,6 +86,20 @@ public class WallpaperActivity extends Activity {
             root.addView(card, cp);
         }
         setContentView(scroll);
+    }
+
+    private void applyWallpaper(int design) {
+        Bitmap bitmap = Bitmap.createBitmap(1080, 2400, Bitmap.Config.ARGB_8888);
+        try {
+            Canvas canvas = new Canvas(bitmap);
+            drawDesign(canvas, 1080, 2400, design);
+            WallpaperManager.getInstance(this).setBitmap(bitmap);
+            Toast.makeText(this, "Fondo aplicado a la pantalla de inicio.", Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(this, "Android no pudo aplicar el fondo. Puedes guardarlo como PNG.", Toast.LENGTH_LONG).show();
+        } finally {
+            bitmap.recycle();
+        }
     }
 
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
