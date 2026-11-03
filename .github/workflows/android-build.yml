@@ -94,15 +94,18 @@ jobs:
         run: |
           python3 tools/generate_appfilter.py
           git diff --exit-code -- app/src/main/res/xml/appfilter.xml
-      - name: Validate Stage 5 batch 1 assets and appfilter mappings
+      - name: Validate Stage 5 catalog mappings
         run: python3 tools/validate_stage5_batch1.py
-      - name: Upload Stage 5 batch 1 contact sheet and glyph report
+      - name: Validate Stage 5 PNG geometry and palette
+        run: python3 tools/validate_stage5_geometry.py
+      - name: Upload Stage 5 automatic audit and contact sheet
         uses: actions/upload-artifact@v4
         with:
-          name: jennie-ruby-stage5-batch1-contact-sheet
+          name: jennie-ruby-stage5-system-audit
           path: |
-            app/build/reports/jennie-ruby-stage5-batch1-35-icons.png
-            app/build/reports/stage5-batch1-glyph-types.md
+            app/build/reports/jennie-ruby-stage5-contact-sheet.png
+            app/build/reports/stage5-automatic-checks.md
+            app/build/reports/stage5-activities.md
             appfilter_pendientes.txt
           if-no-files-found: error
       - name: Assemble debug APK
