@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "source": "Simple Icons (CC0-1.0), pinned in CI; generic fallback declared per entry",
+  "apps": [
+    {
+      "package": "com.google.android.apps.maps",
+      "activity": "com.google.android.maps.MapsActivity",
+      "label": "Maps",
+      "drawable": "ruby_maps",
+      "glyph": "googlemaps",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.gm",
+      "activity": "com.google.android.gm.ConversationListActivityGmail",
+      "label": "Gmail",
+      "drawable": "ruby_gmail",
+      "glyph": "gmail",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.apps.docs",
+      "activity": "com.google.android.apps.docs.app.NewMainProxyActivity",
+      "label": "Drive",
+      "drawable": "ruby_drive",
+      "glyph": "googledrive",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.apps.photos",
+      "activity": "com.google.android.apps.photos.home.HomeActivity",
+      "label": "Photos",
+      "drawable": "ruby_fotos",
+      "glyph": "googlephotos",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.calendar",
+      "activity": "com.android.calendar.AllInOneActivity",
+      "label": "Calendar",
+      "drawable": "ruby_calendario",
+      "glyph": "googlecalendar",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.apps.youtube.music",
+      "activity": "com.google.android.apps.youtube.music.activities.MusicActivity",
+      "label": "YouTube Music",
+      "drawable": "ruby_youtube_music",
+      "glyph": "youtubemusic",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.facebook.katana",
+      "activity": "com.facebook.katana.LoginActivity",
+      "label": "Facebook",
+      "drawable": "ruby_facebook",
+      "glyph": "facebook",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.facebook.orca",
+      "activity": "com.facebook.orca.auth.StartScreenActivity",
+      "label": "Messenger",
+      "drawable": "ruby_messenger",
+      "glyph": "messenger",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "org.telegram.messenger",
+      "activity": "org.telegram.messenger.DefaultIcon",
+      "label": "Telegram",
+      "drawable": "ruby_telegram",
+      "glyph": "telegram",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.snapchat.android",
+      "activity": "com.snapchat.android.LandingPageActivity",
+      "label": "Snapchat",
+      "drawable": "ruby_snapchat",
+      "glyph": "snapchat",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.twitter.android",
+      "activity": "com.x.android.main.MainActivity",
+      "label": "X",
+      "drawable": "ruby_x",
+      "glyph": "x",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.pinterest",
+      "activity": "com.pinterest.activity.PinterestActivity",
+      "label": "Pinterest",
+      "drawable": "ruby_pinterest",
+      "glyph": "pinterest",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.reddit.frontpage",
+      "activity": "launcher.default",
+      "label": "Reddit",
+      "drawable": "ruby_reddit",
+      "glyph": "reddit",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.netflix.mediaclient",
+      "activity": "com.netflix.mediaclient.ui.launch.UIWebViewActivity",
+      "label": "Netflix",
+      "drawable": "ruby_netflix",
+      "glyph": "netflix",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.disney.disneyplus",
+      "activity": "com.bamtechmedia.dominguez.main.MainActivity",
+      "label": "Disney+",
+      "drawable": "ruby_disney",
+      "glyph": "play",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M8 5v14l11-7z"
+    },
+    {
+      "package": "com.wbd.stream",
+      "activity": "com.wbd.fuse.appcore.FuseActivity",
+      "label": "HBO Max",
+      "drawable": "ruby_hbo_max",
+      "glyph": "max",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.crunchyroll.crunchyroid",
+      "activity": "com.ellation.crunchyroll.presentation.startup.StartupActivity",
+      "label": "Crunchyroll",
+      "drawable": "ruby_crunchyroll",
+      "glyph": "crunchyroll",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "tv.twitch.android.app",
+      "activity": "tv.twitch.android.app.core.LandingActivity",
+      "label": "Twitch",
+      "drawable": "ruby_twitch",
+      "glyph": "twitch",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.openai.chatgpt",
+      "activity": "com.openai.chatgpt.MainActivity",
+      "label": "ChatGPT",
+      "drawable": "ruby_chatgpt",
+      "glyph": "ai-monogram",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M3 20 L8 4 H10 L15 20 H12 L11 16 H7 L6 20 Z M7.8 13 H10.2 L9 8.5 Z M16 6 H22 V8 H20.5 V18 H22 V20 H16 V18 H17.5 V8 H16 Z"
+    },
+    {
+      "package": "com.anthropic.claude",
+      "activity": "com.anthropic.claude.mainactivity.MainActivity",
+      "label": "Claude",
+      "drawable": "ruby_claude",
+      "glyph": "claude",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    }
+  ]
+}
