@@ -3,20 +3,21 @@
 A personal Android icon pack for Nova Launcher, designed around the TECNO POVA 4.
 
 ## Visual direction
-- Deep black, ruby red and crimson, with dusty rose accents.
+- Deep black and ruby red, crimson and dusty rose accents.
 - Velvet, dark roses, ribbons, pearls and elegant jewelry details.
 - App symbols should remain recognizable; decorative styling must not obscure their identity.
 
 ## Current project status
 - 146 launcher activities from the TECNO POVA 4 catalogued.
 - 146 custom drawable resources included in the Android project.
-- 146 Nova Launcher mappings generated in `app/src/main/res/xml/appfilter.xml`.
-- CI validates that the generated app filter stays synchronized with the catalog and artwork.
-- The welcome screen includes the Nova Launcher selection path.
-- **Physical installation and compatibility testing on the TECNO POVA 4 are still pending.** A successful CI build is not a substitute for testing on the device.
+- 146 Nova Launcher mappings generated in the Android project.
+- CI validates vector structure and that the generated app filter stays synchronized with the catalog and artwork.
+- The APK has been installed on a TECNO POVA 4 and JENNIE RUBY was successfully discovered and applied in Nova Launcher.
+- The JENNIE RUBY app now has its own Ruby monogram launcher icon.
+- Visual review of individual icons at actual launcher size is ongoing; the Nova Launcher Settings icon still needs its exact component identified before adding a mapping.
 
-## Install and apply (after downloading the debug APK)
-1. Install the APK on the TECNO POVA 4. Android may ask you to allow installation from the app used to open the file.
+## Install and apply
+1. Install the debug APK on the TECNO POVA 4. Android may ask you to allow installation from the app used to open the file.
 2. Open Nova Launcher settings.
 3. Go to **Look & feel → Icon style → Icon theme**.
 4. Select **JENNIE RUBY**.
@@ -41,4 +42,4 @@ Wallpaper and KWGT widgets are separate setup items; they are not installed auto
 ## Constraints
 - Free tools and workflows; personal use.
 - No accounts, paid APIs, subscriptions or backend.
-- Do not claim device compatibility until installation and launcher testing are completed.
+- Do not claim device compatibility beyond the confirmed installation and Nova theme application test.
