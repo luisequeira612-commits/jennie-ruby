@@ -15,6 +15,7 @@ for a in apps:
     assert a["activity_status"] in {"verified","estimated"}, a
     p=ROOT/"app/src/main/res/drawable-nodpi"/(a["drawable"]+".png")
     assert p.is_file(), f"Missing generated PNG: {p}"
+    assert not p.with_suffix(".xml").exists(), f"Duplicate vector drawable remains: {p.with_suffix('.xml')}"
     from PIL import Image
     with Image.open(p) as im:
         assert im.size==(192,192) and im.mode=="RGBA", f"Invalid PNG: {p}"
