@@ -3,7 +3,7 @@ on:
   push:
     branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**']
   pull_request:
-    branches: [main, 'stage-1/**', 'stage-2/**']
+    branches: [main, 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**']
   workflow_dispatch:
 
 permissions:
