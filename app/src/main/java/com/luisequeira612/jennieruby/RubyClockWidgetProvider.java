@@ -76,11 +76,9 @@ public class RubyClockWidgetProvider extends AppWidgetProvider {
         );
         String value = formatter.format(date);
 
-        int comma = value.indexOf(", ");
-        if (comma >= 0 && comma + 2 < value.length()) {
-            value = value.substring(0, comma + 2)
-                    + value.substring(comma + 2, comma + 3).toUpperCase(SPANISH_NICARAGUA)
-                    + value.substring(comma + 3);
+        if (!value.isEmpty()) {
+            value = value.substring(0, 1).toUpperCase(SPANISH_NICARAGUA)
+                    + value.substring(1);
         }
 
         int monthStart = value.lastIndexOf(" de ");
