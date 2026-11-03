@@ -33,7 +33,7 @@
       "package": "com.google.android.apps.photos",
       "activity": "com.google.android.apps.photos.home.HomeActivity",
       "label": "Photos",
-      "drawable": "ruby_photos",
+      "drawable": "ruby_fotos",
       "glyph": "googlephotos",
       "glyph_type": "brand",
       "activity_status": "estimated"
@@ -42,7 +42,7 @@
       "package": "com.google.android.calendar",
       "activity": "com.android.calendar.AllInOneActivity",
       "label": "Calendar",
-      "drawable": "ruby_calendar",
+      "drawable": "ruby_calendario",
       "glyph": "googlecalendar",
       "glyph_type": "brand",
       "activity_status": "estimated"
