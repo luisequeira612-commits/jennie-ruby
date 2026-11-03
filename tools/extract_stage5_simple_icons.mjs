@@ -8,7 +8,7 @@ const catalog=JSON.parse(fs.readFileSync(catalogPath,"utf8"));
 fs.mkdirSync(outDir,{recursive:true});
 for(const app of catalog.apps){
   const icon=Object.values(simpleIcons).find(x=>x && x.slug===app.glyph);
-  const sourcePath=icon?.path || app.fallback_path;
+  const sourcePath=(app.glyph_type==="generic" && app.fallback_path) ? app.fallback_path : (icon?.path || app.fallback_path);
   if(!sourcePath) throw new Error("No Simple Icons or declared generic fallback for: "+app.label+" ("+app.glyph+")");
   const scaled=svgpath(sourcePath).scale(0.55).translate(5.4,5.4).round(3).toString();
   const xml='<?xml version="1.0" encoding="utf-8"?>\n'
