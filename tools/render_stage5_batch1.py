@@ -54,7 +54,7 @@ def main():
     (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
     # Glyph-type table for review.
     lines=["# Tipos de glifo — Etapa 5, lote 1","","| Aplicación | Tipo | Fuente | Estado de actividad |","|---|---|---|---|"]
-    for a in apps: lines.append(f'| {a["label"]} | {a["glyph_type"]} | {("Simple Icons: "+a["glyph"]) if a["glyph_type"]=="brand" else "Material-style generic fallback"} | {a["activity_status"]} |')
+    for a in apps: lines.append(f'| {a["label"]} | {a["glyph_type"]} | {("Simple Icons: "+a["glyph"]) if a["glyph_type"]=="brand" else ("Material-style generic path" if a["glyph_type"]=="generic" else "Vector serif monogram fallback")} | {a["activity_status"]} |')
     (REPORT/"stage5-batch1-glyph-types.md").parent.mkdir(parents=True,exist_ok=True)
     (REPORT/"stage5-batch1-glyph-types.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     # Actual PNG contact sheet: ten Stage 1 + five dock + twenty new resources.
