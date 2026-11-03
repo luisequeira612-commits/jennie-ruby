@@ -52,7 +52,32 @@ def path_mask(element, view_w, view_h):
     png = cairosvg.svg2png(bytestring=svg.encode("utf-8"), output_width=SIZE, output_height=SIZE)
     return Image.open(io.BytesIO(png)).convert("RGBA").getchannel("A")
 
-def make_glyph_mask(paths, view_w, view_h):
+def custom_glyph_mask(name):
+    mask = Image.new("L", (SIZE, SIZE), 0)
+    d = ImageDraw.Draw(mask)
+    if name == "camara":
+        d.rounded_rectangle((43, 67, 149, 137), radius=17, fill=255)
+        d.rounded_rectangle((62, 55, 101, 78), radius=8, fill=255)
+        d.ellipse((73, 77, 119, 123), fill=255)
+        d.ellipse((84, 88, 108, 112), fill=0)
+        d.ellipse((128, 77, 138, 87), fill=255)
+        return mask
+    if name == "instagram":
+        d.rounded_rectangle((48, 48, 144, 144), radius=25, outline=255, width=9)
+        d.ellipse((70, 70, 122, 122), outline=255, width=8)
+        d.ellipse((124, 61, 135, 72), fill=255)
+        return mask
+    if name == "galeria":
+        for bounds in ((82,42,110,82),(111,68,151,96),(99,105,127,147),(65,105,93,147),(41,68,81,96)):
+            d.ellipse(bounds, fill=255)
+        d.ellipse((79, 80, 113, 114), fill=0)
+        return mask
+    return None
+
+def make_glyph_mask(paths, view_w, view_h, name):
+    custom = custom_glyph_mask(name)
+    if custom is not None:
+        return custom
     # The first six source paths are the old tile/background treatment; only retain
     # the original logo geometry after those paths and recolor it as one ruby glyph.
     if len(paths) < 7:
@@ -78,7 +103,7 @@ def render(name):
     view_w = float(root.get(ANDROID + "viewportWidth", "108"))
     view_h = float(root.get(ANDROID + "viewportHeight", "108"))
     paths = root.findall("path")
-    glyph_mask = make_glyph_mask(paths, view_w, view_h)
+    glyph_mask = make_glyph_mask(paths, view_w, view_h, name)
 
     # Drop shadow: Pillow GaussianBlur radius 8px, offset +0px/+4px, opacity 46%.
     tile_mask = Image.new("L", (SIZE, SIZE), 0)
@@ -117,21 +142,33 @@ def render(name):
     # Fine ruby outline plus a subdued upper-edge highlight.
     border = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
     draw = ImageDraw.Draw(border)
-    draw.rounded_rectangle(SQUIRCLE, radius=RADIUS, outline="#7A1624", width=2)
-    draw.arc(SQUIRCLE, 180, 270, fill=(194, 58, 75, 92), width=1)
+    draw.rounded_rectangle(SQUIRCLE, radius=RADIUS, outline="#7A1624", width=3)
     canvas.alpha_composite(border)
 
-    # Glass reflection: 9% peak white-pink opacity, linear fade through 35% height.
-    reflection = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
-    rd = ImageDraw.Draw(reflection)
-    rd.rounded_rectangle((15, 15, 177, 82), radius=40, fill=(255, 238, 242, 23))
-    fade = Image.new("L", (SIZE, SIZE), 0)
-    fp = fade.load()
+    # Upper ruby bevel: 60% peak highlight, softened and faded at both ends.
+    bevel = Image.new("RGBA", (SIZE, SIZE), (0, 0, 0, 0))
+    bd = ImageDraw.Draw(bevel)
+    bd.arc(SQUIRCLE, 180, 360, fill=(194, 58, 75, 255), width=3)
+    bevel = bevel.filter(ImageFilter.GaussianBlur(radius=1.2))
+    bp = bevel.load()
     for y in range(SIZE):
-        alpha = round(255 * max(0.0, 1.0 - y / (SIZE * 0.35)))
         for x in range(SIZE):
-            fp[x, y] = alpha
-    reflection.putalpha(ImageChops.multiply(reflection.getchannel("A"), fade))
+            edge_fade = min(1.0, x / 28, (SIZE - 1 - x) / 28)
+            lower_fade = max(0.0, 1.0 - y / 82)
+            r, g, b, a = bp[x, y]
+            bp[x, y] = (r, g, b, round(a * 0.60 * edge_fade * lower_fade))
+    canvas.alpha_composite(bevel)
+
+    # Soft glass wash only: no rounded-rectangle edge or hard reflection contour.
+    reflection = Image.new("RGBA", (SIZE, SIZE), (255, 238, 242, 0))
+    rp = reflection.load()
+    for y in range(SIZE):
+        vertical = max(0.0, 1.0 - y / (SIZE * 0.35))
+        for x in range(SIZE):
+            horizontal = min(1.0, x / 22, (SIZE - 1 - x) / 22)
+            rp[x, y] = (255, 238, 242, round(255 * 0.09 * vertical * horizontal))
+    reflection.putalpha(ImageChops.multiply(reflection.getchannel("A"), tile_mask))
+    reflection = reflection.filter(ImageFilter.GaussianBlur(radius=7))
     canvas.alpha_composite(reflection)
 
     target = OUT / f"ruby_{name}.png"
@@ -151,6 +188,21 @@ def main():
     generated = [render(name) for name in NAMES]
     if len(generated) != 10 or any(not path.is_file() for path in generated):
         raise RuntimeError("Stage 1 icon generation incomplete")
+    sheet = Image.new("RGB", (2000, 900), "#10070A")
+    sd = ImageDraw.Draw(sheet)
+    labels = ("YouTube", "Spotify", "TikTok", "Instagram", "WhatsApp",
+              "Google", "Play Store", "Ajustes", "Galería", "Cámara")
+    for index, (name, label) in enumerate(zip(NAMES, labels)):
+        icon = Image.open(OUT / f"ruby_{name}.png").convert("RGBA").resize((300, 300), Image.Resampling.LANCZOS)
+        x = (index % 5) * 400 + 50
+        y = (index // 5) * 450 + 35
+        sheet.paste(icon, (x, y), icon)
+        sd.text((x + 150, y + 325), label, fill="#F3E6E6", anchor="mm")
+    report = ROOT / "app" / "build" / "reports"
+    report.mkdir(parents=True, exist_ok=True)
+    contact = report / "jennie-ruby-stage1-contact-sheet.png"
+    sheet.save(contact, optimize=True)
+    print(f"Contact sheet: {contact.relative_to(ROOT)} (2000x900)")
     print("Generated Stage 1 PNGs:")
     for path in generated:
         print(f" - {path.relative_to(ROOT)}")
