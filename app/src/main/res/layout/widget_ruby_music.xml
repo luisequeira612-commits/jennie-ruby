@@ -8,5 +8,4 @@
  <ImageButton android:id="@+id/music_previous" android:layout_width="20dp" android:layout_height="36dp" android:background="@android:color/transparent" android:src="@drawable/ruby_music_previous" android:contentDescription="Anterior" android:scaleType="fitCenter" android:padding="2dp"/>
  <ImageButton android:id="@+id/music_play" android:layout_width="24dp" android:layout_height="36dp" android:background="@android:color/transparent" android:src="@drawable/ruby_music_play" android:contentDescription="Reproducir o pausar" android:scaleType="fitCenter" android:padding="2dp"/>
  <ImageButton android:id="@+id/music_next" android:layout_width="20dp" android:layout_height="36dp" android:background="@android:color/transparent" android:src="@drawable/ruby_music_next" android:contentDescription="Siguiente" android:scaleType="fitCenter" android:padding="2dp"/>
- <ImageButton android:id="@+id/music_spotify" android:layout_width="24dp" android:layout_height="36dp" android:background="@android:color/transparent" android:src="@drawable/ruby_spotify_round" android:contentDescription="Abrir Spotify" android:scaleType="fitCenter" android:padding="1dp"/>
 </LinearLayout>
