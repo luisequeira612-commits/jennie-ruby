@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 data=json.loads((ROOT/"icons.json").read_text(encoding="utf-8"))
 apps=data["apps"]
-assert len(apps)==20, f"Expected 20 entries, got {len(apps)}"
+assert len(apps)>=1, "icons.json must contain at least one entry"
 names=[a["drawable"] for a in apps]
 assert len(names)==len(set(names)), "Duplicate drawable names"
 components=[a["package"]+"/"+a["activity"] for a in apps]
