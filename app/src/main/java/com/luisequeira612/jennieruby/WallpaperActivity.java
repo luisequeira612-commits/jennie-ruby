@@ -14,7 +14,7 @@ import android.widget.*;
 import java.io.OutputStream;
 
 public class WallpaperActivity extends Activity {
-    private static final int[] NAMES = {0, 1, 2};
+    private static final int[] NAMES = {0, 1, 2, 3};
     private int pendingDesign = 0;
     private static final int BG = Color.rgb(12, 8, 11);
     private static final int ROSE = Color.rgb(235, 210, 218);
@@ -36,13 +36,13 @@ public class WallpaperActivity extends Activity {
         intro.setPadding(0, dp(8), 0, dp(20));
         root.addView(intro);
 
-        String[] names = {"01  •  CRIMSON BLOOM", "02  •  RUBY ORBIT", "03  •  VELVET NIGHT"};
+        String[] names = {"01  •  JENNIE RUBY", "02  •  CRIMSON BLOOM", "03  •  RUBY ORBIT", "04  •  VELVET NIGHT"};
         String[] notes = {
             "Flores abstractas y tonos carmesí",
             "Órbita luminosa sobre negro profundo",
             "Capas suaves en borgoña y rosa"
         };
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 4; i++) {
             final int design = i;
             LinearLayout card = new LinearLayout(this);
             card.setOrientation(LinearLayout.VERTICAL);
@@ -92,7 +92,7 @@ public class WallpaperActivity extends Activity {
         Bitmap bitmap = Bitmap.createBitmap(1080, 2400, Bitmap.Config.ARGB_8888);
         try {
             Canvas canvas = new Canvas(bitmap);
-            drawDesign(canvas, 1080, 2400, design);
+            drawDesign(this, canvas, 1080, 2400, design);
             WallpaperManager.getInstance(this).setBitmap(bitmap);
             Toast.makeText(this, "Fondo aplicado a la pantalla de inicio.", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
@@ -109,7 +109,7 @@ public class WallpaperActivity extends Activity {
                 if (out != null) {
                     Bitmap bitmap = Bitmap.createBitmap(1080, 2400, Bitmap.Config.ARGB_8888);
                     Canvas canvas = new Canvas(bitmap);
-                    drawDesign(canvas, 1080, 2400, pendingDesign);
+                    drawDesign(this, canvas, 1080, 2400, pendingDesign);
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
                     bitmap.recycle();
                     Toast.makeText(this, "Fondo guardado. Ahora puedes aplicarlo desde Galería.", Toast.LENGTH_LONG).show();
@@ -133,11 +133,11 @@ public class WallpaperActivity extends Activity {
         WallpaperPreview(Activity context, int design) { super(context); this.design = design; setLayerType(View.LAYER_TYPE_SOFTWARE, null); }
         @Override protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
-            drawDesign(canvas, getWidth(), getHeight(), design);
+            drawDesign(getContext(), canvas, getWidth(), getHeight(), design);
         }
     }
 
-    private static void drawDesign(Canvas c, int w, int h, int design) {
+    private static void drawDesign(android.content.Context context, Canvas c, int w, int h, int design) {
         c.save();
         c.scale(w / 1080f, h / 2400f);
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
