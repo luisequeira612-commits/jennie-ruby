@@ -1,9 +1,9 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**']
+    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**', 'stage-5/**']
   pull_request:
-    branches: [main, 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**']
+    branches: [main, 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**', 'stage-5/**']
   workflow_dispatch:
 
 permissions:
