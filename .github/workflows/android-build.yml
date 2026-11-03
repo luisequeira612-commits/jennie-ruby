@@ -32,23 +32,10 @@ jobs:
           expected="7eae0f7904744e190d520d9e9fe4ad131414d815"
           echo "Stage 1 renderer blob: $actual"
           test "$actual" = "$expected"
-      - name: Download immutable historical Stage 1 PNG artifact
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          url="https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/13219099020/zip"
-          curl --fail --location --silent --show-error \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            "$url" -o "$RUNNER_TEMP/stage1-historical.zip"
-          mkdir -p "$RUNNER_TEMP/stage1-historical"
-          unzip -q "$RUNNER_TEMP/stage1-historical.zip" -d "$RUNNER_TEMP/stage1-historical"
       - name: Generate all Stage 1 PNG resources (fail-fast)
         run: python3 tools/render_ruby_stage1_icons.py
       - name: Verify Stage 1 SHA-256 or pixel-identical fallback
-        run: python3 tools/verify_stage1_pngs.py "$RUNNER_TEMP/stage1-historical"
+        run: python3 tools/verify_stage1_pngs.py
       - name: Generate five Stage 3 dock PNGs and real 15-icon contact sheet
         run: python3 tools/render_ruby_dock_icons.py
       - name: Render Jennie wallpaper with integrated ruby glass dock
