@@ -3,9 +3,16 @@
     <path android:fillColor="#16070D" android:pathData="M54,4 A50,50 0,1 0,54.1,4 Z"/>
     <path android:fillColor="#4A071B" android:pathData="M54,9 A45,45 0,1 0,54.1,9 Z"/>
     <path android:fillColor="#00000000" android:strokeColor="#9D2447" android:strokeWidth="1.5" android:pathData="M54,9 A45,45 0,1 0,54.1,9 Z"/>
-    <path android:fillColor="#F3B7C8" android:pathData="M31,39 L27,25 Q39,27 44,33 Q54,25 64,33 Q70,27 81,25 L77,42 Q85,56 76,70 Q68,83 54,80 Q39,82 31,69 Q23,55 31,39 Z"/>
-    <path android:fillColor="#F6DCE5" android:pathData="M35,47 C35,39 41,35 48,39 C54,43 53,54 47,59 C40,64 34,56 35,47 Z M60,39 C67,35 73,39 73,47 C74,56 68,64 61,59 C55,54 54,43 60,39 Z"/>
-    <path android:fillColor="#4A071B" android:pathData="M41,46 A3.5,3.5 0,1 0,41.1,46 Z M66,46 A3.5,3.5 0,1 0,66.1,46 Z"/>
-    <path android:fillColor="#A71943" android:pathData="M54,53 L47,62 Q54,69 61,62 Z"/>
-    <path android:fillColor="#9D2447" android:pathData="M38,68 Q45,74 51,70 M57,70 Q64,74 70,68"/>
+    <!-- Owl head: two unmistakable feather tufts and a rounded lower face -->
+    <path android:fillColor="#F3B7C8" android:pathData="M27,39 L25,22 Q36,27 43,34 Q54,25 65,34 Q72,27 83,22 L81,40 Q87,52 81,67 Q73,84 54,84 Q35,84 27,67 Q21,52 27,39 Z"/>
+    <!-- Facial disk -->
+    <path android:fillColor="#F6DCE5" android:pathData="M29,49 C30,37 40,34 49,41 Q54,45 54,53 Q54,45 59,41 C68,34 78,37 79,49 Q80,66 67,71 Q54,77 41,71 Q28,66 29,49 Z"/>
+    <!-- Large, round owl eyes with dark Ruby rings -->
+    <path android:fillColor="#A71943" android:pathData="M31,51 A12,12 0,1 0,55,51 A12,12 0,1 0,31,51 Z M53,51 A12,12 0,1 0,77,51 A12,12 0,1 0,53,51 Z"/>
+    <path android:fillColor="#16070D" android:pathData="M34,51 A9,9 0,1 0,52,51 A9,9 0,1 0,34,51 Z M56,51 A9,9 0,1 0,74,51 A9,9 0,1 0,56,51 Z"/>
+    <path android:fillColor="#F6DCE5" android:pathData="M39,46 A4,4 0,1 0,47,46 A4,4 0,1 0,39,46 Z M61,46 A4,4 0,1 0,69,46 A4,4 0,1 0,61,46 Z"/>
+    <!-- Small pointed beak, not a pig-like snout -->
+    <path android:fillColor="#A71943" android:pathData="M54,55 L47,64 L54,72 L61,64 Z"/>
+    <!-- Feather accents at the sides -->
+    <path android:fillColor="#9D2447" android:pathData="M29,61 Q34,66 39,66 L36,71 Q31,68 29,61 Z M79,61 Q74,66 69,66 L72,71 Q77,68 79,61 Z"/>
 </vector>
