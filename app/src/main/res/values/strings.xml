@@ -2,4 +2,7 @@
 <resources>
     <string name="ruby_clock_widget_description">A dark Ruby clock and date widget</string>
     <string name="ruby_shortcuts_widget_description">Quick shortcuts to JENNIE RUBY and its wallpapers</string>
+    <string name="ruby_clock_widget_accessibility">JENNIE RUBY clock and date. Opens the app when tapped.</string>
+    <string name="ruby_shortcut_open_app">Open JENNIE RUBY</string>
+    <string name="ruby_shortcut_open_wallpapers">Open Ruby wallpapers</string>
 </resources>
