@@ -18,7 +18,6 @@ public class RubyMusicWidgetProvider extends AppWidgetProvider {
    v.setOnClickPendingIntent(R.id.music_previous,action(c,"PREVIOUS",id));
    v.setOnClickPendingIntent(R.id.music_play,action(c,"PLAY_PAUSE",id));
    v.setOnClickPendingIntent(R.id.music_next,action(c,"NEXT",id));
-   v.setOnClickPendingIntent(R.id.music_spotify,action(c,"OPEN_SPOTIFY",id));
    m.updateAppWidget(id,v);
   }
  }
