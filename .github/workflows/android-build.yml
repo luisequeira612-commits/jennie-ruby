@@ -65,6 +65,17 @@ jobs:
           git diff --exit-code -- app/src/main/res/xml/appfilter.xml
       - name: Assemble debug APK
         run: gradle assembleDebug
+      - name: Verify APK uses the stable debug certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="app/build/outputs/apk/debug/app-debug.apk"
+          unzip -p "$apk" META-INF/CERT.RSA > "$RUNNER_TEMP/jennie-ruby-apk-cert.rsa"
+          actual="$(keytool -printcert -file "$RUNNER_TEMP/jennie-ruby-apk-cert.rsa" | awk -F': ' '/SHA256:/{print $2; exit}' | tr -d ':')"
+          expected="$(keytool -list -v -keystore "$HOME/.android/debug.keystore" -storepass android -alias androiddebugkey | awk -F': ' '/SHA256:/{print $2; exit}' | tr -d ':')"
+          echo "APK certificate: $actual"
+          echo "Expected certificate: $expected"
+          test -n "$actual" && test "$actual" = "$expected"
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
