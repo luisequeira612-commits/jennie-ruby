@@ -133,9 +133,10 @@
       "activity": "com.bamtechmedia.dominguez.main.MainActivity",
       "label": "Disney+",
       "drawable": "ruby_disney",
-      "glyph": "disneyplus",
-      "glyph_type": "brand",
-      "activity_status": "estimated"
+      "glyph": "play",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M8 5v14l11-7z"
     },
     {
       "package": "com.wbd.stream",
