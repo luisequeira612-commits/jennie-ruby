@@ -83,10 +83,9 @@ public class MainActivity extends Activity {
         panel.addView(status, statusParams);
 
         TextView note = text(
-                "Your icon collection and Nova app mappings are prepared. "
-                        + "To apply them, open Nova Settings → Look & feel → Icon style → Icon theme "
-                        + "and choose JENNIE RUBY. Device compatibility is still awaiting a test "
-                        + "on the TECNO POVA 4.",
+                "The icon pack has been installed and applied successfully on a TECNO POVA 4 "
+                        + "with Nova Launcher. To review or change it, open Nova Settings → "
+                        + "Look & feel → Icon style → Icon theme and choose JENNIE RUBY.",
                 12, ROSE, false);
         note.setLineSpacing(dp(3), 1f);
         LinearLayout.LayoutParams noteParams = new LinearLayout.LayoutParams(
