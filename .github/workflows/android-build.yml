@@ -63,3 +63,9 @@ jobs:
           name: jennie-ruby-stage1-pngs
           path: app/src/main/res/drawable-nodpi/ruby_*.png
           if-no-files-found: error
+      - name: Upload real high-resolution contact sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage1-contact-sheet
+          path: app/build/reports/jennie-ruby-stage1-contact-sheet.png
+          if-no-files-found: error
