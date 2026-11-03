@@ -8,8 +8,8 @@ android {
         applicationId 'com.luisequeira612.jennieruby'
         minSdk 23
         targetSdk 35
-        versionCode 8
-        versionName '0.8.0'
+        versionCode 10
+        versionName '0.9.1'
     }
 
     signingConfigs {
@@ -23,8 +23,6 @@ android {
     }
 
     buildTypes {
-        debug {
-            signingConfig signingConfigs.stableDebug
-        }
+        debug { signingConfig signingConfigs.stableDebug }
     }
 }

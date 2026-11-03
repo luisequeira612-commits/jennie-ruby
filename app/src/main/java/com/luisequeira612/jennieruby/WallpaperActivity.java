@@ -193,9 +193,13 @@ public class WallpaperActivity extends Activity {
             p.setStyle(Paint.Style.FILL);
         }
         p.setShader(null);
-        p.setColor(Color.argb(180, 235, 210, 218)); p.setTextAlign(Paint.Align.CENTER); p.setTypeface(Typeface.create("serif", Typeface.BOLD)); p.setTextSize(48);
-        c.drawText("J E N N I E", 540, 1980, p);
-        p.setColor(Color.argb(210, 190, 35, 65)); p.setTextSize(30); c.drawText("R U B Y", 540, 2040, p);
+        // The main portrait wallpaper leaves its center clear for the transparent JENNIE Ruby widget.
+        // Keep the original lettering on the three abstract wallpaper designs.
+        if (design != 0) {
+            p.setColor(Color.argb(180, 235, 210, 218)); p.setTextAlign(Paint.Align.CENTER); p.setTypeface(Typeface.create("serif", Typeface.BOLD)); p.setTextSize(48);
+            c.drawText("J E N N I E", 540, 1980, p);
+            p.setColor(Color.argb(210, 190, 35, 65)); p.setTextSize(30); c.drawText("R U B Y", 540, 2040, p);
+        }
         c.restore();
     }
 }
