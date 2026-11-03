@@ -1,53 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ruby_clock_widget"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ruby_clock_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="start|center_vertical"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:background="@android:color/transparent"
     android:contentDescription="@string/ruby_clock_widget_accessibility">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/jennie_ruby_wallpaper"
-        android:scaleType="centerCrop"
-        android:contentDescription="@null" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#B9000000" />
+
+    <TextClock
+        android:id="@+id/ruby_clock_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:format12Hour="h:mm"
+        android:format24Hour="h:mm"
+        android:fontFamily="@font/playfair_display"
+        android:textColor="#E8A0A8"
+        android:textSize="38sp"
+        android:includeFontPadding="false"
+        android:drawableTop="@drawable/ruby_crown"
+        android:drawablePadding="2dp"
+        android:shadowColor="#7A1624"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:importantForAccessibility="yes" />
+
+    <TextView
+        android:id="@+id/ruby_clock_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:fontFamily="@font/cormorant_garamond"
+        android:text="Sáb, 1 de Noviembre"
+        android:textColor="#E8A0A8"
+        android:textSize="13sp"
+        android:includeFontPadding="false"
+        android:singleLine="true" />
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="14dp"
-        android:paddingBottom="14dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="J E N N I E   •   R U B Y"
-            android:textColor="#F6DCE5"
-            android:textSize="10sp"
-            android:letterSpacing="0.12"
-            android:fontFamily="sans-serif-medium" />
-        <TextClock
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:format12Hour="h:mm"
-            android:format24Hour="HH:mm"
-            android:textColor="#FFFFFF"
-            android:textSize="38sp"
-            android:fontFamily="sans-serif-light"
-            android:includeFontPadding="false"
-            android:importantForAccessibility="yes" />
-        <TextClock
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:format12Hour="EEEE, d MMM"
-            android:format24Hour="EEEE, d MMM"
-            android:textColor="#F6DCE5"
-            android:textSize="11sp"
-            android:fontFamily="sans-serif" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <View
+            android:layout_width="49dp"
+            android:layout_height="1dp"
+            android:background="#E8A0A8" />
+
+        <ImageView
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/ruby_four_point_star"
+            android:contentDescription="@null" />
+
+        <View
+            android:layout_width="49dp"
+            android:layout_height="1dp"
+            android:background="#E8A0A8" />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
