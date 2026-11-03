@@ -123,13 +123,29 @@ def main():
     report={"source":str(SOURCE.relative_to(ROOT)),"original_dimensions":[int(raw.shape[1]),int(raw.shape[0])],"original_aspect_ratio":round(raw.shape[1]/raw.shape[0],6),"edges_before_trim":edge_report(raw)}
     photo,trim=trim_uniform(raw)
     photo=photo.copy()  # trim view is read-only; cleanup edits a private buffer.
-    # The source JPEG contains a narrow near-white edge artifact on the upper-right
-    # border (about the first 260 source rows). Extend the adjacent dark pixels
-    # across only that artifact; do not rotate, scale non-uniformly, or crop Jennie.
-    edge_rows=min(260,photo.shape[0]); edge_cols=min(12,photo.shape[1]//20)
-    if edge_rows and edge_cols:
-        photo[:edge_rows,-edge_cols:]=photo[:edge_rows,-edge_cols-1:-edge_cols]
-    report["upper_right_edge_cleanup"]={"rows":edge_rows,"columns":edge_cols,"method":"extend adjacent edge pixels"}
+    # Remove only the near-white/neutral strip attached to the upper-right edge.
+    # Detect its actual width per row instead of assuming a fixed 12px strip.
+    # Copy the nearest clean edge pixel horizontally; never rotate or distort Jennie.
+    edge_rows=min(260,photo.shape[0]); widths=[]
+    for row_index in range(edge_rows):
+        row=photo[row_index]
+        x=photo.shape[1]-1
+        while x>=0:
+            pixel=row[x].astype(np.int16)
+            if int(pixel.min())>=150 and int(pixel.max()-pixel.min())<=38:
+                x-=1
+            else:
+                break
+        width=photo.shape[1]-1-x
+        if width:
+            row[x+1:]=row[x]
+        widths.append(width)
+    report["upper_right_edge_cleanup"]={
+        "rows_scanned":edge_rows,
+        "max_columns_replaced":max(widths,default=0),
+        "rows_changed":sum(width>0 for width in widths),
+        "method":"per-row detection of attached near-white neutral edge; extend nearest clean pixel"
+    }
     report["trimmed_uniform_border_ltrb_px"]=list(trim)
     report["trimmed_dimensions"]=[int(photo.shape[1]),int(photo.shape[0])]
     report["edges_after_trim"]=edge_report(photo)
