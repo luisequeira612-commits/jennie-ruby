@@ -64,6 +64,9 @@ def main():
                 glow=mask.filter(ImageFilter.GaussianBlur(2.0))
                 gl=Image.new("RGBA",(192,192),(224,51,75,0)); gl.putalpha(glow.point(lambda v:round(v*.14))); base.alpha_composite(gl)
                 glyph=renderer.vertical_gradient("#E0334B","#8E0B20"); glyph.putalpha(mask); base.alpha_composite(glyph); base.save(target,optimize=True)
+            else:
+                mask=renderer.make_glyph_mask(root.findall("path"),view_w,view_h,key)
+            mask.save(MASK_DIR/(app["drawable"]+".png"))
         finally:
             if backup is None: source.unlink(missing_ok=True)
             else: source.write_bytes(backup)
