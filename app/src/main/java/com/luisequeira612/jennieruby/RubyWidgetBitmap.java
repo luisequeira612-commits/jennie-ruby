@@ -43,7 +43,7 @@ final class RubyWidgetBitmap {
         Bitmap bitmap=Bitmap.createBitmap(width,height,Bitmap.Config.ARGB_8888);
         Canvas canvas=new Canvas(bitmap); Paint p=paint();
         p.setColor(0xFFE8A0A8);
-        p.setTypeface(font(context,R.font.allura,Typeface.CURSIVE));
+        p.setTypeface(font(context,R.font.allura,Typeface.DEFAULT));
         p.setTextSize(68*density); canvas.drawText("Jennie",2*density,62*density,p);
         p.setTypeface(font(context,R.font.cormorant_garamond,Typeface.SERIF));
         p.setTextSize(11*density);
