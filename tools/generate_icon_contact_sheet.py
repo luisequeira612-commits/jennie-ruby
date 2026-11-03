@@ -2,6 +2,7 @@
 """Build a self-contained HTML contact sheet for visual review of all app icons."""
 from __future__ import annotations
 
+import base64
 import csv
 import html
 import sys
@@ -38,9 +39,25 @@ def svg_color(value: str) -> str:
 
 
 def render_icon(drawable: str) -> str:
+    """Render a generated raster asset or convert an Android vector to inline SVG."""
+    for extension, mime in (("png", "image/png"), ("webp", "image/webp")):
+        raster = DRAWABLE_DIR / f"{drawable}.{extension}"
+        if raster.is_file():
+            encoded = base64.b64encode(raster.read_bytes()).decode("ascii")
+            return f'<img src="data:{mime};base64,{encoded}" alt="{html.escape(drawable)}"/>'
+
     path = DRAWABLE_DIR / f"{drawable}.xml"
     if not path.is_file():
-        raise ValueError(f"Missing vector resource: {path.relative_to(ROOT)}")
+        # Resolve dock aliases to their generated *_art PNGs.
+        aliases_path = ROOT / "app/src/main/res/values/drawable.xml"
+        if aliases_path.is_file():
+            aliases_root = ET.parse(aliases_path).getroot()
+            for item in aliases_root.findall("item"):
+                if item.get("type") == "drawable" and item.get("name") == drawable:
+                    target = (item.text or "").strip().removeprefix("@drawable/")
+                    if target and target != drawable:
+                        return render_icon(target)
+        raise ValueError(f"Missing vector, raster or resolvable drawable alias: {drawable}")
     root = ET.parse(path).getroot()
     if root.tag != "vector":
         raise ValueError(f"{path.name}: root is not <vector>")
@@ -69,7 +86,6 @@ def render_icon(drawable: str) -> str:
         f'role="img" aria-label="{html.escape(drawable)}">'
         + "".join(paths) + "</svg>"
     )
-
 
 def main() -> None:
     with CATALOG.open(encoding="utf-8", newline="") as stream:
@@ -104,14 +120,14 @@ h1{margin:0;color:#f3b7c8}p{color:#c9aab5}
 .grid{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:14px}
 .card{min-width:0;text-align:center;background:#211019;border:1px solid #542238;border-radius:14px;padding:12px 8px}
 .icon{width:76px;height:76px;margin:0 auto 10px;display:grid;place-items:center}
-.icon svg{width:100%;height:100%;overflow:visible}
+.icon svg,.icon img{width:100%;height:100%;overflow:visible;object-fit:contain}
 strong,small{display:block;overflow-wrap:anywhere}strong{font-size:13px}
 small{margin-top:4px;color:#c58da1;font-size:10px}
 @media(min-width:900px){.grid{grid-template-columns:repeat(10,minmax(0,1fr))}}
 @media(max-width:420px){body{padding:12px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.card{padding:10px 5px}.icon{width:64px;height:64px}}
 </style></head><body>
 <header><h1>JENNIE RUBY</h1>
-<p>Hoja de contacto · 146 iconos · Vista SVG a escala uniforme para detectar similitudes, legibilidad y desequilibrios visuales. No sustituye la comprobación en Nova Launcher.</p></header>
+<p>Hoja de contacto · 146 iconos · PNG generados y vectores SVG a escala uniforme para detectar similitudes, legibilidad y desequilibrios visuales. No sustituye la comprobación en Nova Launcher.</p></header>
 <main class="grid">
 """ + "\n".join(cards) + """
 </main></body></html>
