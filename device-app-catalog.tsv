@@ -16,7 +16,7 @@ Calendario	com.google.android.calendar/com.android.calendar.AllInOneActivity	rub
 CapCut	com.lemon.lvoverseas/com.vega.main.MainActivity	ruby_capcut
 Carlcare	com.transsion.carlcare/com.transsion.carlcare.MainActivity	ruby_carlcare
 ChatGPT	com.openai.chatgpt/com.openai.chatgpt.MainActivity	ruby_chatgpt
-Chrome	com.android.chrome/com.google.android.apps.chrome.Main	ruby_chrome
+Chrome	com.android.chrome/com.google.android.apps.chrome.Main	ruby_dock_chrome
 Claude	com.anthropic.claude/com.anthropic.claude.mainactivity.MainActivity	ruby_claude
 Clima	com.rlk.weathers/com.rlk.weathers.ui.main.MainActivity	ruby_clima
 CloudStream	com.lagradost.cloudstream3/com.lagradost.cloudstream3.ui.account.AccountSelectActivity	ruby_cloudstream
@@ -70,7 +70,7 @@ Maps	com.google.android.apps.maps/com.google.android.maps.MapsActivity	ruby_maps
 MarkClear	com.xiaoxu.spqsy/com.xiaoxu.spqsy.MainActivity	ruby_markclear
 MCPEDL	com.overwolf.mcpedl/com.overwolf.mcpedl.MainActivity	ruby_mcpedl
 Memrise	com.memrise.android.memrisecompanion/com.memrise.android.memrisecompanion.ui.activity.LauncherActivity	ruby_memrise
-Mensajes	com.google.android.apps.messaging/com.google.android.apps.messaging.ui.ConversationListActivity	ruby_mensajes
+Mensajes	com.google.android.apps.messaging/com.google.android.apps.messaging.ui.ConversationListActivity	ruby_dock_mensajes
 Messenger	com.facebook.orca/com.facebook.orca.auth.StartScreenActivity	ruby_messenger
 Meu Tarot	com.nowallsanalytics.tarot_guide/com.nowallsanalytics.tarot_guide.MainActivity	ruby_meu_tarot
 Mi Claro	com.claro.miclaro/com.claro.app.view.SplashKTVC	ruby_mi_claro
@@ -121,8 +121,8 @@ Sticker.ly	com.snowcorp.stickerly.android/com.snowcorp.stickerly.android.Launche
 StickerVibe	com.stickers.stickermaker.aistickerapp/com.zhiqiaos.sticker.activity.SplashActivity	ruby_stickervibe
 Stremio	com.stremio.one/com.stremio.android.MainActivity	ruby_stremio
 Telegram	org.telegram.messenger/org.telegram.messenger.DefaultIcon	ruby_telegram
-Teléfono	com.sh.smart.caller/com.android.dialer.main.impl.MainActivity	ruby_telefono
-Teléfono (contactos)	com.sh.smart.caller/com.android.dialer.ContactMainActivity	ruby_telefono_contactos
+Teléfono	com.sh.smart.caller/com.android.dialer.main.impl.MainActivity	ruby_dock_telefono
+Teléfono (contactos)	com.sh.smart.caller/com.android.dialer.ContactMainActivity	ruby_dock_contactos
 Termux	com.termux/com.termux.app.TermuxActivity	ruby_termux
 TikTok	com.zhiliaoapp.musically/com.ss.android.ugc.aweme.splash.SplashActivity	ruby_tiktok
 Tor Browser	org.torproject.torbrowser/org.torproject.torbrowser.App	ruby_tor_browser

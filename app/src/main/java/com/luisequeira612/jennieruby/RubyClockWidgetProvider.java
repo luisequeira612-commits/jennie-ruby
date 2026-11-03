@@ -1,94 +1,64 @@
 package com.luisequeira612.jennieruby;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.widget.RemoteViews;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 public class RubyClockWidgetProvider extends AppWidgetProvider {
-    private static final Locale SPANISH_NICARAGUA = new Locale("es", "NI");
-
-    @Override
-    public void onUpdate(Context context, AppWidgetManager manager, int[] appWidgetIds) {
-        for (int appWidgetId : appWidgetIds) {
-            updateOne(context, manager, appWidgetId);
-        }
+    @Override public void onEnabled(Context context) {
+        scheduleMinuteRefresh(context);
     }
 
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        super.onReceive(context, intent);
+    @Override public void onDisabled(Context context) {
+        PendingIntent pi=PendingIntent.getBroadcast(context,991,
+            new Intent(context,RubyClockWidgetProvider.class).setAction("com.luisequeira612.jennieruby.MINUTE"),
+            PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        AlarmManager alarms=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        if(alarms!=null) alarms.cancel(pi);
+    }
 
-        if (intent == null || intent.getAction() == null) {
-            return;
-        }
+    @Override public void onUpdate(Context context, AppWidgetManager manager, int[] ids) {
+        for(int id:ids) updateOne(context,manager,id);
+        scheduleMinuteRefresh(context);
+    }
 
-        String action = intent.getAction();
-        if (Intent.ACTION_DATE_CHANGED.equals(action)
-                || Intent.ACTION_TIME_CHANGED.equals(action)
-                || Intent.ACTION_TIMEZONE_CHANGED.equals(action)
-                || Intent.ACTION_LOCALE_CHANGED.equals(action)) {
+    @Override public void onReceive(Context context, Intent intent) {
+        super.onReceive(context,intent);
+        if(intent==null || intent.getAction()==null) return;
+        String a=intent.getAction();
+        if("com.luisequeira612.jennieruby.MINUTE".equals(a)
+            || Intent.ACTION_DATE_CHANGED.equals(a) || Intent.ACTION_TIME_CHANGED.equals(a)
+            || Intent.ACTION_TIMEZONE_CHANGED.equals(a) || Intent.ACTION_LOCALE_CHANGED.equals(a)) {
             updateAll(context);
         }
     }
 
+    private static void scheduleMinuteRefresh(Context context) {
+        Intent i=new Intent(context,RubyClockWidgetProvider.class).setAction("com.luisequeira612.jennieruby.MINUTE");
+        PendingIntent pi=PendingIntent.getBroadcast(context,991,i,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        AlarmManager alarms=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+        if(alarms!=null) alarms.setInexactRepeating(AlarmManager.ELAPSED_REALTIME,
+            SystemClock.elapsedRealtime()+60000,60000,pi);
+    }
+
     private static void updateAll(Context context) {
-        AppWidgetManager manager = AppWidgetManager.getInstance(context);
-        ComponentName component = new ComponentName(context, RubyClockWidgetProvider.class);
-        int[] ids = manager.getAppWidgetIds(component);
-
-        for (int appWidgetId : ids) {
-            updateOne(context, manager, appWidgetId);
-        }
+        AppWidgetManager manager=AppWidgetManager.getInstance(context);
+        int[] ids=manager.getAppWidgetIds(new ComponentName(context,RubyClockWidgetProvider.class));
+        for(int id:ids) updateOne(context,manager,id);
     }
 
-    private static void updateOne(Context context, AppWidgetManager manager, int appWidgetId) {
-        RemoteViews views = new RemoteViews(
-                context.getPackageName(),
-                R.layout.widget_ruby_clock
-        );
-
-        views.setTextViewText(R.id.ruby_clock_date, formatSpanishDate(new Date()));
-
-        Intent launch = new Intent(context, MainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(
-                context,
-                appWidgetId,
-                launch,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
-        );
-        views.setOnClickPendingIntent(R.id.ruby_clock_root, pendingIntent);
-
-        manager.updateAppWidget(appWidgetId, views);
-    }
-
-    private static String formatSpanishDate(Date date) {
-        SimpleDateFormat formatter = new SimpleDateFormat(
-                "EEE, d 'de' MMMM",
-                SPANISH_NICARAGUA
-        );
-        String value = formatter.format(date);
-
-        if (!value.isEmpty()) {
-            value = value.substring(0, 1).toUpperCase(SPANISH_NICARAGUA)
-                    + value.substring(1);
-        }
-
-        int monthStart = value.lastIndexOf(" de ");
-        if (monthStart >= 0 && monthStart + 4 < value.length()) {
-            int index = monthStart + 4;
-            value = value.substring(0, index)
-                    + value.substring(index, index + 1).toUpperCase(SPANISH_NICARAGUA)
-                    + value.substring(index + 1);
-        }
-
-        return value;
+    private static void updateOne(Context context,AppWidgetManager manager,int id) {
+        RemoteViews views=new RemoteViews(context.getPackageName(),R.layout.widget_ruby_clock);
+        views.setImageViewBitmap(R.id.ruby_clock_bitmap,RubyWidgetBitmap.clock(context));
+        Intent launch=new Intent(context,MainActivity.class);
+        PendingIntent pi=PendingIntent.getActivity(context,id,launch,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        views.setOnClickPendingIntent(R.id.ruby_clock_root,pi);
+        manager.updateAppWidget(id,views);
     }
 }

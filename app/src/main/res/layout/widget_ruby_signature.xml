@@ -1,71 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ruby_signature_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="start|center_vertical"
-    android:paddingStart="4dp"
-    android:paddingEnd="4dp"
-    android:paddingTop="1dp"
-    android:paddingBottom="1dp"
     android:background="@android:color/transparent"
     android:contentDescription="@string/ruby_signature_widget_accessibility">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/ruby_signature_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/allura"
-            android:text="Jennie"
-            android:textColor="#E8A0A8"
-            android:textSize="49sp"
-            android:includeFontPadding="false"
-            android:singleLine="true" />
-
-        <ImageView
-            android:layout_width="11dp"
-            android:layout_height="11dp"
-            android:layout_gravity="top|end"
-            android:layout_marginEnd="2dp"
-            android:translationX="3dp"
-            android:translationY="1dp"
-            android:src="@drawable/ruby_outline_heart"
-            android:contentDescription="@null" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="34dp"
-            android:layout_height="1dp"
-            android:background="#E8A0A8" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:fontFamily="@font/cormorant_garamond"
-            android:text="BLACKPINK"
-            android:textColor="#F3E6E6"
-            android:textSize="7sp"
-            android:letterSpacing="0.28"
-            android:includeFontPadding="false"
-            android:singleLine="true" />
-
-        <TextView
-            android:layout_width="34dp"
-            android:layout_height="1dp"
-            android:background="#E8A0A8" />
-    </LinearLayout>
-</LinearLayout>
+    <ImageView
+        android:id="@+id/ruby_signature_bitmap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitStart"
+        android:contentDescription="@null" />
+</FrameLayout>

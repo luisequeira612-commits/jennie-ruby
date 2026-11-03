@@ -1,0 +1,36 @@
+{
+  "canvas_width": 720,
+  "canvas_height": 1640,
+  "bar": {
+    "x": 25,
+    "y": 1510,
+    "width": 670,
+    "height": 104,
+    "radius": 34,
+    "border_px": 2
+  },
+  "bar_tall": {
+    "x": 25,
+    "y": 1490,
+    "width": 670,
+    "height": 124,
+    "radius": 38,
+    "border_px": 2
+  },
+  "photo_offset_y": 70,
+  "cover_crop_offset_x": 0,
+  "cover_crop_offset_x_min": -1,
+  "notes": {
+    "dock_icon_size_px": 86,
+    "icon_centers_x": [
+      94,
+      228,
+      360,
+      493,
+      629
+    ],
+    "bottom_inset_px": 26,
+    "nova_dock_background": "transparent",
+    "wallpaper_scrolling": false
+  }
+}

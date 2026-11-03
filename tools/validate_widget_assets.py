@@ -55,9 +55,13 @@ require(clock_layout.get(ANDROID + "background") == "@android:color/transparent"
 require(signature_layout.get(ANDROID + "background") == "@android:color/transparent", "Signature widget background must be transparent")
 
 clock_text = (ROOT / "app/src/main/res/layout/widget_ruby_clock.xml").read_text(encoding="utf-8")
-require("<TextClock" in clock_text, "Clock widget must use Android TextClock")
-require('android:format12Hour="h:mm"' in clock_text, "Clock must use a 12-hour format without AM/PM")
-require('android:format24Hour="h:mm"' in clock_text, "Clock must keep the requested 12-hour display on 24-hour devices")
+require('android:id="@+id/ruby_clock_bitmap"' in clock_text, "Clock widget must display its custom-drawn bitmap")
+bitmap_source = (ROOT / "app/src/main/java/com/luisequeira612/jennieruby/RubyWidgetBitmap.java").read_text(encoding="utf-8")
+for resource in ("R.font.playfair_display", "R.font.cormorant_garamond", "R.font.allura"):
+    require(resource in bitmap_source, f"Custom widget renderer must use {resource}")
+provider_source = (ROOT / "app/src/main/java/com/luisequeira612/jennieruby/RubyClockWidgetProvider.java").read_text(encoding="utf-8")
+require("setInexactRepeating" in provider_source and "60000" in provider_source, "Clock provider must schedule minute refreshes")
+require("setImageViewBitmap" in provider_source, "Clock provider must publish its custom-drawn bitmap")
 
 manifest = (ROOT / "app/src/main/AndroidManifest.xml").read_text(encoding="utf-8")
 require(".RubyClockWidgetProvider" in manifest, "Clock AppWidgetProvider is not registered")
