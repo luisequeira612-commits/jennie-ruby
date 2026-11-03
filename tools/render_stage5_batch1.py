@@ -80,7 +80,7 @@ def main():
             view_w=float(root.get("{http://schemas.android.com/apk/res/android}viewportWidth","108"))
             view_h=float(root.get("{http://schemas.android.com/apk/res/android}viewportHeight","108"))
             if app["glyph_type"]=="monogram":
-                text=app.get("glyph") or app.get("monogram")
+                text=app.get("monogram") or app.get("glyph")
                 if not isinstance(text,str) or not text.strip(): raise RuntimeError(f"Missing glyph/monogram text in icons.json: {app['label']}")
                 text=text.strip()
                 target=OUT/(app["drawable"]+".png")
