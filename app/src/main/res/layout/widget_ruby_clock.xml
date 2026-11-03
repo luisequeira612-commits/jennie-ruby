@@ -50,7 +50,7 @@
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
-        <View
+        <TextView
             android:layout_width="49dp"
             android:layout_height="1dp"
             android:background="#E8A0A8" />
@@ -63,7 +63,7 @@
             android:src="@drawable/ruby_four_point_star"
             android:contentDescription="@null" />
 
-        <View
+        <TextView
             android:layout_width="49dp"
             android:layout_height="1dp"
             android:background="#E8A0A8" />
