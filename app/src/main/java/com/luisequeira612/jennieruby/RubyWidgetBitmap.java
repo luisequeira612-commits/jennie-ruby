@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.text.format.DateFormat;
-import androidx.core.content.res.ResourcesCompat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -47,7 +46,7 @@ final class RubyWidgetBitmap {
         p.setTypeface(font(context,R.font.allura,Typeface.CURSIVE));
         p.setTextSize(68*density); canvas.drawText("Jennie",2*density,62*density,p);
         p.setTypeface(font(context,R.font.cormorant_garamond,Typeface.SERIF));
-        p.setTextSize(11*density); p.setLetterSpacing(0.22f);
+        p.setTextSize(11*density);
         p.setColor(0xFFF3E6E6);
         canvas.drawText("BLACKPINK",65*density,88*density,p);
         return bitmap;
@@ -59,6 +58,6 @@ final class RubyWidgetBitmap {
         return p;
     }
     private static Typeface font(Context c,int id,Typeface fallback) {
-        try { return ResourcesCompat.getFont(c,id); } catch(Exception ignored) { return fallback; }
+        try { if (android.os.Build.VERSION.SDK_INT >= 26) return c.getResources().getFont(id); } catch(Exception ignored) {} return fallback;
     }
 }
