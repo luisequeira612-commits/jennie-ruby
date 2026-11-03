@@ -146,4 +146,19 @@
     <item component="ComponentInfo{com.google.android.apps.youtube.music/com.google.android.apps.youtube.music.activities.MusicActivity}" drawable="ruby_youtube_music" />
     <item component="ComponentInfo{com.beint.zangi/com.beint.project.MainActivity}" drawable="ruby_zangi" />
     <item component="ComponentInfo{ru.zdevs.zarchiver/ru.zdevs.zarchiver.ZArchiver}" drawable="ruby_zarchiver" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.BackgroundedLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.BackgroundedLauncherBrokenHeart}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.ExtendedLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.FixedRetentionChallengeLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBlackAndWhiteLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBlackAndWhiteLauncherEyes}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBlobFishLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBoneLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBoneLauncherBone}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveBufferingLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveChickenLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.InactiveChickenLauncherChicken}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.StreakSocietyLauncher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.PreStreakSaver4Launcher}" drawable="ruby_duolingo" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.SeasonalLauncher1}" drawable="ruby_duolingo" />
 </resources>
