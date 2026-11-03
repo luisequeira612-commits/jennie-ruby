@@ -1,23 +1,54 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**', 'qa/**', 'stage-1/**']
+    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**']
   pull_request:
-    branches: [main]
+    branches: [main, 'stage-1/**', 'stage-2/**']
   workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
 
 jobs:
   debug-apk:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - name: Install build-only rasterizer dependencies
-        run: python -m pip install --disable-pip-version-check Pillow CairoSVG
+        run: python -m pip install --disable-pip-version-check Pillow==13.0.0 numpy==2.2.6 CairoSVG==2.9.1 cairocffi==1.7.1 cffi==2.1.1 cssselect2==0.10.1 defusedxml==0.7.1 pycparser==3.12 tinycss2==1.5.1 webencodings==0.6.1
+      - name: Verify protected Stage 1 renderer identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD:tools/render_ruby_stage1_icons.py)"
+          expected="7eae0f7904744e190d520d9e9fe4ad131414d815"
+          echo "Stage 1 renderer blob: $actual"
+          test "$actual" = "$expected"
+      - name: Download immutable historical Stage 1 PNG artifact
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://api.github.com/repos/$GITHUB_REPOSITORY/actions/artifacts/13219099020/zip"
+          curl --fail --location --silent --show-error \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "$url" -o "$RUNNER_TEMP/stage1-historical.zip"
+          mkdir -p "$RUNNER_TEMP/stage1-historical"
+          unzip -q "$RUNNER_TEMP/stage1-historical.zip" -d "$RUNNER_TEMP/stage1-historical"
       - name: Generate all Stage 1 PNG resources (fail-fast)
         run: python3 tools/render_ruby_stage1_icons.py
+      - name: Verify Stage 1 SHA-256 or pixel-identical fallback
+        run: python3 tools/verify_stage1_pngs.py "$RUNNER_TEMP/stage1-historical"
+      - name: Generate five Stage 3 dock PNGs and real 15-icon contact sheet
+        run: python3 tools/render_ruby_dock_icons.py
+      - name: Render Jennie wallpaper with integrated ruby glass dock
+        run: python3 tools/render_ruby_dock_wallpaper.py
       - name: Require all ten valid 192px PNGs in drawable-nodpi
         shell: bash
         run: |
@@ -38,6 +69,12 @@ jobs:
                       raise SystemExit(f"PNG corner must be transparent: {path}")
           print("PASS: all ten Stage 1 PNGs verified.")
           PY
+      - name: Download pinned Google Fonts OFL families
+        run: bash tools/download_widget_fonts.sh
+      - name: Generate transparent widget picker previews
+        run: python3 tools/generate_widget_previews.py
+      - name: Validate widgets, fonts, licenses and previews
+        run: python3 tools/validate_widget_assets.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -45,12 +82,31 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.9'
+      - name: Install stable personal debug signing identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.android"
+          base64 --decode tools/signing/jennie-ruby-debug.keystore.b64 > "$HOME/.android/debug.keystore"
+          chmod 600 "$HOME/.android/debug.keystore"
+          keytool -list -keystore "$HOME/.android/debug.keystore" -storepass android -alias androiddebugkey
       - name: Validate generated Nova app filter
         run: |
           python3 tools/generate_appfilter.py
           git diff --exit-code -- app/src/main/res/xml/appfilter.xml
       - name: Assemble debug APK
         run: gradle assembleDebug
+      - name: Verify APK uses the stable debug certificate
+        shell: bash
+        run: |
+          set -euo pipefail
+          apk="app/build/outputs/apk/debug/app-debug.apk"
+          unzip -p "$apk" META-INF/CERT.RSA > "$RUNNER_TEMP/jennie-ruby-apk-cert.rsa"
+          actual="$(keytool -printcert -file "$RUNNER_TEMP/jennie-ruby-apk-cert.rsa" | awk -F': ' '/SHA256:/{print $2; exit}' | tr -d ':')"
+          expected="$(keytool -list -v -keystore "$HOME/.android/debug.keystore" -storepass android -alias androiddebugkey | awk -F': ' '/SHA256:/{print $2; exit}' | tr -d ':')"
+          echo "APK certificate: $actual"
+          echo "Expected certificate: $expected"
+          test -n "$actual" && test "$actual" = "$expected"
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
@@ -63,9 +119,48 @@ jobs:
           name: jennie-ruby-stage1-pngs
           path: app/src/main/res/drawable-nodpi/ruby_*.png
           if-no-files-found: error
-      - name: Upload real high-resolution contact sheet
+      - name: Upload five generated Stage 3 dock PNGs
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage3-dock-pngs
+          path: |
+            app/src/main/res/drawable-nodpi/ruby_dock_telefono_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_contactos_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_mensajes_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_chrome_art.png
+            app/src/main/res/drawable-nodpi/ruby_dock_cajon_apps_art.png
+          if-no-files-found: error
+      - name: Upload wallpaper calibration variants (720x1640)
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage3-wallpaper
+          path: |
+            app/build/reports/fondo_A_con_barra.png
+            app/build/reports/fondo_A_sin_barra.png
+            app/build/reports/fondo_B_con_barra.png
+            app/build/reports/fondo_B_sin_barra.png
+            app/build/reports/fondo_C_con_barra.png
+            app/build/reports/fondo_C_sin_barra.png
+            app/build/reports/fondo_A_con_barra_alta.png
+            app/build/reports/diagnostico_wallpaper.json
+          if-no-files-found: error
+      - name: Upload real 15-icon Stage 3 contact sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage3-contact-sheet
+          path: app/build/reports/jennie-ruby-stage3-contact-sheet.png
+          if-no-files-found: error
+      - name: Upload real high-resolution Stage 1 contact sheet
         uses: actions/upload-artifact@v4
         with:
           name: jennie-ruby-stage1-contact-sheet
           path: app/build/reports/jennie-ruby-stage1-contact-sheet.png
+          if-no-files-found: error
+      - name: Upload transparent widget picker previews (static simulations)
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-widget-picker-previews
+          path: |
+            app/src/main/res/drawable-nodpi/widget_ruby_clock_preview.png
+            app/src/main/res/drawable-nodpi/widget_ruby_signature_preview.png
           if-no-files-found: error

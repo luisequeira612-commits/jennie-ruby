@@ -96,3 +96,13 @@ Los otros siete glifos se derivan de los paths de sus vectores fuente, conservan
 - El fondo de pantalla, los widgets, el dock y el widget de música pertenecen a etapas separadas.
 - Las hojas de contacto son salidas generadas por el script de CI para inspección; no sustituyen la comprobación en el Tecno Pova 4 con Nova Launcher.
 - El workflow falla si falta un recurso generado, si el PNG no es RGBA de 192 × 192 px o si sus esquinas no conservan transparencia.
+
+## Etapa 3 — iconos del dock
+
+Los cuatro iconos de aplicación del dock (Teléfono, Contactos, Mensajes y Chrome) se rasterizan llamando a la función `render()` del generador protegido de Etapa 1. No mantienen una copia paralela de colores, geometría, sombra, bisel ni reflejo. El archivo `tools/render_ruby_stage1_icons.py` debe conservar su Git blob SHA-1 histórico `7eae0f7904744e190d520d9e9fe4ad131414d815`.
+
+El cajón de aplicaciones es la excepción circular solicitada: superficie `#080304`, borde `#7A1624`, bisel superior `#C23A4B` y nueve puntos 3 × 3 en rosa pálido/gris claro. Conserva el lienzo RGBA de 192 × 192 px y las esquinas transparentes.
+
+Los nombres públicos usados por Nova se declaran como alias en `app/src/main/res/values/drawable.xml`; sus PNG de arte terminan en `_art`. El generador de `appfilter.xml` valida que cada alias apunte a un recurso existente en `drawable-nodpi`.
+
+La hoja de contacto de Etapa 3 se genera desde los quince PNG reales (diez originales más cinco del dock), a 2000 × 1350 px. No es una maqueta.
