@@ -3,7 +3,7 @@
 from __future__ import annotations
 import importlib.util, json, shutil, subprocess, tempfile
 from pathlib import Path
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT=Path(__file__).resolve().parents[1]
 CATALOG=ROOT/"icons.json"
@@ -33,6 +33,26 @@ def main():
         try:
             # Extractor writes a vector with six unused legacy slots followed by the brand silhouette.
             renderer.render(app["drawable"][5:])
+            if app["glyph_type"]=="monogram":
+                font_path=ROOT/"app/src/main/res/font/playfair_display.ttf"
+                if not font_path.is_file(): raise RuntimeError("Playfair Display font missing for monogram fallback")
+                target=OUT/(app["drawable"]+".png")
+                with Image.open(target) as source_image: base=source_image.convert("RGBA")
+                # The centered field is nearly the base surface color; replace the placeholder glyph with real Playfair lettering.
+                ImageDraw.Draw(base).rectangle((48,48,144,144),fill="#080304")
+                mask=Image.new("L",(192,192),0)
+                font=ImageFont.truetype(str(font_path),64)
+                box=font.getbbox("AI")
+                tx=(192-(box[2]-box[0]))/2-box[0]
+                ty=(192-(box[3]-box[1]))/2-box[1]
+                ImageDraw.Draw(mask).text((tx,ty),"AI",font=font,fill=255)
+                glow=mask.filter(ImageFilter.GaussianBlur(radius=2.2))
+                glow_layer=Image.new("RGBA",(192,192),(224,51,75,0))
+                glow_layer.putalpha(glow.point(lambda value: round(value*0.16)))
+                base.alpha_composite(glow_layer)
+                glyph=renderer.vertical_gradient("#E0334B","#8E0B20")
+                glyph.putalpha(mask); base.alpha_composite(glyph)
+                base.save(target,format="PNG",optimize=True)
         finally:
             if backup is None: source.unlink(missing_ok=True)
             else: source.write_bytes(backup)
@@ -54,7 +74,7 @@ def main():
     (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
     # Glyph-type table for review.
     lines=["# Tipos de glifo — Etapa 5, lote 1","","| Aplicación | Tipo | Fuente | Estado de actividad |","|---|---|---|---|"]
-    for a in apps: lines.append(f'| {a["label"]} | {a["glyph_type"]} | {("Simple Icons: "+a["glyph"]) if a["glyph_type"]=="brand" else ("Material-style generic path" if a["glyph_type"]=="generic" else "Vector serif monogram fallback")} | {a["activity_status"]} |')
+    for a in apps: lines.append(f'| {a["label"]} | {a["glyph_type"]} | {("Simple Icons: "+a["glyph"]) if a["glyph_type"]=="brand" else ("Material-style generic path" if a["glyph_type"]=="generic" else "Playfair Display serif monogram")} | {a["activity_status"]} |')
     (REPORT/"stage5-batch1-glyph-types.md").parent.mkdir(parents=True,exist_ok=True)
     (REPORT/"stage5-batch1-glyph-types.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     # Actual PNG contact sheet: ten Stage 1 + five dock + twenty new resources.
