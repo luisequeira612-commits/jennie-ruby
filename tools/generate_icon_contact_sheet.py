@@ -48,7 +48,16 @@ def render_icon(drawable: str) -> str:
 
     path = DRAWABLE_DIR / f"{drawable}.xml"
     if not path.is_file():
-        raise ValueError(f"Missing vector or generated raster resource: {drawable}")
+        # Resolve dock aliases to their generated *_art PNGs.
+        aliases_path = ROOT / "app/src/main/res/values/drawable.xml"
+        if aliases_path.is_file():
+            aliases_root = ET.parse(aliases_path).getroot()
+            for item in aliases_root.findall("item"):
+                if item.get("type") == "drawable" and item.get("name") == drawable:
+                    target = (item.text or "").strip().removeprefix("@drawable/")
+                    if target and target != drawable:
+                        return render_icon(target)
+        raise ValueError(f"Missing vector, raster or resolvable drawable alias: {drawable}")
     root = ET.parse(path).getroot()
     if root.tag != "vector":
         raise ValueError(f"{path.name}: root is not <vector>")
