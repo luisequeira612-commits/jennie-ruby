@@ -41,6 +41,19 @@ def draw_crown(draw, center_x, top):
     draw.line(points, fill=PINK, width=3, joint="curve")
     draw.line((center_x - 20, top + 34, center_x + 20, top + 34), fill=PINK, width=3)
 
+def draw_star(draw, center_x, center_y):
+    points = [
+        (center_x, center_y - 13),
+        (center_x + 4, center_y - 4),
+        (center_x + 13, center_y),
+        (center_x + 4, center_y + 4),
+        (center_x, center_y + 13),
+        (center_x - 4, center_y + 4),
+        (center_x - 13, center_y),
+        (center_x - 4, center_y - 4),
+    ]
+    draw.polygon(points, fill=PINK)
+
 def draw_heart(draw, center_x, center_y):
     # Thin outline; the real widget uses a rotated vector drawable.
     points = [
@@ -77,7 +90,7 @@ def make_clock_preview():
 
     y = 258
     draw.line((24, y, 159, y), fill=PINK, width=2)
-    draw.text((168, y - 18), "✦", font=load_font("cormorant_garamond.ttf", 34), fill=PINK)
+    draw_star(draw, 183, y)
     draw.line((199, y, 334, y), fill=PINK, width=2)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -101,7 +114,6 @@ def make_signature_preview():
     label = "BLACKPINK"
     label_spacing = 4
     label_width = sum(draw.textlength(ch, font=small_font) for ch in label) + label_spacing * (len(label) - 1)
-    total_width = label_width + 2 * 92 + 2 * 14
     start_x = 24
     center_y = 166
     line_length = 92
