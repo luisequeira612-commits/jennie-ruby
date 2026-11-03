@@ -17,7 +17,7 @@
     <item component="ComponentInfo{com.lemon.lvoverseas/com.vega.main.MainActivity}" drawable="ruby_capcut" />
     <item component="ComponentInfo{com.transsion.carlcare/com.transsion.carlcare.MainActivity}" drawable="ruby_carlcare" />
     <item component="ComponentInfo{com.openai.chatgpt/com.openai.chatgpt.MainActivity}" drawable="ruby_chatgpt" />
-    <item component="ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}" drawable="ruby_chrome" />
+    <item component="ComponentInfo{com.android.chrome/com.google.android.apps.chrome.Main}" drawable="ruby_dock_chrome" />
     <item component="ComponentInfo{com.anthropic.claude/com.anthropic.claude.mainactivity.MainActivity}" drawable="ruby_claude" />
     <item component="ComponentInfo{com.rlk.weathers/com.rlk.weathers.ui.main.MainActivity}" drawable="ruby_clima" />
     <item component="ComponentInfo{com.lagradost.cloudstream3/com.lagradost.cloudstream3.ui.account.AccountSelectActivity}" drawable="ruby_cloudstream" />
@@ -71,7 +71,7 @@
     <item component="ComponentInfo{com.xiaoxu.spqsy/com.xiaoxu.spqsy.MainActivity}" drawable="ruby_markclear" />
     <item component="ComponentInfo{com.overwolf.mcpedl/com.overwolf.mcpedl.MainActivity}" drawable="ruby_mcpedl" />
     <item component="ComponentInfo{com.memrise.android.memrisecompanion/com.memrise.android.memrisecompanion.ui.activity.LauncherActivity}" drawable="ruby_memrise" />
-    <item component="ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.ui.ConversationListActivity}" drawable="ruby_mensajes" />
+    <item component="ComponentInfo{com.google.android.apps.messaging/com.google.android.apps.messaging.ui.ConversationListActivity}" drawable="ruby_dock_mensajes" />
     <item component="ComponentInfo{com.facebook.orca/com.facebook.orca.auth.StartScreenActivity}" drawable="ruby_messenger" />
     <item component="ComponentInfo{com.nowallsanalytics.tarot_guide/com.nowallsanalytics.tarot_guide.MainActivity}" drawable="ruby_meu_tarot" />
     <item component="ComponentInfo{com.claro.miclaro/com.claro.app.view.SplashKTVC}" drawable="ruby_mi_claro" />
@@ -122,8 +122,8 @@
     <item component="ComponentInfo{com.stickers.stickermaker.aistickerapp/com.zhiqiaos.sticker.activity.SplashActivity}" drawable="ruby_stickervibe" />
     <item component="ComponentInfo{com.stremio.one/com.stremio.android.MainActivity}" drawable="ruby_stremio" />
     <item component="ComponentInfo{org.telegram.messenger/org.telegram.messenger.DefaultIcon}" drawable="ruby_telegram" />
-    <item component="ComponentInfo{com.sh.smart.caller/com.android.dialer.main.impl.MainActivity}" drawable="ruby_telefono" />
-    <item component="ComponentInfo{com.sh.smart.caller/com.android.dialer.ContactMainActivity}" drawable="ruby_telefono_contactos" />
+    <item component="ComponentInfo{com.sh.smart.caller/com.android.dialer.main.impl.MainActivity}" drawable="ruby_dock_telefono" />
+    <item component="ComponentInfo{com.sh.smart.caller/com.android.dialer.ContactMainActivity}" drawable="ruby_dock_contactos" />
     <item component="ComponentInfo{com.termux/com.termux.app.TermuxActivity}" drawable="ruby_termux" />
     <item component="ComponentInfo{com.zhiliaoapp.musically/com.ss.android.ugc.aweme.splash.SplashActivity}" drawable="ruby_tiktok" />
     <item component="ComponentInfo{org.torproject.torbrowser/org.torproject.torbrowser.App}" drawable="ruby_tor_browser" />
