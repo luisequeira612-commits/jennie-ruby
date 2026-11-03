@@ -39,9 +39,9 @@ asset=ROOT/"app/src/main/assets/drawable.xml"
 assert xml.read_bytes()==asset.read_bytes(), "assets/drawable.xml differs from res/xml/drawable.xml"
 selector=ET.parse(xml).getroot()
 items=selector.findall("icon")
-assert len(items)==20, f"Expected 20 selector entries, got {len(items)}"
+assert len(items)==len(apps), f"Expected {len(apps)} selector entries, got {len(items)}"
 assert [x.get("drawable") for x in items]==names, "Selector order/content mismatch"
-assert len({x.get("drawable") for x in items})==20, "Duplicate selector resources"
+assert len({x.get("drawable") for x in items})==len(apps), "Duplicate selector resources"
 pending=(ROOT/"appfilter_pendientes.txt").read_text(encoding="utf-8")
 for a in apps:
     if a["activity_status"]=="estimated":
