@@ -1,0 +1,18 @@
+{
+  "canvas_width": 720,
+  "canvas_height": 1640,
+  "x": 25,
+  "y": 1510,
+  "width": 670,
+  "height": 104,
+  "radius": 34,
+  "border_px": 2,
+  "fill_alpha": 166,
+  "notes": {
+    "dock_icon_size_px": 86,
+    "icon_centers_x": [94, 228, 360, 493, 629],
+    "bottom_inset_px": 26,
+    "nova_dock_background": "transparent",
+    "wallpaper_scrolling": false
+  }
+}
