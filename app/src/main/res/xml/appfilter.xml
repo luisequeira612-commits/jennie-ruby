@@ -31,6 +31,7 @@
     <item component="ComponentInfo{com.disney.disneyplus/com.bamtechmedia.dominguez.main.MainActivity}" drawable="ruby_disney" />
     <item component="ComponentInfo{com.google.android.apps.docs/com.google.android.apps.docs.app.NewMainProxyActivity}" drawable="ruby_drive" />
     <item component="ComponentInfo{com.languagedrops.drops.international/com.languagedrops.drops.international.MainActivity}" drawable="ruby_drops" />
+    <item component="ComponentInfo{com.duolingo/com.duolingo.app.LoginActivity}" drawable="ruby_duolingo" />
     <item component="ComponentInfo{com.everbytestudio.interactive.text.chat.story.rpg.cyoa.duskwood/com.unity3d.player.UnityPlayerActivity}" drawable="ruby_duskwood" />
     <item component="ComponentInfo{com.transsion.scanningrecharger/com.transsion.scanningrecharger.view.activity.textrecognized.TextRecognizedActivity}" drawable="ruby_escaner_inteligente" />
     <item component="ComponentInfo{com.ace.ex.file.manager/com.ace.fileexplorer.feature.activity.AceFirstActivity}" drawable="ruby_ex_explorador_de_archivos" />
