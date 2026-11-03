@@ -64,11 +64,16 @@ final class RubyWidgetBitmap {
 
         p.setTypeface(font(c,R.font.cormorant_garamond,Typeface.SERIF));
         p.setTextSize(11*s); p.setColor(0xFFF3E6E6);
-        String signature="— BLACKPINK —";
+        String signature="BLACKPINK";
         float sigWidth=p.measureText(signature);
         float sigX=(w-sigWidth)/2f;
         float sigBaseline=Math.min(h-3*s,92*s);
         cv.drawText(signature,sigX,sigBaseline,p);
+        Paint rule=new Paint(p); rule.setColor(0xFFE8A0A8);
+        rule.setStyle(Paint.Style.STROKE); rule.setStrokeWidth(Math.max(.8f,.85f*s));
+        float ruleY=sigBaseline-4*s;
+        cv.drawLine(Math.max(4*s,sigX-38*s),ruleY,sigX-9*s,ruleY,rule);
+        cv.drawLine(sigX+sigWidth+9*s,ruleY,Math.min(w-4*s,sigX+sigWidth+38*s),ruleY,rule);
         return b;
     }
 
