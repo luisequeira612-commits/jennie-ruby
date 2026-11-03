@@ -50,7 +50,7 @@ def main() -> None:
     alias_rows = []
     if ALIASES.exists():
         with ALIASES.open(encoding="utf-8", newline="") as stream:
-            alias_rows = list(csv.DictReader(stream, delimiter="\\t"))
+            alias_rows = list(csv.DictReader(stream, delimiter="\t"))
     alias_components = [row["component"] for row in alias_rows]
     if len(set(alias_components)) != len(alias_components) or set(alias_components) & set(components):
         fail("Duplicate launcher components detected in aliases.")
