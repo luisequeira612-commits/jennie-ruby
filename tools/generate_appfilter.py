@@ -18,6 +18,7 @@ DRAWABLE_DIR = ROOT / "app/src/main/res/drawable-nodpi"
 OUTPUT = ROOT / "app/src/main/res/xml/appfilter.xml"
 EXPECTED_APPS = 146
 ALIASES = ROOT / "device-app-aliases.tsv"
+RESOURCE_ALIASES = ROOT / "app/src/main/res/values/drawable.xml"
 
 
 def fail(message: str) -> None:
@@ -36,6 +37,24 @@ def main() -> None:
     if len(set(components)) != len(components):
         fail("Duplicate launcher components detected.")
 
+    resource_aliases = {}
+    if RESOURCE_ALIASES.exists():
+        try:
+            resource_root = ET.parse(RESOURCE_ALIASES).getroot()
+        except ET.ParseError as exc:
+            fail(f"Invalid drawable resource aliases XML: {exc}")
+        for item in resource_root.findall("item"):
+            if item.get("type") != "drawable":
+                continue
+            alias_name = item.get("name", "")
+            target = (item.text or "").strip()
+            match = re.fullmatch(r"@drawable/(ruby_[a-z0-9_]+)", target)
+            if not re.fullmatch(r"ruby_[a-z0-9_]+", alias_name) or not match:
+                fail(f"Invalid drawable alias: {alias_name} -> {target}")
+            if alias_name in resource_aliases:
+                fail(f"Duplicate drawable resource alias: {alias_name}")
+            resource_aliases[alias_name] = match.group(1)
+
     for row in rows:
         component = row["component"]
         drawable = row["drawable"]
@@ -45,7 +64,11 @@ def main() -> None:
             fail(f"Invalid drawable name: {drawable}")
         candidates = [DRAWABLE_DIR / f"{drawable}.{ext}" for ext in ("png", "webp", "xml")]
         if not any(path.is_file() for path in candidates):
-            fail(f"Missing artwork for {row['name']}: expected {drawable}.png, .webp or .xml")
+            target = resource_aliases.get(drawable)
+            target_candidates = ([DRAWABLE_DIR / f"{target}.{ext}" for ext in ("png", "webp", "xml")]
+                                 if target else [])
+            if not target or not any(path.is_file() for path in target_candidates):
+                fail(f"Missing artwork for {row['name']}: expected {drawable} or a valid drawable.xml alias")
 
     alias_rows = []
     if ALIASES.exists():
