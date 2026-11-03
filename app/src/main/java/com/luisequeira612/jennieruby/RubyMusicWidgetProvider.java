@@ -1,10 +1,14 @@
 package com.luisequeira612.jennieruby;
-import android.appwidget.*; import android.content.*; import android.widget.RemoteViews;
+import android.app.PendingIntent;
+import android.appwidget.*;
+import android.content.*;
+import android.graphics.Bitmap;
+import android.widget.RemoteViews;
 public class RubyMusicWidgetProvider extends AppWidgetProvider {
  @Override public void onUpdate(Context c,AppWidgetManager m,int[] ids){RubyMediaSessionService.refresh(c);}
  @Override public void onEnabled(Context c){RubyMediaSessionService.refresh(c);}
  @Override public void onReceive(Context c,Intent i){super.onReceive(c,i);if(i!=null&&"com.luisequeira612.jennieruby.MUSIC_REFRESH".equals(i.getAction()))RubyMediaSessionService.refresh(c);}
- static void render(Context c,CharSequence title,CharSequence artist,android.graphics.Bitmap art,boolean playing){
+ static void render(Context c,CharSequence title,CharSequence artist,Bitmap art,boolean playing){
   AppWidgetManager m=AppWidgetManager.getInstance(c);int[] ids=m.getAppWidgetIds(new ComponentName(c,RubyMusicWidgetProvider.class));
   for(int id:ids){RemoteViews v=new RemoteViews(c.getPackageName(),R.layout.widget_ruby_music);
    v.setTextViewText(R.id.music_title,title==null||title.length()==0?"Sin reproducción":title);
