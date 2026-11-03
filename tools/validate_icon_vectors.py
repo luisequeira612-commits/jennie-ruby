@@ -54,8 +54,9 @@ def main() -> None:
 
         paths = root.findall("path")
         path_counts[len(paths)] += 1
-        if len(paths) < 3:
-            errors.append(f"{path.name}: only {len(paths)} path(s); expected background, frame and glyph.")
+        # Two-layer icons are valid: background + glyph; frame/highlight layers are optional.
+        if len(paths) < 2:
+            errors.append(f"{path.name}: only {len(paths)} path(s); expected at least background and glyph.")
         for index, node in enumerate(paths, start=1):
             if not node.get(ANDROID + "pathData", "").strip():
                 errors.append(f"{path.name}: path {index} has no pathData.")
