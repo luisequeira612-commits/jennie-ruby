@@ -71,6 +71,7 @@ def main():
     if len(names)!=len(set(names)): raise RuntimeError("Duplicate drawable names in icons.json")
     subprocess.run(["node",str(ROOT/"tools/extract_stage5_simple_icons.mjs"),str(CATALOG),str(SOURCE_DIR)],check=True,cwd=ROOT)
     renderer=load_renderer(); OUT.mkdir(parents=True,exist_ok=True)
+    sources=json.loads((SOURCE_DIR/"stage5-glyph-sources.json").read_text(encoding="utf-8"))
     MASK_DIR.mkdir(parents=True,exist_ok=True)
     for stale in MASK_DIR.glob("*.png"): stale.unlink()
     for app in apps:
@@ -81,7 +82,8 @@ def main():
             root=ET.parse(source).getroot()
             view_w=float(root.get("{http://schemas.android.com/apk/res/android}viewportWidth","108"))
             view_h=float(root.get("{http://schemas.android.com/apk/res/android}viewportHeight","108"))
-            if app["glyph_type"]=="monogram":
+            resolved_type=sources[app["drawable"]]["resolved_type"]
+            if resolved_type=="monogram":
                 text=app.get("monogram") or app.get("glyph")
                 if not isinstance(text,str) or not text.strip(): raise RuntimeError(f"Missing glyph/monogram text in icons.json: {app['label']}")
                 text=text.strip()
@@ -90,7 +92,7 @@ def main():
                 # Replace only the glyph field; preserve the Ruby surface and border.
                 ImageDraw.Draw(base).rectangle((42,42,150,150),fill="#080304")
                 mask=Image.new("L",(192,192),0); d=ImageDraw.Draw(mask)
-                f,b=fit_text(d,text,ROOT/"app/src/main/res/font/playfair_display.ttf",(42,42,150,150),96,96)
+                f,b=fit_text(d,text,ROOT/"app/src/main/res/font/playfair_display.ttf",(42,42,150,150),116,116)
                 x=(192-(b[2]-b[0]))/2-b[0]; y=(192-(b[3]-b[1]))/2-b[1]
                 d.text((x,y),text,font=f,fill=255)
                 glow=mask.filter(ImageFilter.GaussianBlur(2.0))
@@ -106,7 +108,7 @@ def main():
     for name in names:
         (OUT/(name+".xml")).unlink(missing_ok=True)
     selector=['<?xml version="1.0" encoding="utf-8"?>','<icons>']
-    for a in apps: selector.append(f'    <icon name="{a["label"]}" drawable="{a["drawable"]}" glyph-type="{a["glyph_type"]}" />')
+    for a in apps: selector.append(f'    <icon name="{a["label"]}" drawable="{a["drawable"]}" glyph-type="{sources[a["drawable"]]["resolved_type"]}" />')
     selector.append('</icons>'); xml_text="\n".join(selector)+"\n"
     for p in (ROOT/"app/src/main/res/xml/drawable.xml",ROOT/"app/src/main/assets/drawable.xml"):
         p.parent.mkdir(parents=True,exist_ok=True); p.write_text(xml_text,encoding="utf-8")
@@ -131,12 +133,14 @@ def main():
     (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
     batch1=["Maps","Gmail","Drive","Photos","Calendar","YouTube Music","Facebook","Messenger","Telegram","Snapchat","X","Pinterest","Reddit","Netflix","Disney+","HBO Max","Crunchyroll","Twitch","ChatGPT","Claude"]
     batch2=["Aniyomi","Mihon","Brave","CapCut","Gemini","DeepSeek","Duolingo","Excel","WPS Office","Files de Google","Kodi","VLC","Stremio","Shazam","Picsart","Weverse","Roblox","Termux","AnkiDroid","WeChat"]
-    lotes=["# Lotes de iconos — Etapa 5","","El catálogo maestro es `icons.json`. Cada activity se marca `verified` solo tras contrastar el manifiesto instalado; las candidatas no contrastadas quedan `estimated`.","","## Lote 1 — 20 aplicaciones",""," "+", ".join(batch1),"","## Lote 2 — 20 aplicaciones",""," "+", ".join(batch2),"","Duolingo incluye la activity principal `com.duolingo/com.duolingo.app.LoginActivity` y actividades candidatas adicionales; todas permanecen `estimated` hasta contrastarlas en el dispositivo.","","La hoja de contacto se genera desde los diez PNG de Etapa 1, cinco PNG del dock y todos los PNG del catálogo. El generador de Etapa 1, sus diez PNG aprobados, el dock, los widgets y `docs/ESTILO.md` permanecen protegidos."]
+    batch3=["Memrise","Drops","HelloTalk","Falou","Ling","LingQ","LangReactor","Reelang","Write Greek","Moon+ Reader","ReadEra","Lector de PDF","LNReader","Shosetsu","bilibili","CloudStream","Inkaplay","Lark Player","MXL TV","Xuper","Rave","Mnet Plus","Songstats","Soundcharts","SportzX","GeeSports","Lean Remote","LGRemote"]
+    batch4=["rednote","NGL","Zangi","Labalabi For WhatsApp","SocialAut","Sticker.ly","StickerVibe","Reface","Viggle AI","HoYoLAB","MCPEDL","MU Fan","Duskwood","Blackjack Trainer","AHA Games","Meu Tarot","Windy","Moovit","Google Earth","DeepStateMap","PedidosYa","Mi Claro","Mi Tigo","Tor Browser","Urban VPN"]
+    lotes=["# Lotes de iconos — Etapa 5","","El catálogo maestro es `icons.json`. Cada activity se marca `verified` solo tras contrastar el manifiesto instalado; las candidatas no contrastadas quedan `estimated`.","","## Lote 1 — 20 aplicaciones",""," "+", ".join(batch1),"","## Lote 2 — 20 aplicaciones",""," "+", ".join(batch2),"","## Lote 3 — correcciones solicitadas",""," "+", ".join(batch3),"","## Lote 4 — 25 de 28 apps disponibles",""," "+", ".join(batch4),"","No se añadieron Palm Store (com.transsnet.store), TECNO ID (tech.palm.id) ni Hola (com.talpa.hibrowser): no existen en el catálogo del dispositivo ni en appfilter.xml. Se requiere confirmar los paquetes instalados antes de inventar activities.","","Duolingo incluye la activity principal `com.duolingo/com.duolingo.app.LoginActivity` y actividades candidatas adicionales; todas permanecen `estimated` hasta contrastarlas en el dispositivo.","","La hoja de contacto se genera desde los diez PNG de Etapa 1, cinco PNG del dock y todos los PNG del catálogo. El generador de Etapa 1, sus diez PNG aprobados, el dock, los widgets y `docs/ESTILO.md` permanecen protegidos."]
     (ROOT/"docs/LOTES.md").write_text("\n".join(lotes)+"\n",encoding="utf-8")
     stage1=["ruby_youtube","ruby_spotify","ruby_tiktok","ruby_instagram","ruby_whatsapp","ruby_google","ruby_google_play_store","ruby_configuracion","ruby_galeria","ruby_camara"]
     dock=["ruby_dock_telefono_art","ruby_dock_contactos_art","ruby_dock_mensajes_art","ruby_dock_chrome_art","ruby_dock_cajon_apps_art"]
     labels=["YouTube","Spotify","TikTok","Instagram","WhatsApp","Google","Play Store","Ajustes","Galería","Cámara","Teléfono","Contactos","Mensajes","Chrome","Cajón apps"]+[a["label"] for a in apps]
-    types=["Etapa 1"]*10+["Dock"]*5+[a["glyph_type"] for a in apps]
+    types=["marca"]*7+["genérico"]*3+["genérico"]*3+["marca"]+["genérico"]*2+[{"brand":"marca","generic":"genérico","monogram":"monograma"}[sources[a["drawable"]]["resolved_type"]] for a in apps]
     all_names=stage1+dock+names
     cell_w,cell_h,cols=400,450,5; rows=(len(all_names)+cols-1)//cols
     sheet=Image.new("RGB",(cols*cell_w,rows*cell_h+100),"#10070A"); draw=ImageDraw.Draw(sheet)

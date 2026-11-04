@@ -45,7 +45,7 @@
       "drawable": "ruby_calendario",
       "glyph": "googlecalendar",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.google.android.apps.youtube.music",
@@ -99,7 +99,7 @@
       "drawable": "ruby_x",
       "glyph": "x",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.pinterest",
@@ -173,7 +173,7 @@
       "drawable": "ruby_chatgpt",
       "glyph": "chatgpt-knot-custom",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 9.5 0 C 12.5 0 14.5 2 14.5 5 L 14.5 8 L 17.5 6 C 19.5 5 21.5 6 21.5 9 C 21.5 11 20.5 12 18.5 13 L 15.5 15 L 18.5 17 C 20.5 18 20.5 20 18.5 22 C 16.5 24 14.5 23 13.5 21 L 11.5 18 L 9.5 21 C 8.5 23 5.5 23 4.5 21 C 2.5 19 3.5 17 5.5 16 L 8.5 14 L 5.5 12 C 3.5 11 2.5 8 4.5 6 C 6.5 4 8.5 5 9.5 7 L 11.5 10 L 11.5 6 C 11.5 3 10.5 2 9.5 2 Z M 9.5 6 L 7.5 9 L 10.5 11 L 13.5 9 L 13.5 6 C 13.5 4 11.5 3 9.5 3 Z M 7.5 12 L 4.5 14 C 2.5 15 2.5 18 4.5 19 C 5.5 20 7.5 20 8.5 18 L 10.5 15 Z M 12.5 12 L 14.5 15 L 17.5 13 C 19.5 12 19.5 10 18.5 9 C 17.5 8 15.5 8 14.5 9 Z"
     },
     {
@@ -183,7 +183,7 @@
       "drawable": "ruby_claude",
       "glyph": "claude",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "xyz.jmir.tachiyomi.mi",
@@ -192,7 +192,7 @@
       "drawable": "ruby_aniyomi",
       "glyph": "aniyomi-reader",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 3 3 L 11 3 L 11 4.5 L 4.5 4.5 L 4.5 20 L 11 20 L 11 21.5 L 3 21.5 Z M 13 3 L 21 3 L 21 21.5 L 13 21.5 Z M 15 5 L 19 5 L 19 9 L 15 9 Z M 15 11 L 19 11 L 19 19 L 15 19 Z M 5.5 6 L 9.5 6 L 9.5 8 L 5.5 8 Z M 5.5 10 L 9.5 10 L 9.5 12 L 5.5 12 Z M 5.5 14 L 9.5 14 L 9.5 18 L 5.5 18 Z"
     },
     {
@@ -211,7 +211,7 @@
       "drawable": "ruby_brave",
       "glyph": "brave",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.lemon.lvoverseas",
@@ -220,7 +220,7 @@
       "drawable": "ruby_capcut",
       "glyph": "capcut-mark",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 4 4 C 6 2 9 3 10 5 L 20 19 C 21 21 18 23 16 21 L 4 7 C 3 6 3 5 4 4 Z M 20 4 C 18 2 15 3 14 5 L 4 19 C 3 21 6 23 8 21 L 20 7 C 21 6 21 5 20 4 Z M 8 10 L 16 10 L 18 13 L 6 13 Z"
     },
     {
@@ -230,7 +230,7 @@
       "drawable": "ruby_gemini",
       "glyph": "googlegemini",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.deepseek.chat",
@@ -427,7 +427,7 @@
       "drawable": "ruby_ankidroid",
       "glyph": "anki-flashcards",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 3 5 C 3 3 4 2 6 2 L 17 2 C 19 2 20 3 20 5 L 20 17 C 20 19 19 20 17 20 L 6 20 C 4 20 3 19 3 17 Z M 7 6 L 16 6 L 16 8 L 7 8 Z M 7 10 L 16 10 L 16 12 L 7 12 Z M 7 14 L 12 14 L 12 16 L 7 16 Z M 16 15 L 18 15 L 18 17 L 16 17 Z M 18 17 L 21 17 L 21 20 L 18 20 Z"
     },
     {
@@ -438,6 +438,543 @@
       "glyph": "wechat",
       "glyph_type": "brand",
       "activity_status": "estimated"
+    },
+    {
+      "package": "com.memrise.android.memrisecompanion",
+      "activity": "com.memrise.android.memrisecompanion.ui.activity.LauncherActivity",
+      "label": "Memrise",
+      "drawable": "ruby_memrise",
+      "glyph": "memrise",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 C 7 2 3 6 3 11 C 3 16 7 22 12 22 C 17 22 21 16 21 11 C 21 6 17 2 12 2 Z M 12 6 L 14 10 L 18 11 L 14 14 L 12 18 L 10 14 L 6 11 L 10 10 Z"
+    },
+    {
+      "package": "com.languagedrops.drops.international",
+      "activity": "com.languagedrops.drops.international.MainActivity",
+      "label": "Drops",
+      "drawable": "ruby_drops",
+      "glyph": "drops",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 C 8 7 5 10 5 14 C 5 18 8 22 12 22 C 16 22 19 18 19 14 C 19 10 16 7 12 2 Z"
+    },
+    {
+      "package": "com.hellotalk",
+      "activity": "com.hellotalk.lib.main.launch.ui.LaunchActivity",
+      "label": "HelloTalk",
+      "drawable": "ruby_hellotalk",
+      "glyph": "hellotalk",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 4 L 21 4 L 21 17 L 13 17 L 8 21 L 8 17 L 3 17 Z M 7 9 L 17 9 M 7 12 L 14 12"
+    },
+    {
+      "package": "com.moymer.falou",
+      "activity": "com.moymer.falou.flow.onboarding.LauncherActivity",
+      "label": "Falou",
+      "drawable": "ruby_falou",
+      "glyph": "falou-microphone",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 8 2 C 8 1 16 1 16 2 L 16 12 C 16 17 8 17 8 12 Z M 5 9 L 7 9 L 7 12 C 7 19 10 21 12 21 C 15 21 17 19 17 12 L 17 9 L 19 9 L 19 12 C 19 20 15 23 13 23 L 13 24 L 17 24 L 17 26 L 7 26 L 7 24 L 11 24 L 11 23 C 8 23 5 20 5 12 Z"
+    },
+    {
+      "package": "com.simyasolutions.ling.in",
+      "activity": "com.simyasolutions.ling.SplashActivity",
+      "label": "Ling",
+      "drawable": "ruby_ling",
+      "glyph": "ling-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 4 L 20 4 L 20 20 L 4 20 Z M 8 8 L 16 8 L 16 10 L 8 10 Z M 8 12 L 16 12 L 16 14 L 8 14 Z",
+      "monogram": "L"
+    },
+    {
+      "package": "com.linguist",
+      "activity": "com.lingq.ui.MainActivity",
+      "label": "LingQ",
+      "drawable": "ruby_lingq",
+      "glyph": "lingq-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 3 L 20 11 L 12 21 L 4 11 Z M 9 11 L 15 11 L 15 13 L 9 13 Z",
+      "monogram": "Q"
+    },
+    {
+      "package": "org.chromium.webapk.afd9c65537ad8a426_v2",
+      "activity": "org.chromium.webapk.shell_apk.h2o.H2OOpaqueMainActivity",
+      "label": "LangReactor",
+      "drawable": "ruby_langreactor",
+      "glyph": "langreactor-chat",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M2 5 Q2 2 5 2 H15 Q18 2 18 5 V11 Q18 14 15 14 H9 L5 18 V14 H5 Q2 14 2 11 Z M9 10 Q9 7 12 7 H20 Q23 7 23 10 V16 Q23 19 20 19 H17 V22 L13 19 H12 Q9 19 9 16 Z"
+    },
+    {
+      "package": "com.reelang.pt",
+      "activity": "com.reelang.pt.MainActivity",
+      "label": "Reelang",
+      "drawable": "ruby_reelang",
+      "glyph": "reelang-clapper",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 3 H 21 V 21 H 3 Z M 3 8 H 21 V 10 H 3 Z M 6 4 V 6 H 9 V 4 Z M 13 4 V 6 H 16 V 4 Z M 6 13 V 16 H 9 V 13 Z M 14 13 V 16 H 17 V 13 Z"
+    },
+    {
+      "package": "com.jernung.writeit.ell",
+      "activity": "com.jernung.writeit.android.MainActivity",
+      "label": "Write Greek",
+      "drawable": "ruby_write_greek",
+      "glyph": "writegreek-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 4 L 20 4 L 20 20 L 4 20 Z M 8 8 L 16 8 L 16 10 L 8 10 Z M 8 10 L 10 10 L 10 16 L 8 16 Z M 10 14 L 16 14 L 16 16 L 10 16 Z",
+      "monogram": "Ω"
+    },
+    {
+      "package": "com.flyersoft.moonreader",
+      "activity": "com.flyersoft.moonreader.ActivityMain",
+      "label": "Moon+ Reader",
+      "drawable": "ruby_moon_reader",
+      "glyph": "moonreader",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 15 2 C 10 4 9 10 12 14 C 15 18 19 17 22 14 C 20 21 10 24 5 18 C 0 12 5 3 15 2 Z"
+    },
+    {
+      "package": "org.readera",
+      "activity": "com.readera.MainActivity",
+      "label": "ReadEra",
+      "drawable": "ruby_readera",
+      "glyph": "readera-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 3 L 20 3 L 20 21 L 4 21 Z M 7 7 L 17 7 M 7 10 L 17 10 M 7 13 L 17 13 M 7 16 L 14 16",
+      "monogram": "R"
+    },
+    {
+      "package": "pdf.pdfreader.viewer.editor.free",
+      "activity": "pdf.pdfreader.viewer.editor.free.ReaderLauncherBridgeActivity",
+      "label": "Lector de PDF",
+      "drawable": "ruby_lector_de_pdf",
+      "glyph": "pdfreader",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 5 2 L 16 2 L 21 7 L 21 22 L 5 22 Z M 16 2 L 16 7 L 21 7 Z M 18 13 L 8 13 L 8 11 L 18 11 Z M 18 17 L 8 17 L 8 15 L 18 15 Z"
+    },
+    {
+      "package": "com.rajarsheechatterjee.LNReader",
+      "activity": "com.rajarsheechatterjee.LNReader.MainActivity",
+      "label": "LNReader",
+      "drawable": "ruby_lnreader",
+      "glyph": "lnreader-book",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 2 4 Q 7 1 12 5 Q 17 1 22 4 V 21 Q 17 18 12 22 Q 7 18 2 21 Z M 12 5 V 22 M 4 8 V 17 H 9 V 8 Z M 15 8 V 17 H 20 V 8 Z"
+    },
+    {
+      "package": "com.github.doomsdayrs.apps.shosetsu.debug",
+      "activity": "app.shosetsu.android.activity.MainActivity",
+      "label": "Shosetsu",
+      "drawable": "ruby_shosetsu",
+      "glyph": "shosetsu-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 3 L 20 3 L 20 21 L 4 21 Z M 7 7 L 17 7 L 17 9 L 7 9 Z M 7 11 L 17 11 L 17 13 L 7 13 Z M 7 15 L 15 15 L 15 17 L 7 17 Z",
+      "monogram": "S"
+    },
+    {
+      "package": "com.bilibili.app.in",
+      "activity": "tv.danmaku.bili.MainActivityV2",
+      "label": "bilibili",
+      "drawable": "ruby_bilibili",
+      "glyph": "bilibili",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 7 L 21 7 L 21 19 L 3 19 Z M 8 3 L 11 7 M 16 3 L 13 7 M 8 11 L 8 15 M 16 11 L 16 15"
+    },
+    {
+      "package": "com.lagradost.cloudstream3",
+      "activity": "com.lagradost.cloudstream3.ui.account.AccountSelectActivity",
+      "label": "CloudStream",
+      "drawable": "ruby_cloudstream",
+      "glyph": "cloudstream-play",
+      "glyph_type": "generic",
+      "activity_status": "verified",
+      "fallback_path": "M6 19 H18 Q23 19 22 14 Q21 11 18 11 Q17 5 11 5 Q6 5 5 10 Q1 10 2 15 Q2 19 6 19 Z M10 10 L17 14 L10 18 Z"
+    },
+    {
+      "package": "com.inkamedia.inkaplay",
+      "activity": "com.inkamedia.inkaplay.presentation.main_activity.MainActivity",
+      "label": "Inkaplay",
+      "drawable": "ruby_inkaplay",
+      "glyph": "inkaplay-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 3 L 20 3 L 20 21 L 4 21 Z M 9 7 L 17 12 L 9 17 Z M 6 6 L 6 18",
+      "monogram": "Ip"
+    },
+    {
+      "package": "com.dywx.larkplayer",
+      "activity": "com.dywx.larkplayer.main.MainActivity",
+      "label": "Lark Player",
+      "drawable": "ruby_lark_player",
+      "glyph": "lark",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 3 L 18 7 L 18 17 L 12 21 L 6 17 L 6 7 Z M 10 8 L 15 12 L 10 16 Z"
+    },
+    {
+      "package": "tv.mxliptv.app",
+      "activity": "tv.mxliptv.app.activities.InitActivity",
+      "label": "MXL TV",
+      "drawable": "ruby_mxl_tv",
+      "glyph": "mxltv",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 7 H 21 V 20 H 3 Z M 7 7 L 4 2 M 17 7 L 20 2 M 6 10 V 17 H 18 V 10 Z M 8 12 V 14 H 10 V 12 Z M 14 12 V 14 H 16 V 12 Z"
+    },
+    {
+      "package": "com.msandroid.mobile",
+      "activity": "com.mobile.brasiltv.activity.SplashAty",
+      "label": "Xuper",
+      "drawable": "ruby_xuper",
+      "glyph": "xuper-serif",
+      "glyph_type": "monogram",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 4 L 20 4 L 20 20 L 4 20 Z M 7 7 L 17 17 M 17 7 L 7 17",
+      "monogram": "Xu"
+    },
+    {
+      "package": "com.wemesh.android",
+      "activity": "com.wemesh.android.rearch.RaveActivity",
+      "label": "Rave",
+      "drawable": "ruby_rave",
+      "glyph": "rave",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 L 22 12 L 12 22 L 2 12 Z M 9 8 L 17 12 L 9 16 Z"
+    },
+    {
+      "package": "world.mnetplus",
+      "activity": "world.mnetplus.MainActivity",
+      "label": "Mnet Plus",
+      "drawable": "ruby_mnet_plus",
+      "glyph": "mnet",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 20 L 4 4 L 12 13 L 20 4 L 20 20"
+    },
+    {
+      "package": "com.trackstats",
+      "activity": "com.trackstats.MainActivity",
+      "label": "Songstats",
+      "drawable": "ruby_songstats",
+      "glyph": "songstats",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 18 L 8 18 L 8 11 L 4 11 Z M 10 18 L 14 18 L 14 6 L 10 6 Z M 16 18 L 20 18 L 20 3 L 16 3 Z"
+    },
+    {
+      "package": "com.soundcharts.app",
+      "activity": "com.soundcharts.app.MainActivity",
+      "label": "Soundcharts",
+      "drawable": "ruby_soundcharts",
+      "glyph": "soundcharts-wave",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 1 11 C 3 3 5 3 7 11 S 11 19 13 11 S 17 3 19 11 S 23 19 25 11 L 25 15 C 23 23 21 23 19 15 S 15 7 13 15 S 9 23 7 15 S 3 7 1 15 Z"
+    },
+    {
+      "package": "com.sportzx.live",
+      "activity": "com.sportzx.live.activities.SplashActivity",
+      "label": "SportzX",
+      "drawable": "ruby_sportzx",
+      "glyph": "sportzx-trophy",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M7 2 H17 V5 L15 8 H9 L7 5 Z M9 8 H15 V13 L19 17 H5 L9 13 Z M3 17 H21 V21 H3 Z M12 2 V8"
+    },
+    {
+      "package": "com.live.geesports",
+      "activity": "com.live.geesports.activities.SplashActivity",
+      "label": "GeeSports",
+      "drawable": "ruby_geesports",
+      "glyph": "geesports-ball",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M12 2 L18 6 L16 13 H8 L6 6 Z M6 6 L2 10 L4 19 L9 22 L12 17 L15 22 L20 19 L22 10 L18 6 M8 13 L4 19 M16 13 L20 19"
+    },
+    {
+      "package": "co.leanremote.universalremotecontrol.remotecontrol",
+      "activity": "co.leanremote.universalremotecontrol.remotecontrol.SplashActivity",
+      "label": "Lean Remote",
+      "drawable": "ruby_lean_remote",
+      "glyph": "leanremote-control",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M7 1 Q4 1 4 4 V22 Q4 25 7 25 H17 Q20 25 20 22 V4 Q20 1 17 1 Z M12 6 A5 5 0 1 0 12 16 A5 5 0 1 0 12 6 Z M12 6 V16 M7 11 H17 M8 19 H10 V21 H8 Z M14 19 H16 V21 H14 Z"
+    },
+    {
+      "package": "com.lgtvremote",
+      "activity": "com.nwt.lgremote.ui.MainActivity",
+      "label": "LGRemote",
+      "drawable": "ruby_lgremote",
+      "glyph": "lgremote-tv",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 2 4 Q 2 2 4 2 H 20 Q 22 2 22 4 V 17 Q 22 19 20 19 H 4 Q 2 19 2 17 Z M 5 5 V 16 H 19 V 5 Z M 8 7 V 9 H 10 V 7 Z M 14 7 V 9 H 16 V 7 Z M 9 22 H 15 M 12 19 V 22"
+    },
+    {
+      "package": "com.xingin.xhs",
+      "activity": "com.xingin.xhs.index.v2.IndexActivityV2",
+      "label": "rednote",
+      "drawable": "ruby_rednote",
+      "glyph": "rednote-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 5 Q 3 3 5 3 H 19 Q 21 3 21 5 V 19 Q 21 21 19 21 H 5 Q 3 21 3 19 Z M 7 9 C 7 6 17 6 17 9 V 16 C 17 19 7 19 7 16 Z M 18 5 V 7 H 20 V 5 Z"
+    },
+    {
+      "package": "com.nglreactnative",
+      "activity": "com.nglreactnative.MainActivity",
+      "label": "NGL",
+      "drawable": "ruby_ngl",
+      "glyph": "ngl-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M3 4 Q3 2 6 2 H18 Q21 2 21 5 V15 Q21 18 18 18 H10 L5 22 V18 H6 Q3 18 3 15 Z M8 9 H16 M8 13 H13"
+    },
+    {
+      "package": "com.beint.zangi",
+      "activity": "com.beint.project.MainActivity",
+      "label": "Zangi",
+      "drawable": "ruby_zangi",
+      "glyph": "zangi-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M5 2 H19 V7 H5 Z M8 7 V13 Q8 18 12 18 Q16 18 16 13 V7 M12 18 V22 M8 22 H16"
+    },
+    {
+      "package": "labalabi.whatsapp",
+      "activity": "cliker.whatsapp.SettingActivity",
+      "label": "Labalabi For WhatsApp",
+      "drawable": "ruby_labalabi_for_whatsapp",
+      "glyph": "labalabi-for-whatsapp-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M3 4 Q3 2 5 2 H19 Q21 2 21 4 V18 Q21 20 19 20 H5 Q3 20 3 18 Z M7 8 Q12 3 17 8 M7 14 Q12 19 17 14"
+    },
+    {
+      "package": "com.avilap.socialaut",
+      "activity": "com.avilap.socialaut.MainActivity",
+      "label": "SocialAut",
+      "drawable": "ruby_socialaut",
+      "glyph": "socialaut-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M4 4 L12 2 L20 4 V12 Q20 18 12 22 Q4 18 4 12 Z M12 7 V16 M8 11 H16"
+    },
+    {
+      "package": "com.snowcorp.stickerly.android",
+      "activity": "com.snowcorp.stickerly.android.LauncherEntryActivity",
+      "label": "Sticker.ly",
+      "drawable": "ruby_sticker_ly",
+      "glyph": "sticker-ly-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M3 3 H21 V21 H3 Z M3 3 L16 3 L21 8 M7 8 Q12 4 17 8 V17 Q12 21 7 17 Z"
+    },
+    {
+      "package": "com.stickers.stickermaker.aistickerapp",
+      "activity": "com.zhiqiaos.sticker.activity.SplashActivity",
+      "label": "StickerVibe",
+      "drawable": "ruby_stickervibe",
+      "glyph": "stickervibe-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M4 4 H20 V20 H4 Z M7 7 L17 7 L17 17 L7 17 Z M18 2 L20 5 L23 6 L20 8 L19 11 L17 8 L14 7 L17 5 Z"
+    },
+    {
+      "package": "video.reface.app",
+      "activity": "video.reface.app.start.MainActivity",
+      "label": "Reface",
+      "drawable": "ruby_reface",
+      "glyph": "reface-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M13 2 Q21 4 19 12 Q17 19 7 22 L4 18 Q12 16 13 10 Q14 6 9 5 Z M7 8 A2 2 0 1 0 7 12 A2 2 0 1 0 7 8"
+    },
+    {
+      "package": "com.warpengine.viggle",
+      "activity": "com.warpengine.viggle.MainActivity",
+      "label": "Viggle AI",
+      "drawable": "ruby_viggle_ai",
+      "glyph": "viggle-ai-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M12 2 L15 9 L22 7 L18 13 L22 19 L14 17 L10 23 L9 15 L2 13 L9 10 Z"
+    },
+    {
+      "package": "com.mihoyo.hoyolab",
+      "activity": "com.mihoyo.hoyolab.splash.splash.HoYoSplashActivity",
+      "label": "HoYoLAB",
+      "drawable": "ruby_hoyolab",
+      "glyph": "hoyolab-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M12 2 L21 7 V17 L12 22 L3 17 V7 Z M12 2 V22 M3 7 L21 17 M21 7 L3 17"
+    },
+    {
+      "package": "com.overwolf.mcpedl",
+      "activity": "com.overwolf.mcpedl.MainActivity",
+      "label": "MCPEDL",
+      "drawable": "ruby_mcpedl",
+      "glyph": "mcpedl-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M3 20 L8 4 L12 7 L16 4 L21 20 L17 18 L14 20 L10 18 L7 20 Z M8 4 L16 20"
+    },
+    {
+      "package": "com.choicely.nextmiss",
+      "activity": "com.choicely.sdk.activity.splash.SplashActivity",
+      "label": "MU Fan",
+      "drawable": "ruby_mu_fan",
+      "glyph": "mu-fan-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 3 Q 20 3 21 11 L 12 21 L 3 11 Q 4 3 12 3 Z M 7 8 V 11 H 10 V 8 Z M 14 8 V 11 H 17 V 8 Z M 10 14 V 17 H 14 V 14 Z"
+    },
+    {
+      "package": "com.everbytestudio.interactive.text.chat.story.rpg.cyoa.duskwood",
+      "activity": "com.unity3d.player.UnityPlayerActivity",
+      "label": "Duskwood",
+      "drawable": "ruby_duskwood",
+      "glyph": "duskwood-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M12 2 L20 6 V14 Q17 20 12 22 Q7 20 4 14 V6 Z M12 6 L15 12 L12 18 L9 12 Z"
+    },
+    {
+      "package": "blackjack.trainer.training",
+      "activity": "com.blackjacktrainer.MainActivity",
+      "label": "Blackjack Trainer",
+      "drawable": "ruby_blackjack_trainer",
+      "glyph": "blackjack-trainer-custom",
+      "glyph_type": "generic",
+      "activity_status": "verified",
+      "fallback_path": "M 4 3 H 20 V 21 H 4 Z M 7 6 V 18 H 17 V 6 Z M 8 8 V 10 H 10 V 8 Z M 14 14 V 16 H 16 V 14 Z"
+    },
+    {
+      "package": "net.bat.store",
+      "activity": "net.bat.store.DefaultIconAliasActivity",
+      "label": "AHA Games",
+      "drawable": "ruby_aha_games",
+      "glyph": "aha-games-custom",
+      "glyph_type": "generic",
+      "activity_status": "verified",
+      "fallback_path": "M 3 7 Q 3 3 7 3 H 17 Q 21 3 21 7 V 17 Q 21 21 17 21 H 7 Q 3 21 3 17 Z M 6 10 V 14 H 10 V 10 Z M 14 8 V 10 H 16 V 8 Z M 17 13 V 15 H 19 V 13 Z"
+    },
+    {
+      "package": "com.nowallsanalytics.tarot_guide",
+      "activity": "com.nowallsanalytics.tarot_guide.MainActivity",
+      "label": "Meu Tarot",
+      "drawable": "ruby_meu_tarot",
+      "glyph": "meu-tarot-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 2 H 20 V 22 H 4 Z M 7 8 V 16 H 17 V 8 Z M 8 4 V 6 H 10 V 4 Z M 14 4 V 6 H 16 V 4 Z M 10 10 L 12 12 L 14 10 L 12 8 Z"
+    },
+    {
+      "package": "com.windyty.android",
+      "activity": "com.windyty.android.Standard",
+      "label": "Windy",
+      "drawable": "ruby_windy",
+      "glyph": "windy-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M2 8 Q7 2 12 8 T22 8 M2 13 Q7 7 12 13 T22 13 M2 18 Q7 12 12 18 T22 18"
+    },
+    {
+      "package": "com.tranzmate",
+      "activity": "com.moovit.app.home.HomeActivity",
+      "label": "Moovit",
+      "drawable": "ruby_moovit",
+      "glyph": "moovit-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M3 3 H21 V21 H3 Z M7 7 H17 V13 H7 Z M9 13 V17 H15 V13"
+    },
+    {
+      "package": "com.google.earth",
+      "activity": "com.google.android.apps.earth.flutter.EarthFlutterActivity",
+      "label": "Google Earth",
+      "drawable": "ruby_google_earth",
+      "glyph": "google-earth-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M12 2 A10 10 0 1 0 12 22 A10 10 0 1 0 12 2 Z M2 12 H22 M12 2 Q6 12 12 22 Q18 12 12 2"
+    },
+    {
+      "package": "ua.com.deepstatemap",
+      "activity": "ua.com.deepstatemap.MainActivity",
+      "label": "DeepStateMap",
+      "drawable": "ruby_deepstatemap",
+      "glyph": "deepstatemap-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 Q 20 2 20 10 Q 20 16 12 22 Q 4 16 4 10 Q 4 2 12 2 Z M 8 9 V 15 H 10 V 9 Z M 14 9 V 15 H 16 V 9 Z M 10 11 H 14"
+    },
+    {
+      "package": "com.pedidosya",
+      "activity": "com.pedidosya.main.access.initialization.SplashActivity",
+      "label": "PedidosYa",
+      "drawable": "ruby_pedidosya",
+      "glyph": "pedidosya-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 8 H 20 L 22 21 H 2 Z M 7 8 V 6 C 7 2 17 2 17 6 V 8 M 8 12 V 18 H 16 V 12 Z M 10 14 V 16 H 12 V 14 Z M 14 14 V 16 H 16 V 14 Z"
+    },
+    {
+      "package": "com.claro.miclaro",
+      "activity": "com.claro.app.view.SplashKTVC",
+      "label": "Mi Claro",
+      "drawable": "ruby_mi_claro",
+      "glyph": "mi-claro-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M12 2 Q22 2 22 12 Q22 22 12 22 Q2 22 2 12 Q2 2 12 2 Z M7 12 Q12 5 17 12 Q12 19 7 12"
+    },
+    {
+      "package": "ni.telefonica.mimovistar",
+      "activity": "ni.telefonica.mimovistar.MainActivity",
+      "label": "Mi Tigo",
+      "drawable": "ruby_mi_tigo",
+      "glyph": "mi-tigo-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M4 3 H20 L22 21 H2 Z M7 7 H17 V17 H7 Z M9 10 H15"
+    },
+    {
+      "package": "org.torproject.torbrowser",
+      "activity": "org.torproject.torbrowser.App",
+      "label": "Tor Browser",
+      "drawable": "ruby_tor_browser",
+      "glyph": "tor-browser-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 C 18 2 22 7 22 13 C 22 18 18 22 12 22 C 6 22 2 18 2 13 C 2 7 6 2 12 2 Z M 7 8 C 9 5 15 5 17 8 C 19 11 17 17 12 19 C 7 17 5 11 7 8 Z M 10 9 C 11 7 13 7 14 9 C 16 12 14 15 12 16 C 10 15 8 12 10 9 Z"
+    },
+    {
+      "package": "com.urbanvpn.android",
+      "activity": "com.urbanvpn.android.ui.payment.PaymentActivity",
+      "label": "Urban VPN",
+      "drawable": "ruby_urban_vpn",
+      "glyph": "urban-vpn-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 L 21 6 V 13 Q 19 20 12 22 Q 5 20 3 13 V 6 Z M 8 9 V 15 H 16 V 9 Z M 10 11 V 13 H 12 V 11 Z M 14 11 V 13 H 16 V 11 Z"
     }
   ]
 }
