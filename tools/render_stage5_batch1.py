@@ -122,6 +122,8 @@ def main():
             candidate_status=candidate.get("status","estimated")
             if candidate_status not in {"verified","estimated"}: raise RuntimeError(f"Invalid candidate activity_status: {a['label']}/{candidate.get('activity')}")
             activity=candidate["activity"]
+            if activity==a["activity"]:
+                continue
             lines.append(f'| {a["label"]} (candidata) | {a["package"]} | {activity} | {candidate_status} |')
             if candidate_status=="estimated": pending.append(f'{a["label"]}: {a["package"]}/{activity} — candidata estimada')
     (ROOT/"docs/ACTIVITIES.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
