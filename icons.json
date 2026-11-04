@@ -519,7 +519,7 @@
       "glyph": "reelang-clapper",
       "glyph_type": "generic",
       "activity_status": "estimated",
-      "fallback_path": "M3 3 H21 V21 H3 Z M3 7 H21 M7 3 V7 M11 3 V7 M15 3 V7 M19 3 V7 M7 11 L16 16 L7 21 Z"
+      "fallback_path": "M 3 3 H 21 V 21 H 3 Z M 3 8 H 21 V 10 H 3 Z M 6 4 V 6 H 9 V 4 Z M 13 4 V 6 H 16 V 4 Z M 6 13 V 16 H 9 V 13 Z M 14 13 V 16 H 17 V 13 Z"
     },
     {
       "package": "com.jernung.writeit.ell",
