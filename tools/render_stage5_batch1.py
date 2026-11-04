@@ -140,7 +140,7 @@ def main():
     stage1=["ruby_youtube","ruby_spotify","ruby_tiktok","ruby_instagram","ruby_whatsapp","ruby_google","ruby_google_play_store","ruby_configuracion","ruby_galeria","ruby_camara"]
     dock=["ruby_dock_telefono_art","ruby_dock_contactos_art","ruby_dock_mensajes_art","ruby_dock_chrome_art","ruby_dock_cajon_apps_art"]
     labels=["YouTube","Spotify","TikTok","Instagram","WhatsApp","Google","Play Store","Ajustes","Galería","Cámara","Teléfono","Contactos","Mensajes","Chrome","Cajón apps"]+[a["label"] for a in apps]
-    types=["Etapa 1"]*10+["Dock"]*5+[{"brand":"marca","generic":"genérico","monogram":"monograma"}[sources[a["drawable"]]["resolved_type"]] for a in apps]
+    types=["marca"]*7+["genérico"]*3+["genérico"]*3+["marca"]+["genérico"]*2+[{"brand":"marca","generic":"genérico","monogram":"monograma"}[sources[a["drawable"]]["resolved_type"]] for a in apps]
     all_names=stage1+dock+names
     cell_w,cell_h,cols=400,450,5; rows=(len(all_names)+cols-1)//cols
     sheet=Image.new("RGB",(cols*cell_w,rows*cell_h+100),"#10070A"); draw=ImageDraw.Draw(sheet)
