@@ -38,7 +38,9 @@ def normalize_small_glyph(target, mask, renderer):
     if not bbox: raise RuntimeError("Empty glyph mask")
     x0,y0,x1,y1=bbox; w=x1-x0; h=y1-y0
     major=max(w,h)/192; minor=min(w,h)/192
-    if .45<=major<=.65 and minor>=.30:
+    cx=(x0+x1-1)/2; cy=(y0+y1-1)/2
+    centered=abs(cx-95.5)<=5.76 and abs(cy-95.5)<=5.76
+    if .45<=major<=.65 and minor>=.30 and centered:
         return mask
     crop=mask.crop(bbox)
     scale=124/max(w,h)
