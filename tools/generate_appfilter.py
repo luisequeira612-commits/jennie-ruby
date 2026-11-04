@@ -7,6 +7,7 @@ have its own drawable resource before the mapping is written.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -31,7 +32,26 @@ def main() -> None:
         rows = list(csv.DictReader(stream, delimiter="\t"))
 
     if len(rows) != EXPECTED_APPS:
-        fail(f"Expected {EXPECTED_APPS} catalog entries; found {len(rows)}.")
+        fail(f"Expected {EXPECTED_APPS} base catalog entries; found {len(rows)}.")
+
+    # Stage 5 batch entries are authoritative in icons.json. Existing launcher
+    # components are updated in place; missing ones are appended without duplicating.
+    stage5_path = ROOT / "icons.json"
+    if stage5_path.exists():
+        try:
+            stage5_apps = json.loads(stage5_path.read_text(encoding="utf-8"))["apps"]
+        except (OSError, KeyError, json.JSONDecodeError) as exc:
+            fail(f"Invalid Stage 5 icon catalog: {exc}")
+        for app in stage5_apps:
+            package = app["package"]
+            component = f"{package}/{app['activity']}"
+            existing = next((row for row in rows if row["component"].split("/", 1)[0] == package), None)
+            if existing is None:
+                rows.append({"name": app["label"], "component": component, "drawable": app["drawable"]})
+            else:
+                existing["name"] = app["label"]
+                existing["component"] = component
+                existing["drawable"] = app["drawable"]
 
     components = [row["component"] for row in rows]
     if len(set(components)) != len(components):
@@ -84,6 +104,9 @@ def main() -> None:
             fail(f"Alias references unknown drawable: {row['drawable']}")
 
     root = ET.Element("resources")
+    for layer, drawable in (("iconback", "ruby_iconback"), ("iconmask", "ruby_iconmask"), ("iconupon", "ruby_iconupon")):
+        parent = ET.SubElement(root, layer)
+        ET.SubElement(parent, "item", {"drawable": drawable})
     for row in rows + alias_rows:
         ET.SubElement(root, "item", {
             "component": f"ComponentInfo{{{row['component']}}}",

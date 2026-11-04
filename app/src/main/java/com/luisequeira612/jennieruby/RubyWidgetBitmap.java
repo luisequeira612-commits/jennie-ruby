@@ -17,7 +17,17 @@ final class RubyWidgetBitmap {
         String pattern=DateFormat.is24HourFormat(c)?"HH:mm":"h:mm";
         String time=new SimpleDateFormat(pattern,Locale.getDefault()).format(new Date());
         p.setTypeface(font(c,R.font.playfair_display,Typeface.SERIF)); p.setTextSize(49*s);
-        float x=2*s, baseline=52*s;
+        float x=2*s, baseline=58*s;
+        float timeWidth=p.measureText(time);
+        float crownCenter=x+timeWidth/2f;
+        Path crown=new Path();
+        crown.moveTo(crownCenter-13*s,8*s); crown.lineTo(crownCenter-8*s,18*s);
+        crown.lineTo(crownCenter-3*s,11*s); crown.lineTo(crownCenter+2*s,18*s);
+        crown.lineTo(crownCenter+8*s,8*s); crown.lineTo(crownCenter+6*s,22*s);
+        crown.lineTo(crownCenter-11*s,22*s); crown.close();
+        Paint crownPaint=new Paint(p); crownPaint.setStyle(Paint.Style.STROKE);
+        crownPaint.setStrokeWidth(Math.max(1.1f,1.25f*s)); crownPaint.setStrokeJoin(Paint.Join.ROUND);
+        cv.drawPath(crown,crownPaint);
         cv.drawText(time,x,baseline,p);
         p.setTypeface(font(c,R.font.cormorant_garamond,Typeface.SERIF)); p.setTextSize(17*s);
         Locale locale=Locale.getDefault();
@@ -36,9 +46,34 @@ final class RubyWidgetBitmap {
         Canvas cv=new Canvas(b); float s=Math.min(w/240f,h/100f);
         Paint p=paint(); p.setColor(0xFFE8A0A8);
         p.setTypeface(font(c,R.font.allura,Typeface.DEFAULT));
-        p.setTextSize(68*s); cv.drawText("Jennie",2*s,62*s,p);
+        p.setTextSize(68*s);
+        String name="Jennie";
+        float nameWidth=p.measureText(name);
+        float nameX=(w-nameWidth)/2f;
+        float nameBaseline=Math.min(h*.69f,66*s);
+        cv.drawText(name,nameX,nameBaseline,p);
+        // Small outline heart near the upper-right of the final "e".
+        float heartX=nameX+nameWidth-1*s, heartY=nameBaseline-39*s;
+        Path heart=new Path();
+        heart.moveTo(heartX,heartY+5*s);
+        heart.cubicTo(heartX-8*s,heartY-2*s,heartX-13*s,heartY+8*s,heartX,heartY+17*s);
+        heart.cubicTo(heartX+13*s,heartY+8*s,heartX+8*s,heartY-2*s,heartX,heartY+5*s);
+        Paint heartPaint=new Paint(p); heartPaint.setStyle(Paint.Style.STROKE);
+        heartPaint.setStrokeWidth(Math.max(1.0f,1.3f*s)); heartPaint.setStrokeJoin(Paint.Join.ROUND);
+        cv.save(); cv.rotate(12,heartX,heartY+8*s); cv.drawPath(heart,heartPaint); cv.restore();
+
         p.setTypeface(font(c,R.font.cormorant_garamond,Typeface.SERIF));
-        p.setTextSize(11*s); p.setColor(0xFFF3E6E6); cv.drawText("BLACKPINK",65*s,88*s,p);
+        p.setTextSize(11*s); p.setColor(0xFFF3E6E6);
+        String signature="BLACKPINK";
+        float sigWidth=p.measureText(signature);
+        float sigX=(w-sigWidth)/2f;
+        float sigBaseline=Math.min(h-3*s,92*s);
+        cv.drawText(signature,sigX,sigBaseline,p);
+        Paint rule=new Paint(p); rule.setColor(0xFFE8A0A8);
+        rule.setStyle(Paint.Style.STROKE); rule.setStrokeWidth(Math.max(.8f,.85f*s));
+        float ruleY=sigBaseline-4*s;
+        cv.drawLine(Math.max(4*s,sigX-38*s),ruleY,sigX-9*s,ruleY,rule);
+        cv.drawLine(sigX+sigWidth+9*s,ruleY,Math.min(w-4*s,sigX+sigWidth+38*s),ruleY,rule);
         return b;
     }
 

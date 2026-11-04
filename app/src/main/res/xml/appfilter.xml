@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <iconback>
+        <item drawable="ruby_iconback" />
+    </iconback>
+    <iconmask>
+        <item drawable="ruby_iconmask" />
+    </iconmask>
+    <iconupon>
+        <item drawable="ruby_iconupon" />
+    </iconupon>
     <item component="ComponentInfo{com.foxdebug.acodefree/com.foxdebug.acodefree.MainActivityIconDefault}" drawable="ruby_acode" />
     <item component="ComponentInfo{com.transsion.filemanagerx/com.transsion.filemanagerx.ui.launch.SplashActivity}" drawable="ruby_administrador_de_archivos" />
     <item component="ComponentInfo{net.bat.store/net.bat.store.DefaultIconAliasActivity}" drawable="ruby_aha_games" />

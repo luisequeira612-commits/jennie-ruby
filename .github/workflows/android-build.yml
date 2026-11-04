@@ -1,9 +1,9 @@
 name: Android build
 on:
   push:
-    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**']
+    branches: [main, 'feat/**', 'qa/**', 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**', 'stage-5/**']
   pull_request:
-    branches: [main, 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**']
+    branches: [main, 'stage-1/**', 'stage-2/**', 'stage-3/**', 'stage-4/**', 'stage-5/**']
   workflow_dispatch:
 
 permissions:
@@ -38,6 +38,11 @@ jobs:
         run: python3 tools/verify_stage1_pngs.py
       - name: Generate five Stage 3 dock PNGs and real 15-icon contact sheet
         run: python3 tools/render_ruby_dock_icons.py
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned Simple Icons glyph tooling
+        run: npm install --no-save --no-package-lock simple-icons@16.36.0 svgpath@2.6.0
       - name: Render Jennie wallpaper with integrated ruby glass dock
         run: python3 tools/render_ruby_dock_wallpaper.py
       - name: Require all ten valid 192px PNGs in drawable-nodpi
@@ -64,6 +69,8 @@ jobs:
         run: python3 tools/generate_icon_contact_sheet.py
       - name: Download pinned Google Fonts OFL families
         run: bash tools/download_widget_fonts.sh
+      - name: Generate Stage 5 batch 1 Ruby glyphs and 35-icon contact sheet
+        run: python3 tools/render_stage5_batch1.py
       - name: Generate transparent widget picker previews
         run: python3 tools/generate_widget_previews.py
       - name: Validate widgets, fonts, licenses and previews
@@ -87,6 +94,20 @@ jobs:
         run: |
           python3 tools/generate_appfilter.py
           git diff --exit-code -- app/src/main/res/xml/appfilter.xml
+      - name: Validate Stage 5 catalog mappings
+        run: python3 tools/validate_stage5_batch1.py
+      - name: Validate Stage 5 PNG geometry and palette
+        run: python3 tools/validate_stage5_geometry.py
+      - name: Upload Stage 5 automatic audit and contact sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: jennie-ruby-stage5-system-audit
+          path: |
+            app/build/reports/jennie-ruby-stage5-contact-sheet.png
+            app/build/reports/stage5-automatic-checks.md
+            app/build/reports/stage5-activities.md
+            appfilter_pendientes.txt
+          if-no-files-found: error
       - name: Assemble debug APK
         run: gradle assembleDebug
       - name: Verify APK uses the stable debug certificate

@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "source": "Simple Icons (CC0-1.0), pinned in CI; generic fallback declared per entry",
+  "apps": [
+    {
+      "package": "com.google.android.apps.maps",
+      "activity": "com.google.android.maps.MapsActivity",
+      "label": "Maps",
+      "drawable": "ruby_maps",
+      "glyph": "googlemaps",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.gm",
+      "activity": "com.google.android.gm.ConversationListActivityGmail",
+      "label": "Gmail",
+      "drawable": "ruby_gmail",
+      "glyph": "gmail",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.apps.docs",
+      "activity": "com.google.android.apps.docs.app.NewMainProxyActivity",
+      "label": "Drive",
+      "drawable": "ruby_drive",
+      "glyph": "googledrive",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.apps.photos",
+      "activity": "com.google.android.apps.photos.home.HomeActivity",
+      "label": "Photos",
+      "drawable": "ruby_fotos",
+      "glyph": "googlephotos",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.calendar",
+      "activity": "com.android.calendar.AllInOneActivity",
+      "label": "Calendar",
+      "drawable": "ruby_calendario",
+      "glyph": "googlecalendar",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.google.android.apps.youtube.music",
+      "activity": "com.google.android.apps.youtube.music.activities.MusicActivity",
+      "label": "YouTube Music",
+      "drawable": "ruby_youtube_music",
+      "glyph": "youtubemusic",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.facebook.katana",
+      "activity": "com.facebook.katana.LoginActivity",
+      "label": "Facebook",
+      "drawable": "ruby_facebook",
+      "glyph": "facebook",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.facebook.orca",
+      "activity": "com.facebook.orca.auth.StartScreenActivity",
+      "label": "Messenger",
+      "drawable": "ruby_messenger",
+      "glyph": "messenger",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "org.telegram.messenger",
+      "activity": "org.telegram.messenger.DefaultIcon",
+      "label": "Telegram",
+      "drawable": "ruby_telegram",
+      "glyph": "telegram",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.snapchat.android",
+      "activity": "com.snapchat.android.LandingPageActivity",
+      "label": "Snapchat",
+      "drawable": "ruby_snapchat",
+      "glyph": "snapchat",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.twitter.android",
+      "activity": "com.x.android.main.MainActivity",
+      "label": "X",
+      "drawable": "ruby_x",
+      "glyph": "x",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.pinterest",
+      "activity": "com.pinterest.activity.PinterestActivity",
+      "label": "Pinterest",
+      "drawable": "ruby_pinterest",
+      "glyph": "pinterest",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.reddit.frontpage",
+      "activity": "launcher.default",
+      "label": "Reddit",
+      "drawable": "ruby_reddit",
+      "glyph": "reddit",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.netflix.mediaclient",
+      "activity": "com.netflix.mediaclient.ui.launch.UIWebViewActivity",
+      "label": "Netflix",
+      "drawable": "ruby_netflix",
+      "glyph": "netflix",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.disney.disneyplus",
+      "activity": "com.bamtechmedia.dominguez.main.MainActivity",
+      "label": "Disney+",
+      "drawable": "ruby_disney",
+      "glyph": "disneyplus-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 0.5 8 C 3.5 2 10.5 0 16.5 4 L 15.5 6 C 10.5 3 4.5 5 1.5 10 Z M 2.5 8 L 8.5 8 C 13.5 8 16.5 11 16.5 15 C 16.5 19 13.5 22 8.5 22 L 2.5 22 Z M 6.5 11 L 6.5 19 L 8.5 19 C 11.5 19 13.5 17 13.5 15 C 13.5 13 11.5 11 8.5 11 Z M 17.5 9 L 19.5 9 L 19.5 12 L 22.5 12 L 22.5 14 L 19.5 14 L 19.5 17 L 17.5 17 L 17.5 14 L 14.5 14 L 14.5 12 L 17.5 12 Z"
+    },
+    {
+      "package": "com.wbd.stream",
+      "activity": "com.wbd.fuse.appcore.FuseActivity",
+      "label": "HBO Max",
+      "drawable": "ruby_hbo_max",
+      "glyph": "hbo-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 1 5 L 3 5 L 3 11 L 6 11 L 6 5 L 8 5 L 8 21 L 6 21 L 6 14 L 3 14 L 3 21 L 1 21 Z M 8 5 L 11.5 5 C 14.5 5 15.5 7 15.5 9 C 15.5 11 14.5 12 13.5 13 C 15 13 16 15 16 17 C 16 20 14 21 11.5 21 L 8 21 Z M 11 8 L 11 12 L 12 12 C 13 12 13.5 11 13.5 10 C 13.5 8.5 13 8 12 8 Z M 11 15 L 11 18 L 12 18 C 13 18 13.5 17.5 13.5 16.5 C 13.5 15.5 13 15 12 15 Z M 20 5 C 22.5 5 23.5 8 23.5 13 C 23.5 18 22.5 21 20 21 C 17.5 21 16.5 18 16.5 13 C 16.5 8 17.5 5 20 5 Z M 20 8 C 18.8 8 18.5 10 18.5 13 C 18.5 16 18.8 18 20 18 C 21.2 18 21.5 16 21.5 13 C 21.5 10 21.2 8 20 8 Z"
+    },
+    {
+      "package": "com.crunchyroll.crunchyroid",
+      "activity": "com.ellation.crunchyroll.presentation.startup.StartupActivity",
+      "label": "Crunchyroll",
+      "drawable": "ruby_crunchyroll",
+      "glyph": "crunchyroll",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "tv.twitch.android.app",
+      "activity": "tv.twitch.android.app.core.LandingActivity",
+      "label": "Twitch",
+      "drawable": "ruby_twitch",
+      "glyph": "twitch",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.openai.chatgpt",
+      "activity": "com.openai.chatgpt.MainActivity",
+      "label": "ChatGPT",
+      "drawable": "ruby_chatgpt",
+      "glyph": "chatgpt-knot-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 9.5 0 C 12.5 0 14.5 2 14.5 5 L 14.5 8 L 17.5 6 C 19.5 5 21.5 6 21.5 9 C 21.5 11 20.5 12 18.5 13 L 15.5 15 L 18.5 17 C 20.5 18 20.5 20 18.5 22 C 16.5 24 14.5 23 13.5 21 L 11.5 18 L 9.5 21 C 8.5 23 5.5 23 4.5 21 C 2.5 19 3.5 17 5.5 16 L 8.5 14 L 5.5 12 C 3.5 11 2.5 8 4.5 6 C 6.5 4 8.5 5 9.5 7 L 11.5 10 L 11.5 6 C 11.5 3 10.5 2 9.5 2 Z M 9.5 6 L 7.5 9 L 10.5 11 L 13.5 9 L 13.5 6 C 13.5 4 11.5 3 9.5 3 Z M 7.5 12 L 4.5 14 C 2.5 15 2.5 18 4.5 19 C 5.5 20 7.5 20 8.5 18 L 10.5 15 Z M 12.5 12 L 14.5 15 L 17.5 13 C 19.5 12 19.5 10 18.5 9 C 17.5 8 15.5 8 14.5 9 Z"
+    },
+    {
+      "package": "com.anthropic.claude",
+      "activity": "com.anthropic.claude.mainactivity.MainActivity",
+      "label": "Claude",
+      "drawable": "ruby_claude",
+      "glyph": "claude",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    }
+  ]
+}
