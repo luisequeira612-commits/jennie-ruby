@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="ruby_dock_telefono">@drawable/ruby_dock_telefono_art</item>
+    <item type="drawable" name="ruby_dock_contactos">@drawable/ruby_dock_contactos_art</item>
+    <item type="drawable" name="ruby_dock_mensajes">@drawable/ruby_dock_mensajes_art</item>
+    <item type="drawable" name="ruby_dock_chrome">@drawable/ruby_dock_chrome_art</item>
+    <item type="drawable" name="ruby_dock_cajon_apps">@drawable/ruby_dock_cajon_apps_art</item>
+</resources>

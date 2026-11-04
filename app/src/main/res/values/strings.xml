@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="ruby_clock_widget_description">A dark Ruby clock and date widget</string>
-    <string name="ruby_shortcuts_widget_description">Quick shortcuts to JENNIE RUBY and its wallpapers</string>
-    <string name="ruby_clock_widget_accessibility">JENNIE RUBY clock and date. Opens the app when tapped.</string>
-    <string name="ruby_shortcut_open_app">Open JENNIE RUBY</string>
-    <string name="ruby_shortcut_open_wallpapers">Open Ruby wallpapers</string>
+    <string name="ruby_clock_widget_label">Reloj Ruby</string>
+    <string name="ruby_clock_widget_description">Reloj Ruby transparente con hora y fecha del sistema</string>
+    <string name="ruby_clock_widget_accessibility">Reloj Ruby, hora y fecha. Abre JENNIE RUBY al tocarlo.</string>
+    <string name="ruby_signature_widget_label">Firma Jennie</string>
+    <string name="ruby_signature_widget_description">Firma Jennie y BLACKPINK en caligrafía rosa rubí</string>
+    <string name="ruby_signature_widget_accessibility">Firma Jennie y BLACKPINK</string>
+    <string name="jennie_ruby_widget_label">JENNIE Ruby</string>
+    <string name="jennie_ruby_widget_description">Texto decorativo JENNIE Ruby transparente</string>
+    <string name="ruby_music_widget_label">Love Hangover</string>
+    <string name="ruby_music_widget_description">Reproductor multimedia del teléfono con portada y controles</string>
 </resources>

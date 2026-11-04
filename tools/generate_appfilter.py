@@ -7,6 +7,7 @@ have its own drawable resource before the mapping is written.
 from __future__ import annotations
 
 import csv
+import json
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -18,6 +19,7 @@ DRAWABLE_DIR = ROOT / "app/src/main/res/drawable-nodpi"
 OUTPUT = ROOT / "app/src/main/res/xml/appfilter.xml"
 EXPECTED_APPS = 146
 ALIASES = ROOT / "device-app-aliases.tsv"
+RESOURCE_ALIASES = ROOT / "app/src/main/res/values/drawable.xml"
 
 
 def fail(message: str) -> None:
@@ -30,11 +32,48 @@ def main() -> None:
         rows = list(csv.DictReader(stream, delimiter="\t"))
 
     if len(rows) != EXPECTED_APPS:
-        fail(f"Expected {EXPECTED_APPS} catalog entries; found {len(rows)}.")
+        fail(f"Expected {EXPECTED_APPS} base catalog entries; found {len(rows)}.")
+
+    # Stage 5 batch entries are authoritative in icons.json. Existing launcher
+    # components are updated in place; missing ones are appended without duplicating.
+    stage5_path = ROOT / "icons.json"
+    if stage5_path.exists():
+        try:
+            stage5_apps = json.loads(stage5_path.read_text(encoding="utf-8"))["apps"]
+        except (OSError, KeyError, json.JSONDecodeError) as exc:
+            fail(f"Invalid Stage 5 icon catalog: {exc}")
+        for app in stage5_apps:
+            package = app["package"]
+            component = f"{package}/{app['activity']}"
+            existing = next((row for row in rows if row["component"].split("/", 1)[0] == package), None)
+            if existing is None:
+                rows.append({"name": app["label"], "component": component, "drawable": app["drawable"]})
+            else:
+                existing["name"] = app["label"]
+                existing["component"] = component
+                existing["drawable"] = app["drawable"]
 
     components = [row["component"] for row in rows]
     if len(set(components)) != len(components):
         fail("Duplicate launcher components detected.")
+
+    resource_aliases = {}
+    if RESOURCE_ALIASES.exists():
+        try:
+            resource_root = ET.parse(RESOURCE_ALIASES).getroot()
+        except ET.ParseError as exc:
+            fail(f"Invalid drawable resource aliases XML: {exc}")
+        for item in resource_root.findall("item"):
+            if item.get("type") != "drawable":
+                continue
+            alias_name = item.get("name", "")
+            target = (item.text or "").strip()
+            match = re.fullmatch(r"@drawable/(ruby_[a-z0-9_]+)", target)
+            if not re.fullmatch(r"ruby_[a-z0-9_]+", alias_name) or not match:
+                fail(f"Invalid drawable alias: {alias_name} -> {target}")
+            if alias_name in resource_aliases:
+                fail(f"Duplicate drawable resource alias: {alias_name}")
+            resource_aliases[alias_name] = match.group(1)
 
     for row in rows:
         component = row["component"]
@@ -45,7 +84,11 @@ def main() -> None:
             fail(f"Invalid drawable name: {drawable}")
         candidates = [DRAWABLE_DIR / f"{drawable}.{ext}" for ext in ("png", "webp", "xml")]
         if not any(path.is_file() for path in candidates):
-            fail(f"Missing artwork for {row['name']}: expected {drawable}.png, .webp or .xml")
+            target = resource_aliases.get(drawable)
+            target_candidates = ([DRAWABLE_DIR / f"{target}.{ext}" for ext in ("png", "webp", "xml")]
+                                 if target else [])
+            if not target or not any(path.is_file() for path in target_candidates):
+                fail(f"Missing artwork for {row['name']}: expected {drawable} or a valid drawable.xml alias")
 
     alias_rows = []
     if ALIASES.exists():
@@ -61,6 +104,9 @@ def main() -> None:
             fail(f"Alias references unknown drawable: {row['drawable']}")
 
     root = ET.Element("resources")
+    for layer, drawable in (("iconback", "ruby_iconback"), ("iconmask", "ruby_iconmask"), ("iconupon", "ruby_iconupon")):
+        parent = ET.SubElement(root, layer)
+        ET.SubElement(parent, "item", {"drawable": drawable})
     for row in rows + alias_rows:
         ET.SubElement(root, "item", {
             "component": f"ComponentInfo{{{row['component']}}}",
