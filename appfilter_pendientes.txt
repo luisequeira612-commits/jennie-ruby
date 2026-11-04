@@ -55,3 +55,23 @@ Roblox: com.roblox.client/com.roblox.client.startup.LauncherAliasMain — estima
 Termux: com.termux/com.termux.app.TermuxActivity — estimada
 AnkiDroid: com.ichi2.anki/com.ichi2.anki.IntentHandler — estimada
 WeChat: com.tencent.mm/com.tencent.mm.ui.LauncherUI — estimada
+Acode: com.foxdebug.acodefree/com.foxdebug.acodefree.MainActivityIconDefault — estimada
+Administrador de archivos: com.transsion.filemanagerx/com.transsion.filemanagerx.ui.launch.SplashActivity — estimada
+AnkuLua: com.appautomatic.ankulua.trial/com.appautomatic.ankulua.MainActivity — estimada
+App Manager: io.github.muntashirakon.AppManager/io.github.muntashirakon.AppManager.main.SplashActivity — estimada
+Asistente: com.google.android.apps.googleassistant/com.google.android.apps.googleassistant.AssistantActivity — estimada
+Autenticador: com.google.android.apps.authenticator2/com.google.android.apps.authenticator2.main.MainActivity — estimada
+Calculadora: com.transsion.calculator/com.transsion.calculator.Calculator — estimada
+Carlcare: com.transsion.carlcare/com.transsion.carlcare.MainActivity — estimada
+Clima: com.rlk.weathers/com.rlk.weathers.ui.main.MainActivity — estimada
+Creador de atajos: rk.android.app.shortcutmaker/rk.android.app.shortcutmaker.CommonMethods.SplashScreenActivity — estimada
+Cx Explorador de Archivos: com.cxinventor.file.explorer/com.alphainventor.filemanager.activity.MainActivity — estimada
+Escáner inteligente: com.transsion.scanningrecharger/com.transsion.scanningrecharger.view.activity.textrecognized.TextRecognizedActivity — estimada
+EX Explorador de Archivos: com.ace.ex.file.manager/com.ace.fileexplorer.feature.activity.AceFirstActivity — estimada
+Flud: com.delphicoder.flud/com.delphicoder.flud.MainActivity — estimada
+Grabadora de sonido: com.transsion.soundrecorder/com.transsion.soundrecorder.SoundRecorder — estimada
+iAdb: com.iadb.helper/com.iadb.helper.MainActivity — estimada
+Kit de herramientas de SIM: com.android.stk/com.android.stk.StkMain — estimada
+Kustom Widget: org.kustom.widget/org.kustom.widget.picker.WidgetPicker — estimada
+MarkClear: com.xiaoxu.spqsy/com.xiaoxu.spqsy.MainActivity — estimada
+Mobile Cloner: com.transsion.letswitch/com.transsion.letswitch.MainActivity — estimada
