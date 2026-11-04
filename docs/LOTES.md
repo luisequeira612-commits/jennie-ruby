@@ -14,6 +14,11 @@ Memrise, Drops, HelloTalk, Falou, Ling, LingQ, LangReactor, Reelang, Write Greek
 ## Lote 4 — 25 de 28 disponibles
 rednote, NGL, Zangi, Labalabi For WhatsApp, SocialAut, Sticker.ly, StickerVibe, Reface, Viggle AI, HoYoLAB, MCPEDL, MU Fan, Duskwood, Blackjack Trainer, AHA Games, Meu Tarot, Windy, Moovit, Google Earth, DeepStateMap, PedidosYa, Mi Claro, Mi Tigo, Tor Browser, Urban VPN.
 
+
+## Lote 5 — 20 aplicaciones
+
+Acode, Administrador de archivos, AnkuLua, App Manager, Asistente, Autenticador, Calculadora, Carlcare, Clima, Creador de atajos, Cx Explorador de Archivos, Escáner inteligente, EX Explorador de Archivos, Flud, Grabadora de sonido, iAdb, Kit de herramientas de SIM, Kustom Widget, MarkClear, Mobile Cloner.
+
 Pendientes de confirmar paquete/activity: Palm Store (`com.transsnet.store`), TECNO ID (`tech.palm.id`) y Hola (`com.talpa.hibrowser`). No existen en el catálogo del dispositivo ni en appfilter.xml.
 
 Lote 3 verificadas: Brave y CloudStream. Lote 4 verificadas: Blackjack Trainer y AHA Games. Las demás activities añadidas quedan estimadas.
