@@ -109,7 +109,8 @@ def main():
         (OUT/(name+".xml")).unlink(missing_ok=True)
     selector=['<?xml version="1.0" encoding="utf-8"?>','<icons>']
     for a in apps: selector.append(f'    <icon name="{a["label"]}" drawable="{a["drawable"]}" glyph-type="{sources[a["drawable"]]["resolved_type"]}" />')
-    selector.append('</icons>'); xml_text="\n".join(selector)+"\n"\n    for p in (ROOT/"app/src/main/res/xml/drawable.xml",ROOT/"app/src/main/assets/drawable.xml"):
+    selector.append('</icons>'); xml_text="\n".join(selector)+"\n"
+    for p in (ROOT/"app/src/main/res/xml/drawable.xml",ROOT/"app/src/main/assets/drawable.xml"):
         p.parent.mkdir(parents=True,exist_ok=True); p.write_text(xml_text,encoding="utf-8")
     REPORT.mkdir(parents=True,exist_ok=True)
     lines=["# Actividades de launcher — catálogo Etapa 5","","| Aplicación | Paquete | Activity | Estado |","|---|---|---|---|"]
