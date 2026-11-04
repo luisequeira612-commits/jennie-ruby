@@ -116,10 +116,19 @@ def main():
         if status not in {"verified","estimated"}: raise RuntimeError(f"Invalid activity_status: {a['label']}")
         lines.append(f'| {a["label"]} | {a["package"]} | {a["activity"]} | {status} |')
         if status=="estimated": pending.append(f'{a["label"]}: {a["package"]}/{a["activity"]} — estimada')
+        for candidate in a.get("activity_candidates",[]):
+            candidate_status=candidate.get("status","estimated")
+            if candidate_status not in {"verified","estimated"}: raise RuntimeError(f"Invalid candidate activity_status: {a['label']}/{candidate.get('activity')}")
+            activity=candidate["activity"]
+            lines.append(f'| {a["label"]} (candidata) | {a["package"]} | {activity} | {candidate_status} |')
+            if candidate_status=="estimated": pending.append(f'{a["label"]}: {a["package"]}/{activity} — candidata estimada')
     (ROOT/"docs/ACTIVITIES.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     (REPORT/"stage5-activities.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
     (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
-    (ROOT/"docs/LOTES.md").write_text("# Lotes de iconos — Etapa 5\n\nEl catálogo maestro es `icons.json`. Cada activity debe declararse `verified` solo tras contrastar el manifiesto instalado; de lo contrario queda `estimated`.\n\nLa hoja de contacto se genera desde los PNG presentes y el catálogo, no desde una lista fija.\n",encoding="utf-8")
+    batch1=["Maps","Gmail","Drive","Photos","Calendar","YouTube Music","Facebook","Messenger","Telegram","Snapchat","X","Pinterest","Reddit","Netflix","Disney+","HBO Max","Crunchyroll","Twitch","ChatGPT","Claude"]
+    batch2=["Aniyomi","Mihon","Brave","CapCut","Gemini","DeepSeek","Duolingo","Excel","WPS Office","Files de Google","Kodi","VLC","Stremio","Shazam","Picsart","Weverse","Roblox","Termux","AnkiDroid","WeChat"]
+    lotes=["# Lotes de iconos — Etapa 5","","El catálogo maestro es `icons.json`. Cada activity se marca `verified` solo tras contrastar el manifiesto instalado; las candidatas no contrastadas quedan `estimated`.","","## Lote 1 — 20 aplicaciones",""," "+", ".join(batch1),"","## Lote 2 — 20 aplicaciones",""," "+", ".join(batch2),"","Duolingo incluye la activity principal `com.duolingo/com.duolingo.app.LoginActivity` y actividades candidatas adicionales; todas permanecen `estimated` hasta contrastarlas en el dispositivo.","","La hoja de contacto se genera desde los diez PNG de Etapa 1, cinco PNG del dock y todos los PNG del catálogo. El generador de Etapa 1, sus diez PNG aprobados, el dock, los widgets y `docs/ESTILO.md` permanecen protegidos."]
+    (ROOT/"docs/LOTES.md").write_text("\n".join(lotes)+"\n",encoding="utf-8")
     stage1=["ruby_youtube","ruby_spotify","ruby_tiktok","ruby_instagram","ruby_whatsapp","ruby_google","ruby_google_play_store","ruby_configuracion","ruby_galeria","ruby_camara"]
     dock=["ruby_dock_telefono_art","ruby_dock_contactos_art","ruby_dock_mensajes_art","ruby_dock_chrome_art","ruby_dock_cajon_apps_art"]
     labels=["YouTube","Spotify","TikTok","Instagram","WhatsApp","Google","Play Store","Ajustes","Galería","Cámara","Teléfono","Contactos","Mensajes","Chrome","Cajón apps"]+[a["label"] for a in apps]
