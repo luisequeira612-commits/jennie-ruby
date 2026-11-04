@@ -99,7 +99,7 @@
       "drawable": "ruby_x",
       "glyph": "x",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.pinterest",
@@ -173,7 +173,7 @@
       "drawable": "ruby_chatgpt",
       "glyph": "chatgpt-knot-custom",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 9.5 0 C 12.5 0 14.5 2 14.5 5 L 14.5 8 L 17.5 6 C 19.5 5 21.5 6 21.5 9 C 21.5 11 20.5 12 18.5 13 L 15.5 15 L 18.5 17 C 20.5 18 20.5 20 18.5 22 C 16.5 24 14.5 23 13.5 21 L 11.5 18 L 9.5 21 C 8.5 23 5.5 23 4.5 21 C 2.5 19 3.5 17 5.5 16 L 8.5 14 L 5.5 12 C 3.5 11 2.5 8 4.5 6 C 6.5 4 8.5 5 9.5 7 L 11.5 10 L 11.5 6 C 11.5 3 10.5 2 9.5 2 Z M 9.5 6 L 7.5 9 L 10.5 11 L 13.5 9 L 13.5 6 C 13.5 4 11.5 3 9.5 3 Z M 7.5 12 L 4.5 14 C 2.5 15 2.5 18 4.5 19 C 5.5 20 7.5 20 8.5 18 L 10.5 15 Z M 12.5 12 L 14.5 15 L 17.5 13 C 19.5 12 19.5 10 18.5 9 C 17.5 8 15.5 8 14.5 9 Z"
     },
     {
@@ -183,7 +183,7 @@
       "drawable": "ruby_claude",
       "glyph": "claude",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "xyz.jmir.tachiyomi.mi",
@@ -192,7 +192,7 @@
       "drawable": "ruby_aniyomi",
       "glyph": "aniyomi-reader",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 3 3 L 11 3 L 11 4.5 L 4.5 4.5 L 4.5 20 L 11 20 L 11 21.5 L 3 21.5 Z M 13 3 L 21 3 L 21 21.5 L 13 21.5 Z M 15 5 L 19 5 L 19 9 L 15 9 Z M 15 11 L 19 11 L 19 19 L 15 19 Z M 5.5 6 L 9.5 6 L 9.5 8 L 5.5 8 Z M 5.5 10 L 9.5 10 L 9.5 12 L 5.5 12 Z M 5.5 14 L 9.5 14 L 9.5 18 L 5.5 18 Z"
     },
     {
@@ -220,7 +220,7 @@
       "drawable": "ruby_capcut",
       "glyph": "capcut-mark",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 4 4 C 6 2 9 3 10 5 L 20 19 C 21 21 18 23 16 21 L 4 7 C 3 6 3 5 4 4 Z M 20 4 C 18 2 15 3 14 5 L 4 19 C 3 21 6 23 8 21 L 20 7 C 21 6 21 5 20 4 Z M 8 10 L 16 10 L 18 13 L 6 13 Z"
     },
     {
@@ -230,7 +230,7 @@
       "drawable": "ruby_gemini",
       "glyph": "googlegemini",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.deepseek.chat",
@@ -427,7 +427,7 @@
       "drawable": "ruby_ankidroid",
       "glyph": "anki-flashcards",
       "glyph_type": "generic",
-      "activity_status": "estimated",
+      "activity_status": "verified",
       "fallback_path": "M 3 5 C 3 3 4 2 6 2 L 17 2 C 19 2 20 3 20 5 L 20 17 C 20 19 19 20 17 20 L 6 20 C 4 20 3 19 3 17 Z M 7 6 L 16 6 L 16 8 L 7 8 Z M 7 10 L 16 10 L 16 12 L 7 12 Z M 7 14 L 12 14 L 12 16 L 7 16 Z M 16 15 L 18 15 L 18 17 L 16 17 Z M 18 17 L 21 17 L 21 20 L 18 20 Z"
     },
     {
