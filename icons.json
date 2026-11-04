@@ -211,7 +211,7 @@
       "drawable": "ruby_brave",
       "glyph": "brave",
       "glyph_type": "brand",
-      "activity_status": "estimated"
+      "activity_status": "verified"
     },
     {
       "package": "com.lemon.lvoverseas",
@@ -446,7 +446,7 @@
       "drawable": "ruby_memrise",
       "glyph": "memrise",
       "glyph_type": "brand",
-      "activity_status": "verified",
+      "activity_status": "estimated",
       "fallback_path": "M 12 2 C 7 2 3 6 3 11 C 3 16 7 22 12 22 C 17 22 21 16 21 11 C 21 6 17 2 12 2 Z M 12 6 L 14 10 L 18 11 L 14 14 L 12 18 L 10 14 L 6 11 L 10 10 Z"
     },
     {
