@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<icons>
+    <icon name="Maps" drawable="ruby_maps" glyph-type="brand" />
+    <icon name="Gmail" drawable="ruby_gmail" glyph-type="brand" />
+    <icon name="Drive" drawable="ruby_drive" glyph-type="brand" />
+    <icon name="Photos" drawable="ruby_fotos" glyph-type="brand" />
+    <icon name="Calendar" drawable="ruby_calendario" glyph-type="brand" />
+    <icon name="YouTube Music" drawable="ruby_youtube_music" glyph-type="brand" />
+    <icon name="Facebook" drawable="ruby_facebook" glyph-type="brand" />
+    <icon name="Messenger" drawable="ruby_messenger" glyph-type="brand" />
+    <icon name="Telegram" drawable="ruby_telegram" glyph-type="brand" />
+    <icon name="Snapchat" drawable="ruby_snapchat" glyph-type="brand" />
+    <icon name="X" drawable="ruby_x" glyph-type="brand" />
+    <icon name="Pinterest" drawable="ruby_pinterest" glyph-type="brand" />
+    <icon name="Reddit" drawable="ruby_reddit" glyph-type="brand" />
+    <icon name="Netflix" drawable="ruby_netflix" glyph-type="brand" />
+    <icon name="Disney+" drawable="ruby_disney" glyph-type="generic" />
+    <icon name="HBO Max" drawable="ruby_hbo_max" glyph-type="generic" />
+    <icon name="Crunchyroll" drawable="ruby_crunchyroll" glyph-type="brand" />
+    <icon name="Twitch" drawable="ruby_twitch" glyph-type="brand" />
+    <icon name="ChatGPT" drawable="ruby_chatgpt" glyph-type="generic" />
+    <icon name="Claude" drawable="ruby_claude" glyph-type="brand" />
+    <icon name="Aniyomi" drawable="ruby_aniyomi" glyph-type="generic" />
+    <icon name="Mihon" drawable="ruby_mihon" glyph-type="brand" />
+    <icon name="Brave" drawable="ruby_brave" glyph-type="brand" />
+    <icon name="CapCut" drawable="ruby_capcut" glyph-type="generic" />
+    <icon name="Gemini" drawable="ruby_gemini" glyph-type="brand" />
+    <icon name="DeepSeek" drawable="ruby_deepseek" glyph-type="brand" />
+    <icon name="Duolingo" drawable="ruby_duolingo" glyph-type="brand" />
+    <icon name="Excel" drawable="ruby_excel" glyph-type="generic" />
+    <icon name="WPS Office" drawable="ruby_wps_office" glyph-type="generic" />
+    <icon name="Files de Google" drawable="ruby_files_de_google" glyph-type="generic" />
+    <icon name="Kodi" drawable="ruby_kodi" glyph-type="brand" />
+    <icon name="VLC" drawable="ruby_vlc" glyph-type="brand" />
+    <icon name="Stremio" drawable="ruby_stremio" glyph-type="brand" />
+    <icon name="Shazam" drawable="ruby_shazam" glyph-type="brand" />
+    <icon name="Picsart" drawable="ruby_picsart" glyph-type="brand" />
+    <icon name="Weverse" drawable="ruby_weverse" glyph-type="generic" />
+    <icon name="Roblox" drawable="ruby_roblox" glyph-type="brand" />
+    <icon name="Termux" drawable="ruby_termux" glyph-type="generic" />
+    <icon name="AnkiDroid" drawable="ruby_ankidroid" glyph-type="generic" />
+    <icon name="WeChat" drawable="ruby_wechat" glyph-type="brand" />
+    <icon name="Memrise" drawable="ruby_memrise" glyph-type="brand" />
+    <icon name="Drops" drawable="ruby_drops" glyph-type="brand" />
+    <icon name="HelloTalk" drawable="ruby_hellotalk" glyph-type="brand" />
+    <icon name="Falou" drawable="ruby_falou" glyph-type="generic" />
+    <icon name="Ling" drawable="ruby_ling" glyph-type="monogram" />
+    <icon name="LingQ" drawable="ruby_lingq" glyph-type="monogram" />
+    <icon name="LangReactor" drawable="ruby_langreactor" glyph-type="generic" />
+    <icon name="Reelang" drawable="ruby_reelang" glyph-type="generic" />
+    <icon name="Write Greek" drawable="ruby_write_greek" glyph-type="monogram" />
+    <icon name="Moon+ Reader" drawable="ruby_moon_reader" glyph-type="brand" />
+    <icon name="ReadEra" drawable="ruby_readera" glyph-type="monogram" />
+    <icon name="Lector de PDF" drawable="ruby_lector_de_pdf" glyph-type="generic" />
+    <icon name="LNReader" drawable="ruby_lnreader" glyph-type="generic" />
+    <icon name="Shosetsu" drawable="ruby_shosetsu" glyph-type="monogram" />
+    <icon name="bilibili" drawable="ruby_bilibili" glyph-type="brand" />
+    <icon name="CloudStream" drawable="ruby_cloudstream" glyph-type="generic" />
+    <icon name="Inkaplay" drawable="ruby_inkaplay" glyph-type="monogram" />
+    <icon name="Lark Player" drawable="ruby_lark_player" glyph-type="brand" />
+    <icon name="MXL TV" drawable="ruby_mxl_tv" glyph-type="generic" />
+    <icon name="Xuper" drawable="ruby_xuper" glyph-type="monogram" />
+    <icon name="Rave" drawable="ruby_rave" glyph-type="brand" />
+    <icon name="Mnet Plus" drawable="ruby_mnet_plus" glyph-type="brand" />
+    <icon name="Songstats" drawable="ruby_songstats" glyph-type="generic" />
+    <icon name="Soundcharts" drawable="ruby_soundcharts" glyph-type="generic" />
+    <icon name="SportzX" drawable="ruby_sportzx" glyph-type="generic" />
+    <icon name="GeeSports" drawable="ruby_geesports" glyph-type="generic" />
+    <icon name="Lean Remote" drawable="ruby_lean_remote" glyph-type="generic" />
+    <icon name="LGRemote" drawable="ruby_lgremote" glyph-type="generic" />
+    <icon name="rednote" drawable="ruby_rednote" glyph-type="generic" />
+    <icon name="NGL" drawable="ruby_ngl" glyph-type="generic" />
+    <icon name="Zangi" drawable="ruby_zangi" glyph-type="generic" />
+    <icon name="Labalabi For WhatsApp" drawable="ruby_labalabi_for_whatsapp" glyph-type="generic" />
+    <icon name="SocialAut" drawable="ruby_socialaut" glyph-type="generic" />
+    <icon name="Sticker.ly" drawable="ruby_sticker_ly" glyph-type="generic" />
+    <icon name="StickerVibe" drawable="ruby_stickervibe" glyph-type="generic" />
+    <icon name="Reface" drawable="ruby_reface" glyph-type="generic" />
+    <icon name="Viggle AI" drawable="ruby_viggle_ai" glyph-type="generic" />
+    <icon name="HoYoLAB" drawable="ruby_hoyolab" glyph-type="generic" />
+    <icon name="MCPEDL" drawable="ruby_mcpedl" glyph-type="generic" />
+    <icon name="MU Fan" drawable="ruby_mu_fan" glyph-type="generic" />
+    <icon name="Duskwood" drawable="ruby_duskwood" glyph-type="generic" />
+    <icon name="Blackjack Trainer" drawable="ruby_blackjack_trainer" glyph-type="generic" />
+    <icon name="AHA Games" drawable="ruby_aha_games" glyph-type="generic" />
+    <icon name="Meu Tarot" drawable="ruby_meu_tarot" glyph-type="generic" />
+    <icon name="Windy" drawable="ruby_windy" glyph-type="generic" />
+    <icon name="Moovit" drawable="ruby_moovit" glyph-type="generic" />
+    <icon name="Google Earth" drawable="ruby_google_earth" glyph-type="generic" />
+    <icon name="DeepStateMap" drawable="ruby_deepstatemap" glyph-type="generic" />
+    <icon name="PedidosYa" drawable="ruby_pedidosya" glyph-type="generic" />
+    <icon name="Mi Claro" drawable="ruby_mi_claro" glyph-type="generic" />
+    <icon name="Mi Tigo" drawable="ruby_mi_tigo" glyph-type="generic" />
+    <icon name="Tor Browser" drawable="ruby_tor_browser" glyph-type="generic" />
+    <icon name="Urban VPN" drawable="ruby_urban_vpn" glyph-type="generic" />
+</icons>
