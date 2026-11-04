@@ -11,6 +11,12 @@ assert len(names)==len(set(names)), "Duplicate drawable names"
 components=[a["package"]+"/"+a["activity"] for a in apps]
 assert len(components)==len(set(components)), "Duplicate launcher components"
 for a in apps:
+    candidates=a.get("activity_candidates",[])
+    candidate_names=[x["activity"] for x in candidates]
+    assert len(candidate_names)==len(set(candidate_names)), f"Duplicate activity candidates: {a['label']}"
+    for candidate in candidates:
+        assert candidate.get("status") in {"verified","estimated"}, f"Invalid candidate status: {a['label']}"
+for a in apps:
     assert a["glyph_type"] in {"brand","generic","monogram"}, a
     assert a["activity_status"] in {"verified","estimated"}, a
     p=ROOT/"app/src/main/res/drawable-nodpi"/(a["drawable"]+".png")
@@ -34,6 +40,9 @@ for item in filter_root.findall("item"):
 for a,comp in zip(apps,components):
     key="ComponentInfo{"+comp+"}"
     assert mapping.get(key)==a["drawable"], f"appfilter mismatch for {a['label']}: {mapping.get(key)}"
+    for candidate in a.get("activity_candidates",[]):
+        candidate_key="ComponentInfo{"+a["package"]+"/"+candidate["activity"]+"}"
+        assert mapping.get(candidate_key)==a["drawable"], f"appfilter mismatch for candidate {a['label']}: {candidate_key}"
 xml=ROOT/"app/src/main/res/xml/drawable.xml"
 asset=ROOT/"app/src/main/assets/drawable.xml"
 assert xml.read_bytes()==asset.read_bytes(), "assets/drawable.xml differs from res/xml/drawable.xml"
@@ -46,4 +55,4 @@ pending=(ROOT/"appfilter_pendientes.txt").read_text(encoding="utf-8")
 for a in apps:
     if a["activity_status"]=="estimated":
         assert a["label"] in pending, f"Missing pending activity: {a['label']}"
-print("PASS: 20 PNGs, unique resources, Nova appfilter, selector copy, and activity ledger.")
+print(f"PASS: {len(apps)} PNGs, unique resources, Nova appfilter, selector copy, and activity ledger.")
