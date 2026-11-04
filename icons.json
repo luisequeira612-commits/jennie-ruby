@@ -477,7 +477,7 @@
       "glyph": "falou-microphone",
       "glyph_type": "generic",
       "activity_status": "estimated",
-      "fallback_path": "M 10 3 C 10 2 14 2 14 3 L 14 12 C 14 16 10 16 10 12 Z M 7 10 L 9 10 L 9 12 C 9 16 11 18 12 18 C 14 18 15 16 15 12 L 15 10 L 17 10 L 17 12 C 17 17 14 20 13 20 L 13 22 L 16 22 L 16 24 L 8 24 L 8 22 L 11 22 L 11 20 C 9 20 7 17 7 12 Z"
+      "fallback_path": "M 8 2 C 8 1 16 1 16 2 L 16 12 C 16 17 8 17 8 12 Z M 5 9 L 7 9 L 7 12 C 7 19 10 21 12 21 C 15 21 17 19 17 12 L 17 9 L 19 9 L 19 12 C 19 20 15 23 13 23 L 13 24 L 17 24 L 17 26 L 7 26 L 7 24 L 11 24 L 11 23 C 8 23 5 20 5 12 Z"
     },
     {
       "package": "com.simyasolutions.ling.in",
