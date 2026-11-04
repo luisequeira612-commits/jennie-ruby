@@ -684,7 +684,7 @@
       "glyph": "soundcharts-wave",
       "glyph_type": "generic",
       "activity_status": "estimated",
-      "fallback_path": "M1 13 Q4 2 7 13 T13 13 T19 13 T25 13"
+      "fallback_path": "M 1 11 C 3 3 5 3 7 11 S 11 19 13 11 S 17 3 19 11 S 23 19 25 11 L 25 15 C 23 23 21 23 19 15 S 15 7 13 15 S 9 23 7 15 S 3 7 1 15 Z"
     },
     {
       "package": "com.sportzx.live",
