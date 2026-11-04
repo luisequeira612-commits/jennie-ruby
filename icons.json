@@ -184,6 +184,260 @@
       "glyph": "claude",
       "glyph_type": "brand",
       "activity_status": "estimated"
+    },
+    {
+      "package": "xyz.jmir.tachiyomi.mi",
+      "activity": "eu.kanade.tachiyomi.ui.main.MainActivity",
+      "label": "Aniyomi",
+      "drawable": "ruby_aniyomi",
+      "glyph": "aniyomi-reader",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 3 L 11 3 L 11 4.5 L 4.5 4.5 L 4.5 20 L 11 20 L 11 21.5 L 3 21.5 Z M 13 3 L 21 3 L 21 21.5 L 13 21.5 Z M 15 5 L 19 5 L 19 9 L 15 9 Z M 15 11 L 19 11 L 19 19 L 15 19 Z M 5.5 6 L 9.5 6 L 9.5 8 L 5.5 8 Z M 5.5 10 L 9.5 10 L 9.5 12 L 5.5 12 Z M 5.5 14 L 9.5 14 L 9.5 18 L 5.5 18 Z"
+    },
+    {
+      "package": "app.mihon",
+      "activity": "eu.kanade.tachiyomi.ui.main.MainActivity",
+      "label": "Mihon",
+      "drawable": "ruby_mihon",
+      "glyph": "mihon",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.brave.browser",
+      "activity": "com.google.android.apps.chrome.Main",
+      "label": "Brave",
+      "drawable": "ruby_brave",
+      "glyph": "brave",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.lemon.lvoverseas",
+      "activity": "com.vega.main.MainActivity",
+      "label": "CapCut",
+      "drawable": "ruby_capcut",
+      "glyph": "capcut-mark",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 4 4 C 6 2 9 3 10 5 L 20 19 C 21 21 18 23 16 21 L 4 7 C 3 6 3 5 4 4 Z M 20 4 C 18 2 15 3 14 5 L 4 19 C 3 21 6 23 8 21 L 20 7 C 21 6 21 5 20 4 Z M 8 10 L 16 10 L 18 13 L 6 13 Z"
+    },
+    {
+      "package": "com.google.android.apps.bard",
+      "activity": "com.google.android.apps.bard.shellapp.BardEntryPointActivity",
+      "label": "Gemini",
+      "drawable": "ruby_gemini",
+      "glyph": "googlegemini",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.deepseek.chat",
+      "activity": "com.deepseek.chat.MainActivity",
+      "label": "DeepSeek",
+      "drawable": "ruby_deepseek",
+      "glyph": "deepseek",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.duolingo",
+      "activity": "com.duolingo.app.LoginActivity",
+      "label": "Duolingo",
+      "drawable": "ruby_duolingo",
+      "glyph": "duolingo",
+      "glyph_type": "brand",
+      "activity_status": "estimated",
+      "activity_candidates": [
+        {
+          "activity": "com.duolingo.app.LoginActivity",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.BackgroundedLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.BackgroundedLauncherBrokenHeart",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.ExtendedLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.FixedRetentionChallengeLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveBlackAndWhiteLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveBlackAndWhiteLauncherEyes",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveBlobFishLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveBoneLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveBoneLauncherBone",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveBufferingLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveChickenLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.InactiveChickenLauncherChicken",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.StreakSocietyLauncher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.PreStreakSaver4Launcher",
+          "status": "estimated"
+        },
+        {
+          "activity": "com.duolingo.app.SeasonalLauncher1",
+          "status": "estimated"
+        }
+      ]
+    },
+    {
+      "package": "com.microsoft.office.excel",
+      "activity": "com.microsoft.office.apphost.LaunchActivity",
+      "label": "Excel",
+      "drawable": "ruby_excel",
+      "glyph": "excel-grid",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 3 L 21 3 L 21 21 L 3 21 Z M 6 6 L 10 6 L 10 10 L 6 10 Z M 12 6 L 18 6 L 18 10 L 12 10 Z M 6 12 L 10 12 L 10 18 L 6 18 Z M 12 12 L 18 12 L 18 18 L 12 18 Z M 13 12 L 15 12 L 18 18 L 16 18 Z M 16 12 L 18 12 L 15 18 L 13 18 Z"
+    },
+    {
+      "package": "cn.wps.moffice_eng",
+      "activity": "cn.wps.moffice.documentmanager.ab.proxy.main",
+      "label": "WPS Office",
+      "drawable": "ruby_wps_office",
+      "glyph": "wps-document",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 5 2 L 17 2 L 22 7 L 22 22 L 5 22 Z M 17 2 L 17 7 L 22 7 Z M 8 10 L 10 10 L 12 15 L 14 10 L 16 10 L 18 17 L 16 17 L 15 13 L 13 18 L 11 18 L 9 13 L 8 17 L 6 17 Z"
+    },
+    {
+      "package": "com.google.android.apps.nbu.files",
+      "activity": "com.google.android.apps.nbu.files.home.HomeActivity",
+      "label": "Files de Google",
+      "drawable": "ruby_files_de_google",
+      "glyph": "google-files-folder",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 2 7 C 2 5 3 4 5 4 L 10 4 L 12 6 L 20 6 C 22 6 22 7 22 9 L 22 19 C 22 21 21 22 19 22 L 5 22 C 3 22 2 21 2 19 Z M 2 9 L 22 9 L 20 19 L 4 19 Z"
+    },
+    {
+      "package": "org.xbmc.kodi",
+      "activity": "org.xbmc.kodi.Splash",
+      "label": "Kodi",
+      "drawable": "ruby_kodi",
+      "glyph": "kodi",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "org.videolan.vlc",
+      "activity": "org.videolan.vlc.StartActivity",
+      "label": "VLC",
+      "drawable": "ruby_vlc",
+      "glyph": "vlcmediaplayer",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.stremio.one",
+      "activity": "com.stremio.android.MainActivity",
+      "label": "Stremio",
+      "drawable": "ruby_stremio",
+      "glyph": "stremio",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.shazam.android",
+      "activity": "com.shazam.android.activities.SplashActivity",
+      "label": "Shazam",
+      "drawable": "ruby_shazam",
+      "glyph": "shazam",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.picsart.studio",
+      "activity": "com.socialin.android.photo.picsinphoto.MainPagerActivity",
+      "label": "Picsart",
+      "drawable": "ruby_picsart",
+      "glyph": "picsart",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "co.benx.weverse",
+      "activity": "co.benx.weverse.home.MainActivityAlias",
+      "label": "Weverse",
+      "drawable": "ruby_weverse",
+      "glyph": "weverse-chat-heart",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 4 C 3 2 5 2 7 2 L 17 2 C 20 2 21 4 21 7 L 21 14 C 21 17 19 18 16 18 L 10 18 L 5 22 L 6 17 C 4 16 3 15 3 12 Z M 12 6 C 10 4 7 6 8 9 C 9 12 12 14 12 14 C 12 14 16 11 17 9 C 18 6 14 4 12 6 Z"
+    },
+    {
+      "package": "com.roblox.client",
+      "activity": "com.roblox.client.startup.LauncherAliasMain",
+      "label": "Roblox",
+      "drawable": "ruby_roblox",
+      "glyph": "roblox",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
+    },
+    {
+      "package": "com.termux",
+      "activity": "com.termux.app.TermuxActivity",
+      "label": "Termux",
+      "drawable": "ruby_termux",
+      "glyph": "termux-terminal",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 3 L 21 3 L 21 21 L 3 21 Z M 6 7 L 8 7 L 12 11 L 8 15 L 6 15 L 10 11 Z M 13 14 L 18 14 L 18 16 L 13 16 Z"
+    },
+    {
+      "package": "com.ichi2.anki",
+      "activity": "com.ichi2.anki.IntentHandler",
+      "label": "AnkiDroid",
+      "drawable": "ruby_ankidroid",
+      "glyph": "anki-flashcards",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 3 5 C 3 3 4 2 6 2 L 17 2 C 19 2 20 3 20 5 L 20 17 C 20 19 19 20 17 20 L 6 20 C 4 20 3 19 3 17 Z M 7 6 L 16 6 L 16 8 L 7 8 Z M 7 10 L 16 10 L 16 12 L 7 12 Z M 7 14 L 12 14 L 12 16 L 7 16 Z M 16 15 L 18 15 L 18 17 L 16 17 Z M 18 17 L 21 17 L 21 20 L 18 20 Z"
+    },
+    {
+      "package": "com.tencent.mm",
+      "activity": "com.tencent.mm.ui.LauncherUI",
+      "label": "WeChat",
+      "drawable": "ruby_wechat",
+      "glyph": "wechat",
+      "glyph_type": "brand",
+      "activity_status": "estimated"
     }
   ]
 }
