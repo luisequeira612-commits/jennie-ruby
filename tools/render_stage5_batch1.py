@@ -70,7 +70,8 @@ def main():
     names=[a["drawable"] for a in apps]
     if len(names)!=len(set(names)): raise RuntimeError("Duplicate drawable names in icons.json")
     subprocess.run(["node",str(ROOT/"tools/extract_stage5_simple_icons.mjs"),str(CATALOG),str(SOURCE_DIR)],check=True,cwd=ROOT)
-    renderer=load_renderer(); OUT.mkdir(parents=True,exist_ok=True)\n    sources=json.loads((SOURCE_DIR/"stage5-glyph-sources.json").read_text(encoding="utf-8"))
+    renderer=load_renderer(); OUT.mkdir(parents=True,exist_ok=True)
+    sources=json.loads((SOURCE_DIR/"stage5-glyph-sources.json").read_text(encoding="utf-8"))
     MASK_DIR.mkdir(parents=True,exist_ok=True)
     for stale in MASK_DIR.glob("*.png"): stale.unlink()
     for app in apps:
@@ -81,7 +82,8 @@ def main():
             root=ET.parse(source).getroot()
             view_w=float(root.get("{http://schemas.android.com/apk/res/android}viewportWidth","108"))
             view_h=float(root.get("{http://schemas.android.com/apk/res/android}viewportHeight","108"))
-            resolved_type=sources[app["drawable"]]["resolved_type"]\n            if resolved_type=="monogram":
+            resolved_type=sources[app["drawable"]]["resolved_type"]
+            if resolved_type=="monogram":
                 text=app.get("monogram") or app.get("glyph")
                 if not isinstance(text,str) or not text.strip(): raise RuntimeError(f"Missing glyph/monogram text in icons.json: {app['label']}")
                 text=text.strip()
@@ -107,7 +109,9 @@ def main():
         (OUT/(name+".xml")).unlink(missing_ok=True)
     selector=['<?xml version="1.0" encoding="utf-8"?>','<icons>']
     for a in apps: selector.append(f'    <icon name="{a["label"]}" drawable="{a["drawable"]}" glyph-type="{sources[a["drawable"]]["resolved_type"]}" />')
-    selector.append('</icons>'); xml_text="\n".join(selector)+"\n"
+    selector.append('</icons>'); xml_text="
+".join(selector)+"
+"
     for p in (ROOT/"app/src/main/res/xml/drawable.xml",ROOT/"app/src/main/assets/drawable.xml"):
         p.parent.mkdir(parents=True,exist_ok=True); p.write_text(xml_text,encoding="utf-8")
     REPORT.mkdir(parents=True,exist_ok=True)
@@ -126,14 +130,23 @@ def main():
                 continue
             lines.append(f'| {a["label"]} (candidata) | {a["package"]} | {activity} | {candidate_status} |')
             if candidate_status=="estimated": pending.append(f'{a["label"]}: {a["package"]}/{activity} — candidata estimada')
-    (ROOT/"docs/ACTIVITIES.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
-    (REPORT/"stage5-activities.md").write_text("\n".join(lines)+"\n",encoding="utf-8")
-    (ROOT/"appfilter_pendientes.txt").write_text("\n".join(pending)+"\n",encoding="utf-8")
+    (ROOT/"docs/ACTIVITIES.md").write_text("
+".join(lines)+"
+",encoding="utf-8")
+    (REPORT/"stage5-activities.md").write_text("
+".join(lines)+"
+",encoding="utf-8")
+    (ROOT/"appfilter_pendientes.txt").write_text("
+".join(pending)+"
+",encoding="utf-8")
     batch1=["Maps","Gmail","Drive","Photos","Calendar","YouTube Music","Facebook","Messenger","Telegram","Snapchat","X","Pinterest","Reddit","Netflix","Disney+","HBO Max","Crunchyroll","Twitch","ChatGPT","Claude"]
     batch2=["Aniyomi","Mihon","Brave","CapCut","Gemini","DeepSeek","Duolingo","Excel","WPS Office","Files de Google","Kodi","VLC","Stremio","Shazam","Picsart","Weverse","Roblox","Termux","AnkiDroid","WeChat"]
-    batch3=["Memrise","Drops","HelloTalk","Falou","Ling","LingQ","LangReactor","Reelang","Write Greek","Moon+ Reader","ReadEra","Lector de PDF","LNReader","Shosetsu","bilibili","CloudStream","Inkaplay","Lark Player","MXL TV","Xuper","Rave","Mnet Plus","Songstats","Soundcharts","SportzX","GeeSports","Lean Remote","LGRemote"]\n    batch4=["rednote","NGL","Zangi","Labalabi For WhatsApp","SocialAut","Sticker.ly","StickerVibe","Reface","Viggle AI","HoYoLAB","MCPEDL","MU Fan","Duskwood","Blackjack Trainer","AHA Games","Meu Tarot","Windy","Moovit","Google Earth","DeepStateMap","PedidosYa"]
+    batch3=["Memrise","Drops","HelloTalk","Falou","Ling","LingQ","LangReactor","Reelang","Write Greek","Moon+ Reader","ReadEra","Lector de PDF","LNReader","Shosetsu","bilibili","CloudStream","Inkaplay","Lark Player","MXL TV","Xuper","Rave","Mnet Plus","Songstats","Soundcharts","SportzX","GeeSports","Lean Remote","LGRemote"]
+    batch4=["rednote","NGL","Zangi","Labalabi For WhatsApp","SocialAut","Sticker.ly","StickerVibe","Reface","Viggle AI","HoYoLAB","MCPEDL","MU Fan","Duskwood","Blackjack Trainer","AHA Games","Meu Tarot","Windy","Moovit","Google Earth","DeepStateMap","PedidosYa"]
     lotes=["# Lotes de iconos — Etapa 5","","El catálogo maestro es `icons.json`. Cada activity se marca `verified` solo tras contrastar el manifiesto instalado; las candidatas no contrastadas quedan `estimated`.","","## Lote 1 — 20 aplicaciones",""," "+", ".join(batch1),"","## Lote 2 — 20 aplicaciones",""," "+", ".join(batch2),"","## Lote 3 — correcciones solicitadas",""," "+", ".join(batch3),"","## Lote 4 — 25 de 28 apps disponibles",""," "+", ".join(batch4),"","No se añadieron Palm Store (com.transsnet.store), TECNO ID (tech.palm.id) ni Hola (com.talpa.hibrowser): no existen en el catálogo del dispositivo ni en appfilter.xml. Se requiere confirmar los paquetes instalados antes de inventar activities.","","Duolingo incluye la activity principal `com.duolingo/com.duolingo.app.LoginActivity` y actividades candidatas adicionales; todas permanecen `estimated` hasta contrastarlas en el dispositivo.","","La hoja de contacto se genera desde los diez PNG de Etapa 1, cinco PNG del dock y todos los PNG del catálogo. El generador de Etapa 1, sus diez PNG aprobados, el dock, los widgets y `docs/ESTILO.md` permanecen protegidos."]
-    (ROOT/"docs/LOTES.md").write_text("\n".join(lotes)+"\n",encoding="utf-8")
+    (ROOT/"docs/LOTES.md").write_text("
+".join(lotes)+"
+",encoding="utf-8")
     stage1=["ruby_youtube","ruby_spotify","ruby_tiktok","ruby_instagram","ruby_whatsapp","ruby_google","ruby_google_play_store","ruby_configuracion","ruby_galeria","ruby_camara"]
     dock=["ruby_dock_telefono_art","ruby_dock_contactos_art","ruby_dock_mensajes_art","ruby_dock_chrome_art","ruby_dock_cajon_apps_art"]
     labels=["YouTube","Spotify","TikTok","Instagram","WhatsApp","Google","Play Store","Ajustes","Galería","Cámara","Teléfono","Contactos","Mensajes","Chrome","Cajón apps"]+[a["label"] for a in apps]
