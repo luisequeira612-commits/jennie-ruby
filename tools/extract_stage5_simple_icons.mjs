@@ -13,7 +13,7 @@ for(const app of catalog.apps){
   if(app.glyph_type==="brand"){
     if(icon?.path){ sourcePath=icon.path; source="simple-icons"; slug=icon.slug; }
     else if(app.fallback_path){ sourcePath=app.fallback_path; resolved="generic"; source="generic-fallback"; }
-    else if(app.monogram){ resolved="monogram"; source="monogram-fallback"; sourcePath="M 0 0"; }
+    else if(app.monogram){ resolved="monogram"; source="monogram-fallback"; sourcePath="M 2 2 L 22 2 L 12 22 Z"; }
     else throw new Error("Simple Icons slug missing and no safe fallback: "+app.label+" ("+app.glyph+")");
   } else if(app.glyph_type==="generic"){
     if(app.fallback_path){ sourcePath=app.fallback_path; source="generic-fallback"; }
@@ -22,7 +22,7 @@ for(const app of catalog.apps){
     else throw new Error("Generic glyph has no drawable path or monogram: "+app.label);
   } else if(app.glyph_type==="monogram"){
     if(!app.monogram) throw new Error("Monogram text missing: "+app.label);
-    resolved="monogram"; source="monogram"; sourcePath="M 0 0"; 
+    resolved="monogram"; source="monogram"; sourcePath="M 2 2 L 22 2 L 12 22 Z"; 
   } else throw new Error("Invalid glyph_type for "+app.label+": "+app.glyph_type);
   sources[app.drawable]={resolved_type:resolved,source,slug,glyph:app.glyph};
   if(!sourcePath) continue;
