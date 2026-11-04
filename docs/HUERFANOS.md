@@ -1,10 +1,8 @@
 # Recursos heredados y huérfanos — Etapa 5
 
-## Lote 3
+## Lote 3 — 28 componentes reutilizados
 
-Los 28 componentes de las aplicaciones incluidas ya existían en el `appfilter.xml` de `main`. Sus identificadores drawable heredados coinciden con los nuevos nombres del catálogo de Etapa 5:
-
-| Aplicación | Drawable heredado reutilizado |
+| Aplicación | Drawable |
 |---|---|
 | Memrise | `ruby_memrise` |
 | Drops | `ruby_drops` |
@@ -35,15 +33,44 @@ Los 28 componentes de las aplicaciones incluidas ya existían en el `appfilter.x
 | Lean Remote | `ruby_lean_remote` |
 | LGRemote | `ruby_lgremote` |
 
-Estos nombres se reutilizan para los nuevos PNG; no se crean componentes duplicados. La sincronización de Nova se ejecuta desde `device-app-catalog.tsv` más `icons.json`.
+## Lote 4 — 25 componentes reutilizados
 
-## Archivos vectoriales huérfanos confirmados
+| Aplicación | Drawable |
+|---|---|
+| rednote | `ruby_rednote` |
+| NGL | `ruby_ngl` |
+| Zangi | `ruby_zangi` |
+| Labalabi For WhatsApp | `ruby_labalabi_for_whatsapp` |
+| SocialAut | `ruby_socialaut` |
+| Sticker.ly | `ruby_sticker_ly` |
+| StickerVibe | `ruby_stickervibe` |
+| Reface | `ruby_reface` |
+| Viggle AI | `ruby_viggle_ai` |
+| HoYoLAB | `ruby_hoyolab` |
+| MCPEDL | `ruby_mcpedl` |
+| MU Fan | `ruby_mu_fan` |
+| Duskwood | `ruby_duskwood` |
+| Blackjack Trainer | `ruby_blackjack_trainer` |
+| AHA Games | `ruby_aha_games` |
+| Meu Tarot | `ruby_meu_tarot` |
+| Windy | `ruby_windy` |
+| Moovit | `ruby_moovit` |
+| Google Earth | `ruby_google_earth` |
+| DeepStateMap | `ruby_deepstatemap` |
+| PedidosYa | `ruby_pedidosya` |
+| Mi Claro | `ruby_mi_claro` |
+| Mi Tigo | `ruby_mi_tigo` |
+| Tor Browser | `ruby_tor_browser` |
+| Urban VPN | `ruby_urban_vpn` |
 
-Ningún archivo vectorial antiguo separado pudo confirmarse en las rutas fuente consultadas. Por eso no se declara ni se borra ningún vector como huérfano. La tabla anterior registra los nombres heredados del appfilter, no afirma que exista un archivo XML independiente con cada nombre.
+## Paquetes pendientes
 
-## Paquetes no encontrados
+- Palm Store — `com.transsnet.store`
+- TECNO ID — `tech.palm.id`
+- Hola — `com.talpa.hibrowser`
 
-- Cuestionario — `com.idea.questionnaire`
-- FM — `com.funbase.xradio`
+No aparecen en `device-app-catalog.tsv` ni en `appfilter.xml`; no se inventaron activities ni se crearon componentes.
 
-No se generaron entradas para estos dos paquetes.
+## Archivos vectoriales huérfanos
+
+No se confirmó la existencia de archivos vectoriales independientes antiguos en las rutas fuente consultadas. No se elimina ningún vector; se reutilizan los IDs existentes como PNG.
