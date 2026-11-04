@@ -143,9 +143,10 @@
       "activity": "com.wbd.fuse.appcore.FuseActivity",
       "label": "HBO Max",
       "drawable": "ruby_hbo_max",
-      "glyph": "max",
-      "glyph_type": "brand",
-      "activity_status": "estimated"
+      "glyph": "hbo-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 2 5 L 5 5 L 5 11 L 9 11 L 9 5 L 12 5 L 12 21 L 9 21 L 9 14 L 5 14 L 5 21 L 2 21 Z M 13 5 L 18 5 C 21 5 22 7 22 9 C 22 11 21 12 20 13 C 22 13 23 15 23 17 C 23 20 21 21 18 21 L 13 21 Z M 16 8 L 16 12 L 18 12 C 19 12 20 11 20 10 C 20 8 19 8 18 8 Z M 16 15 L 16 18 L 18 18 C 19 18 20 18 20 16 C 20 15 19 15 18 15 Z"
     },
     {
       "package": "com.crunchyroll.crunchyroid",
@@ -170,9 +171,10 @@
       "activity": "com.openai.chatgpt.MainActivity",
       "label": "ChatGPT",
       "drawable": "ruby_chatgpt",
-      "glyph": "openai",
-      "glyph_type": "brand",
-      "activity_status": "estimated"
+      "glyph": "chatgpt-knot-custom",
+      "glyph_type": "generic",
+      "activity_status": "estimated",
+      "fallback_path": "M 12 2 C 15 2 17 4 17 7 L 17 10 L 20 8 C 22 7 24 8 24 11 C 24 13 23 14 21 15 L 18 17 L 21 19 C 23 20 23 22 21 24 C 19 26 17 25 16 23 L 14 20 L 12 23 C 11 25 8 25 7 23 C 5 21 6 19 8 18 L 11 16 L 8 14 C 6 13 5 10 7 8 C 9 6 11 7 12 9 L 14 12 L 14 8 C 14 5 13 4 12 4 Z M 12 8 L 10 11 L 13 13 L 16 11 L 16 8 C 16 6 14 5 12 5 Z M 10 14 L 7 16 C 5 17 5 20 7 21 C 8 22 10 22 11 20 L 13 17 Z M 15 14 L 17 17 L 20 15 C 22 14 22 12 21 11 C 20 10 18 10 17 11 Z"
     },
     {
       "package": "com.anthropic.claude",
