@@ -40,6 +40,13 @@ for item in filter_root.findall("item"):
 for a,comp in zip(apps,components):
     key="ComponentInfo{"+comp+"}"
     assert mapping.get(key)==a["drawable"], f"appfilter mismatch for {a['label']}: {mapping.get(key)}"
+    # Every legacy launcher component for this package must now point to the
+    # Stage 5 PNG resource; old aliases may not keep a stale vector mapping.
+    package_prefix="ComponentInfo{"+a["package"]+"/"
+    package_rows=[(component,drawable) for component,drawable in mapping.items() if component.startswith(package_prefix)]
+    assert package_rows, f"No appfilter mapping for catalog package: {a['label']}"
+    for component,drawable in package_rows:
+        assert drawable==a["drawable"], f"Legacy component {component} for {a['label']} still points to {drawable}, expected {a['drawable']}"
     for candidate in a.get("activity_candidates",[]):
         candidate_key="ComponentInfo{"+a["package"]+"/"+candidate["activity"]+"}"
         assert mapping.get(candidate_key)==a["drawable"], f"appfilter mismatch for candidate {a['label']}: {candidate_key}"

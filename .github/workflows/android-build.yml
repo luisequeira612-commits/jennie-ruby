@@ -98,7 +98,11 @@ jobs:
         run: python3 tools/validate_stage5_batch1.py
       - name: Validate Stage 5 PNG geometry and palette
         run: python3 tools/validate_stage5_geometry.py
+      - name: Diagnose Stage 5 geometry even when strict audit fails
+        if: always()
+        run: python3 tools/diagnose_stage5_geometry.py
       - name: Upload Stage 5 automatic audit and contact sheet
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: jennie-ruby-stage5-system-audit
@@ -106,8 +110,11 @@ jobs:
             app/build/reports/jennie-ruby-stage5-contact-sheet.png
             app/build/reports/stage5-automatic-checks.md
             app/build/reports/stage5-activities.md
+            app/build/reports/stage5-diagnostics.md
+            app/build/reports/stage5-glyph-masks/*.png
+            app/src/main/res/drawable-nodpi/ruby_*.png
             appfilter_pendientes.txt
-          if-no-files-found: error
+          if-no-files-found: warn
       - name: Assemble debug APK
         run: gradle assembleDebug
       - name: Verify APK uses the stable debug certificate
