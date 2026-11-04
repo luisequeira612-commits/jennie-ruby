@@ -561,7 +561,7 @@
       "glyph": "pdfreader",
       "glyph_type": "generic",
       "activity_status": "estimated",
-      "fallback_path": "M 5 2 L 16 2 L 21 7 L 21 22 L 5 22 Z M 16 2 L 16 7 L 21 7 Z M 8 12 L 18 12 M 8 15 L 18 15 M 8 18 L 15 18"
+      "fallback_path": "M 5 2 L 16 2 L 21 7 L 21 22 L 5 22 Z M 16 2 L 16 7 L 21 7 Z M 18 13 L 8 13 L 8 11 L 18 11 Z M 18 17 L 8 17 L 8 15 L 18 15 Z"
     },
     {
       "package": "com.rajarsheechatterjee.LNReader",
