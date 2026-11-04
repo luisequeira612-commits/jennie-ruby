@@ -93,4 +93,24 @@
     <icon name="Mi Tigo" drawable="ruby_mi_tigo" glyph-type="generic" />
     <icon name="Tor Browser" drawable="ruby_tor_browser" glyph-type="generic" />
     <icon name="Urban VPN" drawable="ruby_urban_vpn" glyph-type="generic" />
+    <icon name="Acode" drawable="ruby_acode" glyph-type="generic" />
+    <icon name="Administrador de archivos" drawable="ruby_administrador_de_archivos" glyph-type="generic" />
+    <icon name="AnkuLua" drawable="ruby_ankulua" glyph-type="generic" />
+    <icon name="App Manager" drawable="ruby_app_manager" glyph-type="generic" />
+    <icon name="Asistente" drawable="ruby_asistente" glyph-type="generic" />
+    <icon name="Autenticador" drawable="ruby_autenticador" glyph-type="generic" />
+    <icon name="Calculadora" drawable="ruby_calculadora" glyph-type="generic" />
+    <icon name="Carlcare" drawable="ruby_carlcare" glyph-type="generic" />
+    <icon name="Clima" drawable="ruby_clima" glyph-type="generic" />
+    <icon name="Creador de atajos" drawable="ruby_creador_de_atajos" glyph-type="generic" />
+    <icon name="Cx Explorador de Archivos" drawable="ruby_cx_explorador_de_archivos" glyph-type="generic" />
+    <icon name="Escáner inteligente" drawable="ruby_escaner_inteligente" glyph-type="generic" />
+    <icon name="EX Explorador de Archivos" drawable="ruby_ex_explorador_de_archivos" glyph-type="generic" />
+    <icon name="Flud" drawable="ruby_flud" glyph-type="generic" />
+    <icon name="Grabadora de sonido" drawable="ruby_grabadora_de_sonido" glyph-type="generic" />
+    <icon name="iAdb" drawable="ruby_iadb" glyph-type="generic" />
+    <icon name="Kit de herramientas de SIM" drawable="ruby_kit_de_herramientas_de_sim" glyph-type="generic" />
+    <icon name="Kustom Widget" drawable="ruby_kustom_widget" glyph-type="generic" />
+    <icon name="MarkClear" drawable="ruby_markclear" glyph-type="generic" />
+    <icon name="Mobile Cloner" drawable="ruby_mobile_cloner" glyph-type="generic" />
 </icons>

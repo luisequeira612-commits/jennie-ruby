@@ -69,7 +69,7 @@ jobs:
         run: python3 tools/generate_icon_contact_sheet.py
       - name: Download pinned Google Fonts OFL families
         run: bash tools/download_widget_fonts.sh
-      - name: Generate corrected Stage 5 batches 3-4 and real five-column contact sheet
+      - name: Generate Stage 5 catalog and real five-column contact sheet
         run: python3 tools/render_stage5_batch1.py
       - name: Generate transparent widget picker previews
         run: python3 tools/generate_widget_previews.py

@@ -57,3 +57,23 @@
 | Termux | com.termux | com.termux.app.TermuxActivity | estimated |
 | AnkiDroid | com.ichi2.anki | com.ichi2.anki.IntentHandler | estimated |
 | WeChat | com.tencent.mm | com.tencent.mm.ui.LauncherUI | estimated |
+| Acode | com.foxdebug.acodefree | com.foxdebug.acodefree.MainActivityIconDefault | estimated |
+| Administrador de archivos | com.transsion.filemanagerx | com.transsion.filemanagerx.ui.launch.SplashActivity | estimated |
+| AnkuLua | com.appautomatic.ankulua.trial | com.appautomatic.ankulua.MainActivity | estimated |
+| App Manager | io.github.muntashirakon.AppManager | io.github.muntashirakon.AppManager.main.SplashActivity | estimated |
+| Asistente | com.google.android.apps.googleassistant | com.google.android.apps.googleassistant.AssistantActivity | estimated |
+| Autenticador | com.google.android.apps.authenticator2 | com.google.android.apps.authenticator2.main.MainActivity | estimated |
+| Calculadora | com.transsion.calculator | com.transsion.calculator.Calculator | estimated |
+| Carlcare | com.transsion.carlcare | com.transsion.carlcare.MainActivity | estimated |
+| Clima | com.rlk.weathers | com.rlk.weathers.ui.main.MainActivity | estimated |
+| Creador de atajos | rk.android.app.shortcutmaker | rk.android.app.shortcutmaker.CommonMethods.SplashScreenActivity | estimated |
+| Cx Explorador de Archivos | com.cxinventor.file.explorer | com.alphainventor.filemanager.activity.MainActivity | estimated |
+| Escáner inteligente | com.transsion.scanningrecharger | com.transsion.scanningrecharger.view.activity.textrecognized.TextRecognizedActivity | estimated |
+| EX Explorador de Archivos | com.ace.ex.file.manager | com.ace.fileexplorer.feature.activity.AceFirstActivity | estimated |
+| Flud | com.delphicoder.flud | com.delphicoder.flud.MainActivity | estimated |
+| Grabadora de sonido | com.transsion.soundrecorder | com.transsion.soundrecorder.SoundRecorder | estimated |
+| iAdb | com.iadb.helper | com.iadb.helper.MainActivity | estimated |
+| Kit de herramientas de SIM | com.android.stk | com.android.stk.StkMain | estimated |
+| Kustom Widget | org.kustom.widget | org.kustom.widget.picker.WidgetPicker | estimated |
+| MarkClear | com.xiaoxu.spqsy | com.xiaoxu.spqsy.MainActivity | estimated |
+| Mobile Cloner | com.transsion.letswitch | com.transsion.letswitch.MainActivity | estimated |
