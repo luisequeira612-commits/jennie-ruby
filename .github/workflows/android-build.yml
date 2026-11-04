@@ -111,7 +111,8 @@ jobs:
             app/build/reports/stage5-automatic-checks.md
             app/build/reports/stage5-activities.md
             app/build/reports/stage5-diagnostics.md
-            app/build/reports/stage5-glyph-masks/*.png\n            tools/ruby_icon_sources/stage5-glyph-sources.json
+            app/build/reports/stage5-glyph-masks/*.png
+            tools/ruby_icon_sources/stage5-glyph-sources.json
             app/src/main/res/drawable-nodpi/ruby_*.png
             appfilter_pendientes.txt
           if-no-files-found: warn
