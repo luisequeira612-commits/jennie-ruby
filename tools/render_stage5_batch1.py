@@ -90,7 +90,7 @@ def main():
                 # Replace only the glyph field; preserve the Ruby surface and border.
                 ImageDraw.Draw(base).rectangle((42,42,150,150),fill="#080304")
                 mask=Image.new("L",(192,192),0); d=ImageDraw.Draw(mask)
-                f,b=fit_text(d,text,ROOT/"app/src/main/res/font/playfair_display.ttf",(42,42,150,150),96,96)
+                f,b=fit_text(d,text,ROOT/"app/src/main/res/font/playfair_display.ttf",(42,42,150,150),116,116)
                 x=(192-(b[2]-b[0]))/2-b[0]; y=(192-(b[3]-b[1]))/2-b[1]
                 d.text((x,y),text,font=f,fill=255)
                 glow=mask.filter(ImageFilter.GaussianBlur(2.0))
